@@ -1,85 +1,62 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+<script setup>
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div>
+    <nav class="w-full flex flex-row justify-between">
+      <div class="flex flex-row space-x-5">
+        <a>Home</a>
+        <a>About Me</a>
+        <a>Education</a>
+        <a>Skills</a>
+        <a>Experience</a>
+      </div>
+      <div class="flex flex-row justify-end">
+        <div><img src=""/></div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      </div>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+    </nav>
+    <section id="introduction">
+      <div class="container mx-auto mt-20">
+        <div class="flex flex-col md:flex-row space-x-10">
+          <div class="flex-1"><img src='./assets/web-icon.png'/></div>
+          <div class="flex-3 flex flex-col space-y-2 ">
+            <h1 class="text-2xl bold">Hello, My name is Wryan Cartie Halim.</h1>
+            <div class=" mt-2 border-blue-400 border-b-2"></div>
+            <p class="mt-2 max-w-lg">I am a recent computer science graduate of Tunghai University with 1 year of internship experience. I am well versed in a variety of technologies</p>
+            <p class="mt-2 max-w-lg">As a recent graduate, I am looking for new opportunities in web development, in the frontend/backend/fullstack. If you are looking for a passionate and self-driven developer who isn't afraid of challenges, please feel free to contact me</p>
+            <button class="bg-blue-200 text-white w-1/2 mx-auto rounded-full  hover:outline-none py-2">Learn more about me</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="education">
+      <div class="container mx-auto mt-20">
+        <div class="flex flex-col md:flex-row justify-between">
+          <!--Photo Grid-->
+          <div></div>
+          <!--Education Summary-->
+          <div>Bachelor of Computer Science</div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <RouterView />
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
