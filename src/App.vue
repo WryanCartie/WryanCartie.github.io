@@ -5,17 +5,18 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <div>
     <nav class="w-full flex flex-row justify-between">
-      <div class="flex flex-row space-x-5">
+      <div class="flex flex-row justify-end">
+        <div class=" font-bold text-2xl ">Wryan Cartie Halim</div>
+
+      </div>
+      <div class="flex flex-row justify-end space-x-5">
         <a>Home</a>
         <a>About Me</a>
         <a>Education</a>
         <a>Skills</a>
         <a>Experience</a>
       </div>
-      <div class="flex flex-row justify-end">
-        <div><img src=""/></div>
-
-      </div>
+     
 
     </nav>
     <section id="introduction">
@@ -35,13 +36,49 @@ import HelloWorld from './components/HelloWorld.vue'
     <section id="education">
       <div class="container mx-auto mt-20">
         <div class="flex flex-col md:flex-row justify-between">
-          <!--Photo Grid-->
-          <div></div>
+         
+       
           <!--Education Summary-->
-          <div>Bachelor of Computer Science</div>
+          <div class="max-w-2xl">
+            <h1 class="text-2xl"> Bachelor of Computer Science</h1>
+            <p>Notable Cousework: Algorithms, Data Structures, Database, AI Python Programming, Web Programming, C++, PHP Development </p>
+            <p>Thesis Name : Integration of Apache Kafka to Visualize WiFi positioning in 3D Map(整合Apache Kafka於3D地圖之視覺化WiFi定位)
+)</p>
+            <ul>Notable Moments:
+              <li>Built a simple frontend for Tunghai University's </li>
+              <li>Built an ALE web application using HTML/CSS/Javascript and PHP to collect and visualize the usage of Wi-Fi data in Tunghai University. </li>
+              <li>Design and create promotionals for events as part of a volunteer for the local indonesian student association.</li>
+            </ul>
+          </div>
+           <!--Photo Grid-->
+          <div></div>
         </div>
       </div>
     </section>
+    <section id="skills">
+      <div class="containe  r mt-10 bg-gray-100">
+        Skills
+      </div>
+    </section>
+    <section id="experience"></section>
+    <section id="projects"></section>
+    <section id="contact"></section>
+    <footer id="footer">
+     <!--Footer Container-->
+      <div class="bg-black text-white">
+        <!--Menu bar-->
+        <div class="flex flex-col space-y-4 md:flex-row">
+          <!--Email and Phone-->
+          <div>
+
+          </div>
+          <!--Linkedin and Github-->
+          <div class="flex flex-col md:flex-row">
+
+          </div>
+        </div>
+     </div> 
+    </footer>
   </div>
 
 </template>
