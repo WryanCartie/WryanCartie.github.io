@@ -71,7 +71,8 @@ button:focus-visible {
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  background:no-repeat;
+
   text-align: center;
 }
 
@@ -91,6 +92,6 @@ button:focus-visible {
 @tailwind components;
 @tailwind utilities;
 
-#introduction{
+#jumbotron{
   background-image: url('./assets/backgrounds/introduction-background.jpg')
 }

@@ -1,9 +1,12 @@
+
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+  
+  
 </script>
 
 <template>
-  <div>
+  <div id="">
+    <div id="jumbotron" class="px-12 py-6">
     <nav class="w-full flex flex-row justify-between">
       <div class="flex flex-row justify-end">
         <div class=" font-bold text-2xl ">Wryan Cartie Halim</div>
@@ -20,7 +23,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
     </nav>
     <section id="introduction">
-      <div class="container mx-auto mt-20">
+      <div class="container mx-auto mt-20 ">
         <div class="flex flex-col md:flex-row space-x-10">
           <div class="flex-1"><img src='./assets/web-icon.png'/></div>
           <div class="flex-3 flex flex-col space-y-2 ">
@@ -33,13 +36,14 @@ import HelloWorld from './components/HelloWorld.vue'
         </div>
       </div>
     </section>
+  </div>
     <section id="education">
-      <div class=" mx-auto mt-20">
-        <div class="flex flex-col md:flex-row justify-between">
+      <div class=" mx-auto mt-20 ">
+        <div class="flex flex-col md:flex-row justify-between md:space-x-16">
          
        
           <!--Education Summary-->
-          <div class="max-w-2xl">
+          <div class="max-w-2xl flex-1">
             <h1 class="text-2xl"> Bachelor of Computer Science</h1>
             <p>Notable Cousework: Algorithms, Data Structures, Database, AI Python Programming, Web Programming, C++, PHP Development </p>
             <p>Thesis: Integration of Apache Kafka to Visualize WiFi positioning in 3D Map(整合Apache Kafka於3D地圖之視覺化WiFi定位)
@@ -51,24 +55,41 @@ import HelloWorld from './components/HelloWorld.vue'
             </ul>
           </div>
            <!--Photo Grid-->
-          <div class="grid grid-cols-2 ">
-            <div> 
-              <img src="./assets/images/graduation-photo.jpg" class="col-span-2 row-span-2">
+          <div class="grid grid-cols-2 w-full h-full grid-row-1 flex-1 gap-4 py-4">
+            <div class="col-span-2 h-[200%]"> 
+              <img src="./assets/images/graduation-photo.jpg" class="">
             </div>
-            <div> 
-              <img src="./assets/images/graduation-photo.jpg" class="col-span-2">
+            <div class="pb-0  "> 
+              <img src="./assets/images/thesis-photo.png" class=" mx-auto mb-0 h-full ">
             </div>
-            <div> 
-              <img src="./assets/images/graduation-photo.jpg" class="col-span-2">
+            <div class="pb-0"> 
+              <img src="./assets/images/ALE-photo.png" class="h-full">
             </div>
+
+ 
            
           </div>
         </div>
       </div>
     </section>
     <section id="skills">
-      <div class="containe  r mt-10 bg-gray-100">
+      <div class="container mt-10 bg-gray-100">
         Skills
+      </div>
+      <!--Skils Grid-->
+      <div class="grid grid-cols-4 max-w-xl mx-auto ">
+        <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+          <img src="./assets/logo/html-icon.png"/>
+        </div>
+        <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+          <img src="./assets/logo/html-icon.png"/>
+        </div>
+        <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+          <img src="./assets/logo/html-icon.png"/>
+        </div>
+         <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+          <img src="./assets/logo/html-icon.png"/>
+        </div>
       </div>
     </section>
     <section id="experience">
