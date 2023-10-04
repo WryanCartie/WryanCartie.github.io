@@ -1,18 +1,24 @@
 
 <script setup>
-  
+  const skills = [
+    ['vue','react','javascript','css','html','typescript',],
+    ['python',''],
+    ['sqlite3','mysql','mongoDB'],
+    ['vscode','git','jest'],
+    ['english','chinese','indonesian']
+  ]
   
 </script>
 
 <template>
-  <div id="">
-    <div id="jumbotron" class="px-12 py-6">
-    <nav class="w-full flex flex-row justify-between">
+  <div class="min-w-screen">
+    <div id="jumbotron" class="px-12 py-6 w-full min-w-screen">
+    <nav class=" container w-full flex flex-row justify-between max-w-6xl mx-auto">
       <div class="flex flex-row justify-end">
         <div class=" font-bold text-2xl ">Wryan Cartie Halim</div>
 
       </div>
-      <div class="flex flex-row justify-end space-x-5">
+      <div class="flex flex-row container max-w-6xl justify-end space-x-5">
         <a>Home</a>
         <a>About Me</a>
         <a>Education</a>
@@ -23,7 +29,7 @@
 
     </nav>
     <section id="introduction">
-      <div class="container mx-auto mt-20 ">
+      <div class="container mx-auto mt-20 max-w-6xl ">
         <div class="flex flex-col md:flex-row space-x-10">
           <div class="flex-1"><img src='./assets/web-icon.png'/></div>
           <div class="flex-3 flex flex-col space-y-2 ">
@@ -37,8 +43,9 @@
       </div>
     </section>
   </div>
+  <div class="px-12 w-screen ">
     <section id="education">
-      <div class=" mx-auto mt-20 ">
+      <div class=" mx-auto mt-20 container max-w-6xl ">
         <div class="flex flex-col md:flex-row justify-between md:space-x-16">
          
        
@@ -75,11 +82,11 @@
     <section id="skills">
       <div class="container mt-10 bg-gray-100">
         Skills
-      </div>
+    
       <!--Skils Grid-->
       <div class="grid grid-cols-4 max-w-xl mx-auto ">
         <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
-          <img src="./assets/logo/html-icon.png"/>
+          <font-awesome-icon :icon="['fab', 'html5']" class="w-full h-full" />
         </div>
         <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
           <img src="./assets/logo/html-icon.png"/>
@@ -91,17 +98,42 @@
           <img src="./assets/logo/html-icon.png"/>
         </div>
       </div>
+    </div>
     </section>
     <section id="experience">
+      <div class="container relative mt-10 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center space-x-10">
+          <div class="bg-gray-200 text-center w-full relative ">
+            <div class="absolute  -translate-x-1/2 h-24 w-24 rounded-full bg-black left-1/2 -top-8">
+              <img src="./assets/icons/icon-1.png"/>
+            </div>
+            <div>
+              <h1>Fullstack Web Developer(Internship)</h1>
+            </div>
+          </div>
+          <div class="bg-gray-200 text-center w-full relative">
+            <div class="absolute  -translate-x-1/2 h-24 w-24 rounded-full bg-black left-1/2 -top-8 p-4">
+              <img src="./assets/icons/icon-2.png"/>
+            </div>
+          </div>
 
+        </div>
+        <div
+          class="hidden absolute top-2 left-2 h-3 w-10/12 bg-cyan md:block"
+        ></div>
+        <!--Vertical Line-->
+        <div class="absolute w-2 h-full left-1/2  -ml-1 bg-cyan md:hidden"></div>
+
+      </div>
     </section>
     <section id="projects"></section>
     <section id="contact">
       
     </section>
-    <footer id="footer">
+  </div>
+    <footer id="footer" class="bg-black text-white mt-10">
      <!--Footer Container-->
-      <div class="bg-black text-white pt-10 p-6">
+      <div class="bg-black max-w-6xl mx-auto pt-10 p-6">
         <!--Menu bar-->
         <div class="flex flex-col space-y-4 md:flex-row justify-between">
           <!--Email and Phone-->
