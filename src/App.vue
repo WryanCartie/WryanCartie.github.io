@@ -14,13 +14,13 @@ const skills = [
       <nav
         class="container w-full flex flex-row justify-between max-w-6xl mx-auto"
       >
-        <div class="w-1/3 mx-auto">
-          <h2 class="text-white text-2xl border py-1 bg-blac">
+        <div class="md:w-1/3 w-1/2 mx-auto">
+          <h2 class="text-white text-2xl text-center border py-1 bg-blac">
             Wryan Cartie Halim
           </h2>
         </div>
         <div
-          class="flex flex-row container max-w-6xl text-white justify-end space-x-5"
+          class="hidden md:flex flex-row container max-w-6xl text-white justify-end space-x-5"
         >
           <a href="#app">Home</a>
           <a href="#introduction">About Me</a>
@@ -32,9 +32,9 @@ const skills = [
       </nav>
       <section id="introduction">
         <div class="container mx-auto mt-20 max-w-6xl">
-          <div class="flex flex-col md:flex-row space-x-10">
-            <div class="flex-1"><img src="./assets/web-icon.png" /></div>
-            <div class="flex-3 flex flex-col space-y-2">
+          <div class="flex flex-col md:flex-row space-y-6 mb-10 md:space-y-4 text-white md:space-x-10 items-center ">
+            <div class="md:flex-1"><img src="./assets/web-icon.png" /></div>
+            <div class="md:flex-3 flex flex-col space-y-6 ">
               <h1 class="text-2xl bold">
                 Hello, My name is Wryan Cartie Halim.
               </h1>
@@ -52,7 +52,7 @@ const skills = [
                 afraid of challenges, please feel free to contact me
               </p>
               <button
-                class="bg-blue-200 text-white w-1/2 mx-auto rounded-full hover:outline-none py-2"
+                class="bg-blue-200 text-white w-1/2 mx-auto rounded-full  hover:outline-none py-2"
               >
                 Learn more about me
               </button>
@@ -166,7 +166,7 @@ const skills = [
           <div
             class="flex flex-col md:flex-row justify-between items-center space-x-24"
           >
-            <div class="bg-gray-200 text-center w-full relative md:pt-20">
+            <div class="bg-gray-200 left w-full relative md:pt-20">
               <div
                 class="absolute -translate-x-1/2 h-32 w-32 p-4 rounded-full bg-black left-1/2 -top-8"
               >
@@ -185,7 +185,7 @@ const skills = [
                 <p></p>
               </div>
             </div>
-            <div class="bg-gray-200 text-center w-full relative md:pt-20">
+            <div class="bg-gray-200 text-left w-full relative md:pt-20">
               <div
                 class="absolute -translate-x-1/2 h-24 w-24 rounded-full bg-black left-1/2 -top-8 p-4"
               >
@@ -237,10 +237,11 @@ const skills = [
         </div>
       </section>
       <section id="projects">
-        <div class="container mt-10">
-          <h1>Featured Projects</h1>
+        <div class="container mt-10 text-center">
+          <h1 class="text-3xl bold">Featured Projects:</h1>
           <!--Project View-->
           <div>
+            <h1>Project Name</h1>
             <button>View Project Details</button>
           </div>
         </div>
@@ -253,7 +254,7 @@ const skills = [
       <div class="bg-black max-w-6xl mx-auto py-12 p-6">
         <!--Menu bar-->
         <div
-          class="flex flex-col space-y-4 md:flex-row justify-between md:space-y-0"
+          class="flex flex-col space-y-8 md:flex-row justify-between items-center md:space-y-0 "
         >
           <!--Email and Phone-->
           <div class="flex flex-col space-y-4">
@@ -281,17 +282,17 @@ const skills = [
             <a>Projects</a>
           </div>
           <!--Linkedin and Github-->
-          <div class="flex flex-col md:flex-row space-x-4">
+          <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 ">
             <a class="" href="https://github.com/WryanCartie">
               <img
                 src="./assets/icons/github-icon.png"
-                class="h-12 w-12 rounded-full hover:scale-110"
+                class="h-16 w-16 rounded-full hover:scale-110"
               />
             </a>
             <a class="" href="https://www.linkedin.com/in/wryan-cartie-halim/">
               <img
                 src="./assets/icons/linkedin-icon.png"
-                class="h-12 w-12 rounded-full hover:scale-110"
+                class="h-16 w-16 rounded-full hover:scale-110"
               />
             </a>
           </div>

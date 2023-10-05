@@ -71,8 +71,14 @@ button:focus-visible {
 #app {
   margin: 0;
   background:no-repeat;
+  text-align:left;
 
-  text-align: center;
+
+}
+@media (max-width: 768px) {
+  #app {
+    text-align: center; /* Center-align text for small screens */
+  }
 }
 
 @media (prefers-color-scheme: light) {
