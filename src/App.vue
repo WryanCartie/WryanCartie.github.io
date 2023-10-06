@@ -1,16 +1,10 @@
 <script setup>
-const skills = [
-  ["vue", "react", "javascript", "css", "html", "typescript"],
-  ["python", ""],
-  ["sqlite3", "mysql", "mongoDB"],
-  ["vscode", "git", "jest"],
-  ["english", "chinese", "indonesian"],
-];
+
 </script>
 
 <template>
   <div class="min-w-screen">
-    <div id="jumbotron" class="px-12 py-6 w-full min-w-screen">
+    <div id="jumbotron" class="px-12 py-6 w-full min-w-screen">                                                     
       <nav
         class="container w-full flex flex-row justify-between max-w-6xl mx-auto"
       >
@@ -24,10 +18,10 @@ const skills = [
         >
           <a href="#app">Home</a>
           <a href="#introduction">About Me</a>
-          <a>Education</a>
-          <a>Skills</a>
-          <a>Experience</a>
-          <a>Projects</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
         </div>
       </nav>
       <section id="introduction">
@@ -64,30 +58,42 @@ const skills = [
     <div class="px-12 w-screen">
       <section id="education">
         <div class="mx-auto mt-20 container max-w-6xl">
+          <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">Education</h1>
+          <div class="w-1/4 mx-auto border-b-4 border-b-black mb-8"></div>
           <div class="flex flex-col md:flex-row justify-between md:space-x-16">
             <!--Education Summary-->
             <div class="max-w-2xl flex-1">
-              <h1 class="text-2xl">Bachelor of Computer Science</h1>
-              <p>
-                Notable Cousework: Algorithms, Data Structures, Database, AI
-                Python Programming, Web Programming, C++, PHP Development
+              <h1 class="text-2xl font-semibold">Bachelor of Computer Science (B.S in Computer Science) <span class="font-normal">| Graduation Date:  June 2021</span> </h1>
+              <div class="my-1 border-b-2 border-blue-500"></div>
+  
+              <p class="max-w-lg text-lg my-3">
+                <span class="font-semibold">Notable Cousework: </span> Algorithms, Data Structures, Database, AI
+                Python Programming, Web Programming, C++, PHP Backend Programming, Machine Learning Python, Java Programming.
               </p>
-              <p>
-                Thesis: Integration of Apache Kafka to Visualize WiFi
+              <p class="max-w-lg text-lg my-3">
+                <span class="font-semibold">Thesis: </span>Integration of Apache Kafka to Visualize WiFi
                 positioning in 3D Map(整合Apache Kafka於3D地圖之視覺化WiFi定位)
                 )
               </p>
-              <ul>
-                Notable Achievements:
-                <li>Built a simple frontend for Tunghai University's</li>
-                <li>
-                  Built an ALE web application using HTML/CSS/Javascript and PHP
-                  to collect and visualize the usage of Wi-Fi data in Tunghai
-                  University.
+              <h3 class="text-lg font-semibold mt-4 my-2">Notable Achievements:</h3>
+              <ul class=" flex flex-col space-y-1 list-disc ml-1">
+              
+                <li class="max-w-lg text-lg text leading-8">Developed a responsive frontend for Tunghai University's Tunghai_TAPG chemistry team as part of their iGEM 2019 competition project.</li>
+                <li class="list-none"><ul class="list-disc mx-5 ">
+             
+                  <li>Achieved this through six months of self-study in HTML, CSS, and JavaScript.</li>
+                  <li>Contributed to the team's success, assisting in data visualization and user interaction for their chemistry research.</li>
+                  <li>The project's success resulted in the team earning a silver medal in the competition.</li>
+                </ul></li>
+                <li class="max-w-lg text-lg leading-8">
+                  Developed an ALE web application using HTML/CSS, JavaScript, and PHP as part of a thesis project to collect and visualize Wi-Fi data usage at Tunghai University.
+                <ul>
+                  <li class="list-disc text-normal">Additionally, implement Kafka in the project to leverage it's real-time data stream processing to provide real-time data analytics to the app. </li>
+                </ul>
                 </li>
-                <li>
-                  Design and create promotionals for events as part of a
-                  volunteer for the local indonesian student association.
+                <li class="max-w-lg text-lg leading-8">
+                  Volunteered to create promotionals for events as part of a
+                  volunteer for the university's international office and.
                 </li>
               </ul>
             </div>
@@ -107,6 +113,9 @@ const skills = [
               <div class="pb-0">
                 <img src="./assets/images/ALE-photo.png" class="h-full" />
               </div>
+              <div class="col-span-2 h-24">
+                <img src="./assets/icons/thu-icon.png" class="object-cover h-full w-full" />
+              </div>
             </div>
           </div>
         </div>
@@ -115,49 +124,35 @@ const skills = [
         <div class="container mt-10 p-10 bg-gray-100">
           Skills
           <div class="flex flex-row justify-center items-center space-x-20">
-            <div class="grid grid-cols-4">
-              <div
-                class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
-              ></div>
-              <div
-                class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-center">
+              <div>
+              <h1>Frontend Skills</h1>
+            <div class="grid grid-cols-4 bg-white">
+              <div 
+                class="bg-opacity-20 border-2 backdrop-blur-md rounded-full shadow-lg h-24 w-24 p-4"
               >
-                <img src="./assets/logo/html-icon.png" />
-              </div>
-              <div
-                class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
-              >
-                <img src="./assets/logo/html-icon.png" />
-              </div>
-              <div
-                class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
-              >
-                <img src="./assets/logo/html-icon.png" />
-              </div>
+              <img src="./assets/logo/html-logo.png" class="w-full h-full "/>
             </div>
-            <!--Skils Grid-->
-            <div class="grid grid-cols-4 ">
-              <div
-                class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
-              ></div>
-              <div
+            <div 
+                class="bg-opacity-20 border-2 backdrop-blur-md p-4  rounded-full shadow-lg h-24 w-24"
+              >
+              <img src="./assets/logo/vue-logo.png" class="w-full h-full "/>
+            </div>
+            <div 
                 class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
               >
-                <img src="./assets/logo/html-icon.png" />
-              </div>
-              <div
+              <img src="./assets/logo/vue-logo.png"/>
+            </div>
+            <div 
                 class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
               >
-                <img src="./assets/logo/html-icon.png" />
-              </div>
-              <div
-                class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
-              >
-                <img src="./assets/logo/html-icon.png" />
-              </div>
+              <img src="./assets/logo/html-icon.png"/>
+            </div>
+             
             </div>
           </div>
-          .
+        </div>
+           </div>
           <!--Skill box 1-->
         </div>
       </section>
@@ -179,10 +174,16 @@ const skills = [
                 <h1>Hosting Inside LTD</h1>
                 <h1>Fullstack Web Developer(Internship)</h1>
                 <p>Xitun District, Taichung City, Taiwan</p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
+                <p>I played a pivotal role in developing an e-commerce point-of-sale application for small stores, aimed at streamlining purchasing, sales, inventory management, and ordering processes. This solution addressed the need for efficient store operations and improved customer experiences.
+
+
+
+</p>
+                <p>
+To bolster security and access control, I implemented a robust frontend authentication system using tokens sourced from the backend (BE). This three-tiered authentication system catered to Admins, Store Owners, and Customers, ensuring that data remained secure and accessible only to authorized users.</p>
+                <p>
+On the backend, I leveraged PHP/Laravel to create a RESTful API that seamlessly handled frontend (FE) requests. This allowed users to perform critical operations, including item creation, updates, and deletions, with ease and efficiency.</p>
+                <p>One of my notable contributions was the design and optimization of a custom MySQL database schema. This schema overhaul significantly enhanced data efficiency, enabling rapid data retrieval for tasks such as managing serial numbers, tracking purchases and sales, and conducting inventory queries.</p>
               </div>
             </div>
             <div class="bg-gray-200 text-left w-full relative md:pt-20">
@@ -242,6 +243,7 @@ const skills = [
           <!--Project View-->
           <div>
             <h1>Project Name</h1>
+            <p>Project Overview</p>
             <button>View Project Details</button>
           </div>
         </div>
@@ -276,10 +278,10 @@ const skills = [
           <div class="grid grid-cols-2 gap-x-10 gap-y-2 mt-0">
             <a href="#app">Home</a>
             <a href="#introduction">About Me</a>
-            <a>Education</a>
-            <a>Skills</a>
-            <a>Experience</a>
-            <a>Projects</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
           </div>
           <!--Linkedin and Github-->
           <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 ">
