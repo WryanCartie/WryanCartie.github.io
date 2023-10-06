@@ -21,7 +21,7 @@
         </div>
       </nav>
       <section id="introduction">
-        <div class="container mx-auto mt-20 max-w-6xl">
+        <div class="container mx-auto mt-20 max-w-5xl">
           <div class="flex flex-col md:flex-row space-y-6 mb-10 md:space-y-4 text-white md:space-x-10 items-center ">
          
             <div class="md:flex-3 flex flex-col space-y-6 ">
@@ -30,16 +30,15 @@
               </h1>
               <div class="mt-2 border-blue-400 border-b-2"></div>
               <p class="mt-2 max-w-lg leading-9 lg:text-xl">
-                I am a recent computer science graduate of Tunghai University
-                with 1 year of internship experience. I am well versed in a
-                variety of modern web technologies, such as Javascript,
-                Typescript, Vue, React, PHP/Laravel and Node.js.
+                I am an Indonesian web developer with 1 and a half year of developmental experience based in Taichung, Taiwan. My main expertise lies in building responsive, user-friendly web application frontend.
+            
               </p>
               <p class="mt-2 max-w-lg leading-9 lg:text-xl">
-                As a recent graduate, I am looking for new opportunities in web
-                development, in the frontend/backend/fullstack. If you are
-                looking for a passionate and self-driven developer who isn't
-                afraid of challenges, please feel free to contact me
+                I am well versed in a variety of technologies of web development. I am profficient in building frontends using HTML/CSS/Javascript, Typescript, Vue, React, and Next.js. On the backend side, I am skilled in building REST API backends using Node.js/Express and PHP/Laravel. Lastly, My expertise also involve building databases using SQL and Non-SQL using mySQL and Mongo DB, respectively. 
+            
+              </p>
+              <p class="mt-2 max-w-lg leading-9 lg:text-xl">
+              Currently, I am looking for new opportunities in the web development field across Taiwan. If you are looking for a self-driven, passionate developer who can handle challenges, feel free to reach out to me.
               </p>
               <button class="bg-blue-500 text-white w-1/2 mx-auto rounded-full  hover:outline-none py-2">
                 Learn more about me
@@ -123,16 +122,140 @@
         <div class="container mt-10 p-10  max-w-6xl mx-auto">
           <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">Skills</h1>
           <div class="w-1/4 mx-auto border-b-4 border-b-black mb-8"></div>
-          <div class="flex flex-col  space-x-20 ">
+          <div class="flex flex-col max-w-3xl mx-auto space-y-6 ">
             <!--Skill Box-->
-            <div class="max-w-lg mx-auto">
-              <h1 class="text-2xl">Frontend Development</h1>
-              <div class="grid grid-cols-5">
+            <div class=" ">
+              <h1 class="text-3xl">Frontend Development</h1>
+              <div class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"></div>
+              <div class="flex flex-row space-x-5 my-2 justify-center">
                 <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
                   <img src="./assets/logo/html-icon.png" class="w-full h-full"/>
                 </div>
                 <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
                   <img src="./assets/logo/css-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/js-logo.png" class="w-full h-full object-cover"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/typescript-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/vue-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/react-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-2 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/next-logo.png" class="w-full h-full object-cover rounded-full"/>
+                </div>
+              </div>
+            </div>
+            <div class="max-w-3xl mx-auto">
+              <h1 class="text-3xl">Backend Development</h1>
+              <div class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"></div>
+              <div class="flex flex-row space-x-5 my-2 justify-center">
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/html-icon.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/css-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/js-logo.png" class="w-full h-full object-cover"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/typescript-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/vue-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/react-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-2 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/next-logo.png" class="w-full h-full object-cover rounded-full"/>
+                </div>
+              </div>
+            </div>
+            <div class="max-w-3xl mx-auto">
+              <h1 class="text-3xl">Database </h1>
+              <div class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"></div>
+              <div class="flex flex-row space-x-5 my-2 justify-center">
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/html-icon.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/css-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/js-logo.png" class="w-full h-full object-cover"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/typescript-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/vue-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/react-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-2 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/next-logo.png" class="w-full h-full object-cover rounded-full"/>
+                </div>
+              </div>
+            </div>
+            <div class="max-w-3xl mx-auto">
+              <h1 class="text-3xl">Testing and Tools</h1>
+              <div class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"></div>
+              <div class="flex flex-row space-x-5 my-2 justify-center">
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/html-icon.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/css-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/js-logo.png" class="w-full h-full object-cover"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/typescript-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/vue-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/react-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-2 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/next-logo.png" class="w-full h-full object-cover rounded-full"/>
+                </div>
+              </div>
+            </div>
+            <div class="max-w-3xl mx-auto">
+              <h1 class="text-3xl">Languanges</h1>
+              <div class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"></div>
+              <div class="flex flex-row space-x-5 my-2 justify-center">
+                <div class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/html-icon.png" class="w-full h-full group-hover:animate-ping"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/css-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/js-logo.png" class="w-full h-full object-cover"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/typescript-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/vue-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/react-logo.png" class="w-full h-full"/>
+                </div>
+                <div class="bg-opacity-20 border-2 backdrop-blur-md p-2 rounded-full shadow-lg h-24 w-24">
+                  <img src="./assets/logo/next-logo.png" class="w-full h-full object-cover rounded-full"/>
                 </div>
               </div>
             </div>
@@ -149,7 +272,7 @@
               </div>
               <div>
                 <h1>Hosting Inside LTD</h1>
-                <h1>Fullstack Web Developer(Internship)</h1>
+                <h1>Fullstack Web Developer</h1>
                 <p>Xitun District, Taichung City, Taiwan</p>
                 <p>I played a pivotal role in developing an e-commerce point-of-sale application for small stores, aimed
                   at streamlining purchasing, sales, inventory management, and ordering processes. This solution addressed
