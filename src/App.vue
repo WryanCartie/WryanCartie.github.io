@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <div class="min-w-screen">
@@ -24,7 +23,7 @@
         </div>
       </nav>
       <section id="introduction">
-        <div class="container mx-auto mt-20 max-w-5xl">
+        <div class="container mx-auto mt-20 max-w-6xl">
           <div
             class="flex flex-col-reverse md:flex-row space-y-10 mb-10 md:space-y-0 text-white md:space-x-10 items-center"
           >
@@ -169,8 +168,8 @@
       <section id="skills">
         <div class="container mt-10 p-10 max-w-6xl mx-auto">
           <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">Skills</h1>
-          <div class="w-1/4 mx-auto border-b-4 border-b-black mb-8"></div>
-          <div class="flex flex-col max-w-5xl mx-auto space-y-6 text-center">
+          <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
+          <div class="flex flex-col max-w-5xl mx-auto space-y-16 text-center">
             <!--Skill Box-->
             <div class="mx-auto">
               <h1 class="text-3xl">Frontend Development</h1>
@@ -240,7 +239,7 @@
               ></div>
               <div class="flex flex-row space-x-5 my-2 justify-center">
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md py-4 px-3 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-4 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/node-logo.png"
@@ -248,7 +247,7 @@
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md py-5 px-1 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-2 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/express-logo.png"
@@ -256,7 +255,7 @@
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-3 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/php-logo.png"
@@ -264,7 +263,7 @@
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-2 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/laravel-logo.png"
@@ -272,7 +271,7 @@
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md px-1 py-2 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md px-2 py-4 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/sqlite-logo.png"
@@ -280,7 +279,7 @@
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/mysql-logo.png"
@@ -329,7 +328,7 @@
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md p-5 px-3 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/kafka-logo.jpg"
@@ -352,77 +351,61 @@
                 class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 mx-auto"
               ></div>
               <div
-                class="flex flex-col space-y-10 my-2 items-left justify-left w-full"
+                class="flex flex-col space-y-10 my-2 items-center justify-center w-full"
               >
-                <div class="flex flex-row space-x-8">
+                <div class="flex flex-row space-x-8 w-3/4 mx-auto">
                   <div
                     class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                   >
                     <h1 class="text-3xl text-center">中語</h1>
                   </div>
-                  <div class="flex flex-col space-y-3 justify-center">
-                    <h2 class="text-xl">Chinese Level: Intermediate (Conversational)</h2>
-                  <div
-                    class="w-full mx-auto self-end bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
-                  >
+                  <div class="flex flex-col space-y-3 justify-center w-full">
+                    <h2 class="text-xl text-left">
+                      Chinese Level: Intermediate (Conversational)
+                    </h2>
                     <div
-                      class="bg-orange-500 h-2.5 w-1/2 rounded-full"
-                     
-                    ></div>
+                      class="w-full mx-auto self-end bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
+                    >
+                      <div class="bg-orange-500 h-2.5 w-1/2 rounded-full"></div>
+                    </div>
                   </div>
-                  </div>
-             
-                  
-             
                 </div>
-                <div class="flex flex-row space-x-8">
+                <div class="flex flex-row space-x-8 w-3/4 mx-auto">
                   <div
                     class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                   >
                     <h1 class="text-3xl text-center">英語</h1>
                   </div>
-                  <div class="flex flex-col space-y-3 justify-center">
-                    <h2 class="text-xl">English Level: Native/Billingual</h2>
-                  <div
-                    class="w-full mx-auto self-end bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
-                  >
+                  <div class="flex flex-col space-y-3 justify-center w-full">
+                    <h2 class="text-xl text-left">
+                      English Level: Native/Billingual
+                    </h2>
                     <div
-                      class="bg-orange-500 h-2.5 w-1/2 rounded-full"
-                     
-                    ></div>
+                      class="w-full mx-auto self-end bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
+                    >
+                      <div
+                        class="bg-orange-500 h-2.5 w-full rounded-full"
+                      ></div>
+                    </div>
                   </div>
-                  </div>
-             
-                  
-             
                 </div>
-                <div class="flex flex-row space-x-8">
+                <div class="flex flex-row space-x-8 w-3/4 mx-auto">
                   <div
-                    class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
+                    class="group bg-opacity-20 border-2 backdrop-blur-md py-6 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                   >
                     <h1 class="text-3xl text-center">印尼語</h1>
                   </div>
-                  <div class="flex flex-col space-y-3 justify-center">
-                    <h2 class="text-xl">Indonesian Level: Native</h2>
-                  <div
-                    class="w-full mx-auto self-end bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
-                  >
+                  <div class="flex flex-col space-y-3 justify-center w-full">
+                    <h2 class="text-xl text-left">Indonesian Level: Native</h2>
                     <div
-                      class="bg-orange-500 h-2.5 w-1/2 rounded-full"
-                     
-                    ></div>
+                      class="w-full mx-auto self-end bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
+                    >
+                      <div
+                        class="bg-orange-500 h-2.5 w-full rounded-full"
+                      ></div>
+                    </div>
                   </div>
-                  </div>
-             
-                  
-             
                 </div>
-              
-                  
-                  
-
-                 
-              
               </div>
             </div>
           </div>
@@ -431,66 +414,66 @@
       </section>
       <section id="experience">
         <div class="container relative mt-10 max-w-6xl mx-auto">
+          <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">Experience</h1>
+          <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
           <div
-            class="flex flex-col md:flex-row justify-between items-center space-x-24"
+            class="flex flex-col md:flex-row justify-between space-y-10 md:space-y-0 space-x-24 "
           >
-            <div class="bg-gray-200 left w-full relative md:pt-20">
+            <div class=" bg-gray-100 left max-w-lg relative md:pt-20 rounded-lg shadow-md shadow-black">
               <div
-                class="absolute -translate-x-1/2 h-32 w-32 p-4 rounded-full bg-black left-1/2 -top-8"
+                class=" font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
               >
-                <img
-                  src="./assets/icons/1-icon.png"
-                  class="object-contain w-full h-full"
-                />
+               1
               </div>
-              <div>
-                <h1>Hosting Inside LTD</h1>
-                <h1>Fullstack Web Developer</h1>
-                <p>Xitun District, Taichung City, Taiwan</p>
-                <p>
+              <h1 class="text-center font-semibold text-2xl">July 2021 - February 2022</h1>
+              <div
+                class="border border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400"
+              ></div>
+              <div class="p-6 px-8 text-left flex flex-col space-y-2">
+                <h1 class="text-2xl">Hosting Inside LTD</h1>
+                <h1 class="text-xl">Fullstack Web Developer</h1>
+                <p class="text-xl">Xitun District, Taichung City, Taiwan</p>
+                <ul class="list-disc">
+                <li class="leading-8 text-sm max-w-lg ">
                   I played a pivotal role in developing an e-commerce
                   point-of-sale application for small stores, aimed at
                   streamlining purchasing, sales, inventory management, and
                   ordering processes. This solution addressed the need for
                   efficient store operations and improved customer experiences.
-                </p>
-                <p>
+                </li>
+                <li class="leading-8 text-sm">
                   To bolster security and access control, I implemented a robust
                   frontend authentication system using tokens sourced from the
                   backend (BE). This three-tiered authentication system catered
                   to Admins, Store Owners, and Customers, ensuring that data
                   remained secure and accessible only to authorized users.
-                </p>
-                <p>
+                </li>
+                <li class="leading-8 text-sm">
                   On the backend, I leveraged PHP/Laravel to create a RESTful
                   API that seamlessly handled frontend (FE) requests. This
                   allowed users to perform critical operations, including item
                   creation, updates, and deletions, with ease and efficiency.
-                </p>
-                <p>
-                  One of my notable contributions was the design and
-                  optimization of a custom MySQL database schema. This schema
-                  overhaul significantly enhanced data efficiency, enabling
-                  rapid data retrieval for tasks such as managing serial
-                  numbers, tracking purchases and sales, and conducting
-                  inventory queries.
-                </p>
+                </li>
+              </ul>
+          
               </div>
             </div>
-            <div class="bg-gray-200 text-left w-full relative md:pt-20">
+            <div class="bg-gray-100 left max-w-lg relative md:pt-20 rounded-lg shadow-md shadow-black">
               <div
-                class="absolute -translate-x-1/2 h-24 w-24 rounded-full bg-black left-1/2 -top-8 p-4"
+                class=" font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
               >
-                <img
-                  src="./assets/icons/2-icon.png"
-                  class="object-contain w-full h-full"
-                />
+               2
               </div>
-              <div class="p-4 px-8">
-                <h1>Bluente</h1>
-                <h1>Fullstack Web Developer(Internship)</h1>
-                <h3>Remote</h3>
-                <p>
+              <h1 class="text-center font-semibold text-2xl">February 2022 - Present</h1>
+              <div
+                class="border border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400"
+              ></div>
+              <div class="p-6 px-8 text-left flex flex-col space-y-2">
+                <h1 class="text-2xl">Bluente</h1>
+                <h1 class="text-xl">Frontend Web Developer</h1>
+                <h3 class="text-xl">Remote</h3>
+                <ul class="list-disc leading-8 text-sm">
+                <li>
                   Collaborate with cross-function teams, including UI designers
                   and other developers, to implement an admin dashboard page
                   using Vue.js and Vite. This dashboard allowed for the
@@ -498,24 +481,19 @@
                   company's mobile app, allowing the company to understand
                   better its target demographic and facilitate better decision
                   making
-                </p>
-                <p>
+                </li>
+                <li>
                   Utilize Test-Driven Development(TDD) methodology to create and
                   implement unit tests with Jest in order to improve the
                   reliability of the application.
-                </p>
-                <p>
+                </li>
+                <li>
                   Developed reusable UI components using ant-design-vue that are
                   critical to the data-visualization of the app such as tables,
                   charts, and graphs to simplify the UI creation proccess.
-                </p>
-                <p>
-                  Collaborated closely with the Bluente server API to
-                  efficiently fetch and manage JSON user data, making sure that
-                  the data-fetching progress is instant and seamless to the
-                  user. Authenthicated the proccess using JWT tokens that are
-                  provided by the server for security.
-                </p>
+                </li>
+           
+                </ul>
               </div>
             </div>
           </div>
@@ -529,7 +507,9 @@
         </div>
       </section>
       <section id="projects">
-        <div class="container mt-10 text-center">
+        <div class="container mt-10 text-center border-tl-2 border-br-2 relative">
+          <div class="absolute top-0 left-0 border-t-2 border-l-2 border-blue-400 h-full w-1/2"></div>
+          <div class="absolute bottom-0 right-0 border-b-2 border-r-2 border-blue-400 h-full w-1/2"></div>
           <h1 class="text-3xl bold">Featured Projects:</h1>
           <!--Project View-->
           <div>
