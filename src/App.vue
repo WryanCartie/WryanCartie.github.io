@@ -1,4 +1,51 @@
-<script setup></script>
+
+<script setup>
+import {ref, reactive,computed} from 'vue'
+
+const imageLink = ref('./assets/images/cam-1.png')
+const projects = reactive([
+  {
+    name:'Clancraft Army Manager',
+    introduction:' A Vue/Tailwind CSS Web app to manage virtual armies of a game.',
+    technologies:'vue,tailwind,javascript',
+    introductionImageLink:'./assets/images/cam-1.png',
+    imagesLink:[
+
+    ]
+  },
+  {
+    name:'CES Manager',
+    introduction:' An electron desktop app to manage the economic system of a roleplaying game',
+    technologies:'vue,tailwind,javascript',
+    introductionImageLink:'./assets/images/cam-1.png',
+    imagesLink:[
+
+    ],
+  },
+  {
+    name:'Favourite Places App',
+    introduction:'A MERN Web app to share and upload your favourite places.',
+    technologies:'javascript,react,',
+    introductionImageLink:'./assets/images/cam-1.png',
+    imagesLink:[],
+
+  }
+])
+const targetNum = ref(0);
+
+const currentProject = computed(()=>{
+  return projects[targetNum.value]
+})
+
+const changeProject = (value) =>{
+  targetNum.value += value;
+  if(targetNum.value >= currentProject.length){
+    targetNum.value = 0;
+  }else if(targetNum.value < 0){
+    targetNum.value = currentProject = currentProject.length -1;
+  }
+}
+</script>
 
 <template>
   <div class="min-w-screen">
@@ -507,7 +554,12 @@
         </div>
       </section>
       <section id="projects">
-        <div class="container mt-16 py-8 text-center border-tl-2 border-br-2 relative max-w-2xl mx-auto">
+        <div class="container mt-16 py-8 text-center max-w-5xl mx-auto ">
+          <h1 class="text-3xl bold">Featured Projects:</h1>
+          <div class="w-1/4 mx-auto border-b-4 border-b-black mt-2 mb-6"></div>
+
+  
+        <div class="border-tl-2 p-16 border-br-2 relative max-w-4xl mx-auto">
           <div class="absolute top-0 left-0 border-t-2 border-l-2 border-blue-400 border-dashed h-full w-1/2"></div>
           <div class="absolute bottom-0 right-0 border-b-2 border-r-2 border-dashed border-blue-400 h-full w-1/2"></div>
           <div class="absolute left-0 top-1/2 -translate-y-1/2">
@@ -520,16 +572,23 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
     </svg>
   </div>
-          <h1 class="text-3xl bold">Featured Projects:</h1>
-          <div class="w-1/4 mx-auto border-b-4 border-b-black mt-2 mb-8"></div>
+         
           
           <!--Project View-->
-          <div class="flex flex-col space-y-2">
-            <h1 class="text-xl ">Clancraft Army Manager</h1>
-            <p class="text-lg leading-9">A Vue/Tailwind CSS mobile app to manage virtual armies.</p>
+  
+          <div class="flex flex-col space-y-4">
+           
+            <h1 class="text-2xl font-semibold ">{{ currentProject.name }}</h1>
+            <div
+                class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 mx-auto"
+              ></div>
+              <img :src="require(`../assets/time-comparison-${locale}.png`)" class=" px-4"/>
+            <p class="text-lg leading-8 max-w-sm mx-auto">{{ currentProject.introduction }}</p>
+            
             <button class="p-4 rounded-full bg-blue-400 w-1/2 mx-auto text-white">View Project Details</button>
           </div>
         </div>
+      </div>
       </section>
       <div id="project-view"></div>
       <section id="contact"></section>
