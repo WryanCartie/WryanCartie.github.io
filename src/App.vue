@@ -8,7 +8,7 @@ const projects = reactive([
     name:'Clancraft Army Manager',
     introduction:' A Vue/Tailwind CSS Web app to manage virtual armies of a game.',
     technologies:'vue,tailwind,javascript',
-    introductionImageLink:'./assets/images/cam-1.png',
+    introductionImageLink:new URL('./assets/images/cam-1.png', import.meta.url).href,
     imagesLink:[
 
     ]
@@ -582,7 +582,7 @@ const changeProject = (value) =>{
             <div
                 class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 mx-auto"
               ></div>
-              <img :src="require(`../assets/time-comparison-${locale}.png`)" class=" px-4"/>
+              <img :src="currentProject.introductionImageLink" class=" px-4"/>
             <p class="text-lg leading-8 max-w-sm mx-auto">{{ currentProject.introduction }}</p>
             
             <button class="p-4 rounded-full bg-blue-400 w-1/2 mx-auto text-white">View Project Details</button>
