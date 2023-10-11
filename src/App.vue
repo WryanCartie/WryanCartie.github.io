@@ -40,7 +40,7 @@ const generateTechUrl = (techs) =>{
   return techUrl;
 }
 
-generateProjectImgUrl= (imgs)=>{
+const generateProjectImgUrl= (imgs)=>{
   let imgUrl = imgs.map(img=>{
     return new URL(`./assets/images/${img}.png`, import.meta.url).href
   })
