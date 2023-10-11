@@ -1,50 +1,70 @@
-
 <script setup>
-import {ref, reactive,computed} from 'vue'
+import { ref, reactive, computed } from "vue";
 
-const imageLink = ref('./assets/images/cam-1.png')
 const projects = reactive([
   {
-    name:'Clancraft Army Manager',
-    introduction:' A Vue/Tailwind CSS Web app to manage virtual armies of a game.',
-    technologies:'vue,tailwind,javascript',
-    introductionImageLink:new URL('./assets/images/cam-1.png', import.meta.url).href,
-    imagesLink:[
-
-    ]
+    name: "Clancraft Army Manager",
+    introduction:
+      " A Vue/Tailwind CSS Web app to manage virtual armies of a game.",
+    technologies: ["vue","tailwind","js","node"],
+    introductionImageLink: new URL("./assets/images/cam-1.png", import.meta.url)
+      .href,
+    imagesLink: ['cam-1','cam-2','cam-3'],
   },
   {
-    name:'CES Manager',
-    introduction:' An electron desktop app to manage the economic system of a roleplaying game',
-    technologies:'vue,tailwind,javascript',
-    introductionImageLink:'./assets/images/cam-1.png',
-    imagesLink:[
-
-    ],
+    name: "CES Manager",
+    introduction:
+      " An electron desktop app to manage the economic system of a roleplaying game",
+      technologies: ["vue","tailwind","javascript"],
+    introductionImageLink: new URL("./assets/images/ces-1.png", import.meta.url)
+      .href,
+    imagesLink: ['ces-1','ces-2','ces-3'],
   },
   {
-    name:'Favourite Places App',
-    introduction:'A MERN Web app to share and upload your favourite places.',
-    technologies:'javascript,react,',
-    introductionImageLink:'./assets/images/cam-1.png',
-    imagesLink:[],
-
-  }
-])
+    name: "Favourite Places App",
+    introduction: "A MERN Web app to share and upload your favourite places.",
+    technologies: ["vue","tailwind","javascript"],
+    introductionImageLink: new URL(
+      "./assets/images/favourite_place-1.png",
+      import.meta.url,
+    ).href,
+    imagesLink: ['favourite_place-1','favourite_place-2','favourite_place-3'],
+  },
+]);
 const targetNum = ref(0);
 
-const currentProject = computed(()=>{
-  return projects[targetNum.value]
-})
-
-const changeProject = (value) =>{
-  targetNum.value += value;
-  if(targetNum.value >= currentProject.length){
-    targetNum.value = 0;
-  }else if(targetNum.value < 0){
-    targetNum.value = currentProject = currentProject.length -1;
-  }
+const generateTechUrl = (techs) =>{
+  let techUrl = techs.map(tech=>{
+    return  new URL(`./assets/logo/${tech}-logo.png`, import.meta.url).href
+  })
+  return techUrl;
 }
+
+generateProjectImgUrl= (imgs)=>{
+  let imgUrl = imgs.map(img=>{
+    return new URL(`./assets/images/${img}.png`, import.meta.url).href
+  })
+  return imgUrl;
+}
+
+const currentProject = computed(() => {
+  return projects[targetNum.value];
+});
+
+const showProjectModal = ref(false);
+
+const toggleProjectDetails = () => {
+  showProjectModal.value = !showProjectModal.value;
+};
+
+const changeProject = (value) => {
+  targetNum.value += value;
+  if (targetNum.value >= projects.length) {
+    targetNum.value = 0;
+  } else if (targetNum.value < 0) {
+    targetNum.value = projects.length - 1;
+  }
+};
 </script>
 
 <template>
@@ -461,18 +481,24 @@ const changeProject = (value) =>{
       </section>
       <section id="experience">
         <div class="container relative mt-10 max-w-6xl mx-auto">
-          <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">Experience</h1>
+          <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
+            Experience
+          </h1>
           <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
           <div
-            class="flex flex-col md:flex-row justify-between space-y-10 md:space-y-0 space-x-24 "
+            class="flex flex-col md:flex-row justify-between space-y-10 md:space-y-0 space-x-24"
           >
-            <div class=" bg-gray-100 left max-w-lg relative md:pt-20 rounded-lg shadow-md shadow-black">
+            <div
+              class="bg-gray-100 left max-w-lg relative md:pt-20 rounded-lg shadow-md shadow-black"
+            >
               <div
-                class=" font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
+                class="font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
               >
-               1
+                1
               </div>
-              <h1 class="text-center font-semibold text-2xl">July 2021 - February 2022</h1>
+              <h1 class="text-center font-semibold text-2xl">
+                July 2021 - February 2022
+              </h1>
               <div
                 class="border border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400"
               ></div>
@@ -481,37 +507,42 @@ const changeProject = (value) =>{
                 <h1 class="text-xl">Fullstack Web Developer</h1>
                 <p class="text-xl">Xitun District, Taichung City, Taiwan</p>
                 <ul class="list-disc">
-                <li class="leading-8 text-sm max-w-lg ">
-                  I played a pivotal role in developing an e-commerce
-                  point-of-sale application for small stores, aimed at
-                  streamlining purchasing, sales, inventory management, and
-                  ordering processes. This solution addressed the need for
-                  efficient store operations and improved customer experiences.
-                </li>
-                <li class="leading-8 text-sm">
-                  To bolster security and access control, I implemented a robust
-                  frontend authentication system using tokens sourced from the
-                  backend (BE). This three-tiered authentication system catered
-                  to Admins, Store Owners, and Customers, ensuring that data
-                  remained secure and accessible only to authorized users.
-                </li>
-                <li class="leading-8 text-sm">
-                  On the backend, I leveraged PHP/Laravel to create a RESTful
-                  API that seamlessly handled frontend (FE) requests. This
-                  allowed users to perform critical operations, including item
-                  creation, updates, and deletions, with ease and efficiency.
-                </li>
-              </ul>
-          
+                  <li class="leading-8 text-sm max-w-lg">
+                    I played a pivotal role in developing an e-commerce
+                    point-of-sale application for small stores, aimed at
+                    streamlining purchasing, sales, inventory management, and
+                    ordering processes. This solution addressed the need for
+                    efficient store operations and improved customer
+                    experiences.
+                  </li>
+                  <li class="leading-8 text-sm">
+                    To bolster security and access control, I implemented a
+                    robust frontend authentication system using tokens sourced
+                    from the backend (BE). This three-tiered authentication
+                    system catered to Admins, Store Owners, and Customers,
+                    ensuring that data remained secure and accessible only to
+                    authorized users.
+                  </li>
+                  <li class="leading-8 text-sm">
+                    On the backend, I leveraged PHP/Laravel to create a RESTful
+                    API that seamlessly handled frontend (FE) requests. This
+                    allowed users to perform critical operations, including item
+                    creation, updates, and deletions, with ease and efficiency.
+                  </li>
+                </ul>
               </div>
             </div>
-            <div class="bg-gray-100 left max-w-lg relative md:pt-20 rounded-lg shadow-md shadow-black">
+            <div
+              class="bg-gray-100 left max-w-lg relative md:pt-20 rounded-lg shadow-md shadow-black"
+            >
               <div
-                class=" font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
+                class="font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
               >
-               2
+                2
               </div>
-              <h1 class="text-center font-semibold text-2xl">February 2022 - Present</h1>
+              <h1 class="text-center font-semibold text-2xl">
+                February 2022 - Present
+              </h1>
               <div
                 class="border border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400"
               ></div>
@@ -520,26 +551,26 @@ const changeProject = (value) =>{
                 <h1 class="text-xl">Frontend Web Developer</h1>
                 <h3 class="text-xl">Remote</h3>
                 <ul class="list-disc leading-8 text-sm">
-                <li>
-                  Collaborate with cross-function teams, including UI designers
-                  and other developers, to implement an admin dashboard page
-                  using Vue.js and Vite. This dashboard allowed for the
-                  interactive visualization of customer demographics from the
-                  company's mobile app, allowing the company to understand
-                  better its target demographic and facilitate better decision
-                  making
-                </li>
-                <li>
-                  Utilize Test-Driven Development(TDD) methodology to create and
-                  implement unit tests with Jest in order to improve the
-                  reliability of the application.
-                </li>
-                <li>
-                  Developed reusable UI components using ant-design-vue that are
-                  critical to the data-visualization of the app such as tables,
-                  charts, and graphs to simplify the UI creation proccess.
-                </li>
-           
+                  <li>
+                    Collaborate with cross-function teams, including UI
+                    designers and other developers, to implement an admin
+                    dashboard page using Vue.js and Vite. This dashboard allowed
+                    for the interactive visualization of customer demographics
+                    from the company's mobile app, allowing the company to
+                    understand better its target demographic and facilitate
+                    better decision making
+                  </li>
+                  <li>
+                    Utilize Test-Driven Development(TDD) methodology to create
+                    and implement unit tests with Jest in order to improve the
+                    reliability of the application.
+                  </li>
+                  <li>
+                    Developed reusable UI components using ant-design-vue that
+                    are critical to the data-visualization of the app such as
+                    tables, charts, and graphs to simplify the UI creation
+                    proccess.
+                  </li>
                 </ul>
               </div>
             </div>
@@ -554,41 +585,77 @@ const changeProject = (value) =>{
         </div>
       </section>
       <section id="projects">
-        <div class="container mt-16 py-8 text-center max-w-5xl mx-auto ">
+        <div class="container mt-16 py-8 text-center max-w-5xl mx-auto">
           <h1 class="text-3xl bold">Featured Projects:</h1>
           <div class="w-1/4 mx-auto border-b-4 border-b-black mt-2 mb-6"></div>
 
-  
-        <div class="border-tl-2 p-16 border-br-2 relative max-w-4xl mx-auto">
-          <div class="absolute top-0 left-0 border-t-2 border-l-2 border-blue-400 border-dashed h-full w-1/2"></div>
-          <div class="absolute bottom-0 right-0 border-b-2 border-r-2 border-dashed border-blue-400 h-full w-1/2"></div>
-          <div class="absolute left-0 top-1/2 -translate-y-1/2">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-20 w-20 text-blue-400">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-    </svg>
-  </div>
-  <div class="absolute right-0 top-1/2 -translate-y-1/2">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-20 w-20 text-blue-400">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-    </svg>
-  </div>
-         
-          
-          <!--Project View-->
-  
-          <div class="flex flex-col space-y-4">
-           
-            <h1 class="text-2xl font-semibold ">{{ currentProject.name }}</h1>
+          <div class="border-tl-2 p-16 border-br-2 relative max-w-4xl mx-auto">
             <div
+              class="-z-10 absolute top-0 left-0 border-t-2 border-l-2 border-blue-400 border-dashed h-full w-1/2"
+            ></div>
+            <div
+              class="-z-10 absolute bottom-0 right-0 border-b-2 border-r-2 border-dashed border-blue-400 h-full w-1/2"
+            ></div>
+            <div
+              @click="changeProject(-1)"
+              class="absolute left-0 top-1/2 -translate-y-1/2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="h-20 w-20 text-blue-400"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </div>
+            <div
+              @click="changeProject(1)"
+              class="absolute right-0 top-1/2 -translate-y-1/2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="h-20 w-20 text-blue-400"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+
+            <!--Project View-->
+
+            <div class="flex flex-col space-y-4">
+              <h1 class="text-2xl font-semibold">{{ currentProject.name }}</h1>
+              <div
                 class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 mx-auto"
               ></div>
-              <img :src="currentProject.introductionImageLink" class=" px-4"/>
-            <p class="text-lg leading-8 max-w-sm mx-auto">{{ currentProject.introduction }}</p>
-            
-            <button class="p-4 rounded-full bg-blue-400 w-1/2 mx-auto text-white">View Project Details</button>
+              <img :src="currentProject.introductionImageLink" class="px-4" />
+              <p class="text-lg leading-8 max-w-sm mx-auto">
+                {{ currentProject.introduction }}
+              </p>
+
+              <button
+                @click="toggleProjectDetails"
+                class="p-4 rounded-full bg-blue-400 w-1/2 mx-auto text-white border-blue-400 hover:bg-white hover:text-blue-400"
+              >
+                View Project Details
+              </button>
+            </div>
           </div>
         </div>
-      </div>
       </section>
       <div id="project-view"></div>
       <section id="contact"></section>
@@ -645,6 +712,41 @@ const changeProject = (value) =>{
         </div>
       </div>
     </footer>
+    <div @click="toggleProjectDetails"
+      v-if="showProjectModal"
+      class="fixed inset-0 flex items-center justify-center z-50 opacity-100 bg-black"
+    >
+      <div @click.stop class="bg-white w-3/5 p-4 rounded-lg shadow-lg opacity-100">
+        <!-- Modal content goes here -->
+        <div class="flex flex-row justify-between">
+          <div class="w-full flex flex-col space-y-4">
+            <div class="text-2xl font-semibold">{{ currentProject.name }}</div>
+            <div class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"></div>
+            <p class="text-lg font-semibold">Role: Frontend Developer Lead, Fullstack Programmer, Designer </p>
+            <p class="max-w-lg leading-9 text-lg">A project made using Vue and Tailwind CSS to manage the army data of a roleplaying game. Comes with a node.js/express backend to handle the management of the JSON data.</p>
+            <h1 class="text-xl leading-8">Tech Stack:</h1>
+            <div class="grid grid-cols-3 gap-2 border-2 p-2 w-3/4  ">
+                 <div v-for="tech in generateTechUrl(currentProject.technologies)" :key="tech"
+                  class=" group bg-opacity-20 border-2 backdrop-blur-md px-3 py-6 rounded-full shadow-lg h-24 w-24"
+                >
+                  <img
+                    :src="tech"
+
+                    class="w-full h-full group-hover:scale-125"
+                  />
+                  {{  }}
+                </div>
+                
+            </div>  
+          </div>
+          <div class="w-full flex flex-col space-y-4">
+            <div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
