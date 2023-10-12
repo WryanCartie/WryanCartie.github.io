@@ -6,46 +6,67 @@ const projects = reactive([
     name: "Clancraft Army Manager",
     introduction:
       " A Vue/Tailwind CSS Web app to manage virtual armies of a game.",
-    technologies: ["vue","tailwind","js","node"],
+    technologies: ["vue", "tailwind", "js", "node"],
     introductionImageLink: new URL("./assets/images/cam-1.png", import.meta.url)
       .href,
-    imagesLink: ['cam-1','cam-2','cam-3'],
+    imagesLink: ["cam-1", "cam-2", "cam-3", "cam-4"],
   },
   {
     name: "CES Manager",
     introduction:
       " An electron desktop app to manage the economic system of a roleplaying game",
-      technologies: ["vue","tailwind","javascript"],
+    technologies: ["vue", "tailwind", "javascript"],
     introductionImageLink: new URL("./assets/images/ces-1.png", import.meta.url)
       .href,
-    imagesLink: ['ces-1','ces-2','ces-3'],
+    imagesLink: ["ces-1", "ces-2", "ces-3", "ces-4"],
   },
   {
     name: "Favourite Places App",
     introduction: "A MERN Web app to share and upload your favourite places.",
-    technologies: ["vue","tailwind","javascript"],
+    technologies: ["vue", "tailwind", "javascript"],
     introductionImageLink: new URL(
       "./assets/images/favourite_place-1.png",
       import.meta.url,
     ).href,
-    imagesLink: ['favourite_place-1','favourite_place-2','favourite_place-3'],
+    imagesLink: [
+      "favourite_place-1",
+      "favourite_place-2",
+      "favourite_place-3",
+      "favourite_place-4",
+    ],
   },
 ]);
 const targetNum = ref(0);
+const projectNum = ref(0);
 
-const generateTechUrl = (techs) =>{
-  let techUrl = techs.map(tech=>{
-    return  new URL(`./assets/logo/${tech}-logo.png`, import.meta.url).href
-  })
-  return techUrl;
+const changeProjectImg = (val)=>{
+  projectNum.value += val;
+  if(projectNum.value > 3){
+    projectNum.value = 0;
+  }
+  if(projectNum.value < 0){
+    projectNum.value = 3;
+  }
+  
 }
 
-const generateProjectImgUrl= (imgs)=>{
+const generateTechUrl = (techs) => {
+  let techUrl = techs.map((tech) => {
+    return new URL(`./assets/logo/${tech}-logo.png`, import.meta.url).href;
+  });
+  return techUrl;
+};
+
+const generateProjectUrl = (img) => {
+  let imgUrl = new URL(`./assets/images/${img}.png`, import.meta.url).href;
+  return imgUrl;
+  /*
   let imgUrl = imgs.map(img=>{
     return new URL(`./assets/images/${img}.png`, import.meta.url).href
-  })
-  return imgUrl;
-}
+  }) */
+};
+
+
 
 const currentProject = computed(() => {
   return projects[targetNum.value];
@@ -65,6 +86,8 @@ const changeProject = (value) => {
     targetNum.value = projects.length - 1;
   }
 };
+
+
 </script>
 
 <template>
@@ -712,38 +735,94 @@ const changeProject = (value) => {
         </div>
       </div>
     </footer>
-    <div @click="toggleProjectDetails"
+    <div
+      @click="toggleProjectDetails"
       v-if="showProjectModal"
       class="fixed inset-0 flex items-center justify-center z-50 opacity-100 bg-black"
     >
-      <div @click.stop class="bg-white w-3/5 p-4 rounded-lg shadow-lg opacity-100">
+      <div
+        @click.stop
+        class="bg-white w-3/5 p-4 rounded-lg shadow-lg opacity-100"
+      >
         <!-- Modal content goes here -->
-        <div class="flex flex-row justify-between">
-          <div class="w-full flex flex-col space-y-4">
+        <div class="flex flex-col space-y-4 items-center justify-center text-center ">
+         
             <div class="text-2xl font-semibold">{{ currentProject.name }}</div>
-            <div class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"></div>
-            <p class="text-lg font-semibold">Role: Frontend Developer Lead, Fullstack Programmer, Designer </p>
-            <p class="max-w-lg leading-9 text-lg">A project made using Vue and Tailwind CSS to manage the army data of a roleplaying game. Comes with a node.js/express backend to handle the management of the JSON data.</p>
-            <h1 class="text-xl leading-8">Tech Stack:</h1>
-            <div class="grid grid-cols-3 gap-2 border-2 p-2 w-3/4  ">
-                 <div v-for="tech in generateTechUrl(currentProject.technologies)" :key="tech"
-                  class=" group bg-opacity-20 border-2 backdrop-blur-md px-3 py-6 rounded-full shadow-lg h-24 w-24"
-                >
-                  <img
-                    :src="tech"
-
-                    class="w-full h-full group-hover:scale-125"
-                  />
-                  {{  }}
-                </div>
-                
-            </div>  
-          </div>
-          <div class="w-full flex flex-col space-y-4">
-            <div>
-
+            <div
+              class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"
+            ></div>
+            <p class="text-2xl font-semibold">
+              Role: Frontend Developer Lead, Fullstack Programmer, Designer
+            </p>
+            <p class="max-w leading-9 text-xl">
+              A project made using Vue and Tailwind CSS to manage the army data
+              of a roleplaying game. Comes with a node.js/express backend to
+              handle the management of the JSON data.
+            </p>
+            <p class=" leading-9 text-lg tracking-wider px-10">
+              In this project, I honed my fullstack development skills in a desktop environment with Electron, Javascript and Node.js. My recent accomplishment involved a complete overhaul of the frontend, using Vue.js and Tailwind CSS to enhance responsiveness and modernize the user interface. This project also provided me with a profound understanding of agile teamwork, collaborating seamlessly with other developers in a bi-weekly meeting format.
+            </p>
+            
+            <h1 class="mt-4 text-2xl leading-8 font-semibold mb-2 tracking-wide">Tech Stack</h1>
+            <div class="flex flex-row space-x-4 ">
+              <div
+                v-for="tech in generateTechUrl(currentProject.technologies)"
+                :key="tech"
+                class="group bg-opacity-20 border-2 backdrop-blur-md px-3 py-6 rounded-full shadow-lg h-24 w-28"
+              >
+                <img :src="tech" class="w-full h-full group-hover:scale-125" />
+                {{}}
+              </div>
             </div>
-          </div>
+         
+       
+      
+        </div>
+
+        <div class="w-full h-fit mt-5 px-12 relative">
+          <div
+              @click="changeProjectImg(-1)"
+              class="absolute left-0 top-1/2 -translate-y-1/2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="h-20 w-20 text-blue-400"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </div>
+            <div
+              @click="changeProjectImg(1)"
+              class="absolute right-0 top-1/2 -translate-y-1/2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="h-20 w-20 text-blue-400"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          <h1 class="text-center text-2xl mb-2 font-bold tracking-wide">Project Images</h1>
+          <img
+            class="w-[850px] mx-auto object-contain h-[400px]"
+            :src="generateProjectUrl(currentProject.imagesLink[projectNum])"
+          />
         </div>
       </div>
     </div>
