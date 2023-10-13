@@ -12,10 +12,12 @@ const projects = reactive([
     introductionImageLink: new URL("./assets/images/cam-1.png", import.meta.url)
       .href,
     hosted: true,
+    hostedLink:'https://clancraft-army-manager-frontend.onrender.com',
+    githubLink:'https://github.com/7GCraft/Clancraft-Army-Manager',
     role: "Role: Project Manager, Lead Developer (Vue/Node.js), Designer",
     hosting: "Firebase (Outdated)",
     remarks:
-      "This project allows me to improve my skills in building functional front-ends using Vue and Tailwind CSS from scratch to build a user-friendly app for a specific purpose. Additionally, this project also allow me to hone my skills in Node/Express.js and how to handle JSON data from the FE to the BE and vice versa. Lastly, the custom, changing requirements of the project improve my ability to develop new features in order to adapt to changing circumstances of the project. ",
+      "This project allows me to improve my skills in building functional front-ends using Vue and Tailwind CSS from scratch to build a user-friendly app for a specific purpose. Additionally, this project  hone my skills in Node/Express.js and how to handle JSON data from the FE to the BE and vice versa. Lastly, the custom, changing requirements of the project improve my ability to develop new features in order to adapt to changing circumstances of the project. ",
     imagesLink: ["cam-1", "cam-2", "cam-3", "cam-4"],
   },
   {
@@ -29,6 +31,7 @@ const projects = reactive([
     technologies: ["js", "node", "sqlite", "vue", "tailwind"],
     introductionImageLink: new URL("./assets/images/ces-1.png", import.meta.url)
       .href,
+    githubLink:'https://github.com/7GCraft/ces-manager',
     imagesLink: ["ces-1", "ces-2", "ces-3", "ces-4"],
     role: "Role: Frontend Developer Lead, Fullstack Programmer, Designer",
   },
@@ -47,6 +50,8 @@ const projects = reactive([
     role: "Sole Fullstack Developer (MERN), Designer",
     hosted: true,
     hosting: "Render",
+    hostedLink:'https://favourite-places-app-mern.onrender.com/',
+    githubLink:'https://github.com/WryanCartie/MERN-Fullstack-Application',
     imagesLink: [
       "favourite_place-1",
       "favourite_place-2",
@@ -761,7 +766,7 @@ const changeProject = (value) => {
     <div
       @click="toggleProjectDetails"
       v-if="showProjectModal"
-      class="fixed inset-0 flex items-center justify-center z-50 opacity-100 bg-black"
+      class="fixed inset-0 flex items-center justify-center z-50 opacity-100 bg-black m-2"
     >
       <div
         @click.stop
@@ -833,7 +838,7 @@ const changeProject = (value) => {
                   <h1 class="mt-2 text-lg">Github</h1>
                   {{}}
                 </div>
-                <div
+                <a href="{{hostedLink}}"
                   v-if="currentProject.hosted"
                   class="p-2 group bg-opacity-20 border-2 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
                 >
@@ -842,7 +847,7 @@ const changeProject = (value) => {
                     class="w-full h-full group-hover:scale-125 rounded-full"
                   />
                   <h1 class="mt-4 text-lg">{{ currentProject.hosting }}</h1>
-                </div>
+              </a>
               </div>
             </div>
           </div>
