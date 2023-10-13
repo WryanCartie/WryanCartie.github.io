@@ -6,19 +6,31 @@ const projects = reactive([
     name: "Clancraft Army Manager",
     introduction:
       " A Vue/Tailwind CSS Web app to manage virtual armies of a game.",
+    description:
+      "A web application develped using Vue and Tailwind CSS to manage army data of a roleplaying game. Uses a node.js backend to manage the backend JSON army data, comes with a feature to import/export into excel files",
     technologies: ["vue", "tailwind", "js", "node"],
     introductionImageLink: new URL("./assets/images/cam-1.png", import.meta.url)
       .href,
+    hosted: true,
+    role: "Role: Project Manager, Lead Developer (Vue/Node.js), Designer",
+    hosting: "Firebase (Outdated)",
+    remarks:
+      "This project allows me to improve my skills in building functional front-ends using Vue and Tailwind CSS from scratch to build a user-friendly app for a specific purpose. Additionally, this project also allow me to hone my skills in Node/Express.js and how to handle JSON data from the FE to the BE and vice versa. Lastly, the custom, changing requirements of the project improve my ability to develop new features in order to adapt to changing circumstances of the project. ",
     imagesLink: ["cam-1", "cam-2", "cam-3", "cam-4"],
   },
   {
     name: "CES Manager",
+    description:
+      "A desktop application built using Electron and Node to handle the economic data of a roleplaying game. Comes with an in-built SQL database using SQLite3 for data management. Currently, the project is starting to use Vue as the basis for its FE.",
+    remarks:
+      "In this project, I honed my fullstack development skills in a desktop environment with Electron, Javascript and Node.js. My recent accomplishment involved a complete overhaul of the frontend, using Vue.js and Tailwind CSS to enhance responsiveness and modernize the user interface. This project also provided me with a profound understanding of agile teamwork using Pivotal Tracker and Git, collaborating seamlessly with other developers in a bi-weekly meeting format.",
     introduction:
       " An electron desktop app to manage the economic system of a roleplaying game",
-    technologies: ["vue", "tailwind", "javascript"],
+    technologies: ["js", "node", "sqlite", "vue", "tailwind"],
     introductionImageLink: new URL("./assets/images/ces-1.png", import.meta.url)
       .href,
     imagesLink: ["ces-1", "ces-2", "ces-3", "ces-4"],
+    role: "Role: Frontend Developer Lead, Fullstack Programmer, Designer",
   },
   {
     name: "Favourite Places App",
@@ -26,8 +38,15 @@ const projects = reactive([
     technologies: ["vue", "tailwind", "javascript"],
     introductionImageLink: new URL(
       "./assets/images/favourite_place-1.png",
-      import.meta.url,
+      import.meta.url
     ).href,
+    description:
+      "A web app built using the MERN stack(Mongo DB, Express, Node, and React.js) to share your favourite places with other users. The app uses a Node/Express backend that comes with server-side authenthication to handle MongoDB data using Mongoose. Comes with a login and signup feature. ",
+    remarks:
+      "This app taught me how to work in a fullstack envinronment, from the React FE to the Node backend, in order to create a hollistic app that connects seamlessly between the FE and the BE. The project also allow to implement key features in React, such as state-management and client-side routing. Lastly, it taught me how to work with Non-SQL database, especially with MongoDB and how to do CRUD operations to it using Node/Express.js.",
+    role: "Sole Fullstack Developer (MERN), Designer",
+    hosted: true,
+    hosting: "Render",
     imagesLink: [
       "favourite_place-1",
       "favourite_place-2",
@@ -39,16 +58,15 @@ const projects = reactive([
 const targetNum = ref(0);
 const projectNum = ref(0);
 
-const changeProjectImg = (val)=>{
+const changeProjectImg = (val) => {
   projectNum.value += val;
-  if(projectNum.value > 3){
+  if (projectNum.value > 3) {
     projectNum.value = 0;
   }
-  if(projectNum.value < 0){
+  if (projectNum.value < 0) {
     projectNum.value = 3;
   }
-  
-}
+};
 
 const generateTechUrl = (techs) => {
   let techUrl = techs.map((tech) => {
@@ -66,8 +84,6 @@ const generateProjectUrl = (img) => {
   }) */
 };
 
-
-
 const currentProject = computed(() => {
   return projects[targetNum.value];
 });
@@ -76,6 +92,7 @@ const showProjectModal = ref(false);
 
 const toggleProjectDetails = () => {
   showProjectModal.value = !showProjectModal.value;
+  projectNum.value = 0;
 };
 
 const changeProject = (value) => {
@@ -86,8 +103,6 @@ const changeProject = (value) => {
     targetNum.value = projects.length - 1;
   }
 };
-
-
 </script>
 
 <template>
@@ -122,26 +137,31 @@ const changeProject = (value) => {
                 Hello, My name is Wryan Cartie Halim (陳瑞言).
               </h1>
               <div class="mt-2 border-blue-400 border-b-2"></div>
-              <p class="mt-2 max-w-lg leading-9 lg:text-xl">
-                I am an Indonesian web developer with 1 and a half year of
-                developmental experience based in Taichung, Taiwan. My main
-                expertise lies in building responsive, user-friendly web
-                application frontend.
+              <p class="mt-2 max-w-xl leading-9 trackiong-wide lg:text-xl">
+                I'm a web developer based in Taichung, Taiwan, with 1.5 years of
+                hands-on experience in creating responsive and user-friendly web
+                applications. My passion for web development has led me to
+                become proficient in a range of technologies, making me a
+                potential asset to anyone looking for a passionate/creative
+                developer.
               </p>
-              <p class="mt-2 max-w-lg leading-9 lg:text-xl">
-                I am well versed in a variety of technologies of web
-                development. I am profficient in building frontends using
-                HTML/CSS/Javascript, Typescript, Vue, React, and Next.js. On the
-                backend side, I am skilled in building REST API backends using
-                Node.js/Express and PHP/Laravel. Lastly, My expertise also
-                involve building databases using SQL and Non-SQL using mySQL and
-                Mongo DB, respectively.
+              <p class="mt-2 max-w-xl leading-9 tracking-wide lg:text-xl">
+                My expertise spans the full spectrum of web development
+                technologies. On the frontend, I excel in crafting captivating
+                user interfaces using HTML, CSS, JavaScript, TypeScript, and
+                popular frameworks like Vue, React, and Next.js. On the backend,
+                I have a strong background in building robust REST API services
+                with Node.js/Express and PHP/Laravel. I'm equally comfortable
+                working with both SQL and NoSQL databases, having experience
+                with MySQL and MongoDB.
               </p>
-              <p class="mt-2 max-w-lg leading-9 lg:text-xl">
-                Currently, I am looking for new opportunities in the web
-                development field across Taiwan. If you are looking for a
-                self-driven, passionate developer who can handle challenges,
-                feel free to reach out to me.
+              <p class="mt-2 max-w-xl tracking-wide leading-9 lg:text-xl">
+                My mission is to turn your web development challenges into
+                innovative solutions. If you're seeking a self-driven developer
+                who can bring a unique blend of technical skills and creativity
+                to your project, don't hesitate to get in touch. Let's discuss
+                how I can help you achieve your goals in the world of web
+                development."
               </p>
               <a
                 href="#education"
@@ -200,12 +220,10 @@ const changeProject = (value) => {
                       CSS, and JavaScript.
                     </li>
                     <li>
-                      Contributed to the team's success, assisting in data
-                      visualization and user interaction for their chemistry
-                      research.
+                      Contributed to the team's success by providing a clear platform to display and visualize their research in an effective manner for the competition.
                     </li>
                     <li>
-                      The project's success resulted in the team earning a
+                      The project's success contributed in the team earning a
                       silver medal in the competition.
                     </li>
                   </ul>
@@ -261,7 +279,7 @@ const changeProject = (value) => {
           <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
           <div class="flex flex-col max-w-5xl mx-auto space-y-16 text-center">
             <!--Skill Box-->
-            <div class="mx-auto">
+            <div class="mx-auto w-full">
               <h1 class="text-3xl">Frontend Development</h1>
               <div
                 class="border border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400"
@@ -322,18 +340,18 @@ const changeProject = (value) => {
                 </div>
               </div>
             </div>
-            <div class="mx-auto">
+            <div class="mx-auto w-full">
               <h1 class="text-3xl">Backend Development and Database</h1>
               <div
-                class="border-b-4 mx-auto w-3/4 mb-6 my-2 border-b-blue-400"
+                class="border-b-4 mx-auto w-1/2 mb-6 my-2 border-b-blue-400"
               ></div>
-              <div class="flex flex-row space-x-5 my-2 justify-center">
+              <div class="md:flex flex-row space-x-5 my-2 justify-center">
                 <div
                   class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-4 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/node-logo.png"
-                    class="w-full h-full"
+                    class="w-full h-full scale:50 md:scale-100"
                   />
                 </div>
                 <div
@@ -387,7 +405,7 @@ const changeProject = (value) => {
               </div>
             </div>
 
-            <div class="mx-auto">
+            <div class="mx-auto w-full">
               <h1 class="text-3xl">Testing and Tools</h1>
               <div
                 class="border border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400"
@@ -609,7 +627,7 @@ const changeProject = (value) => {
       </section>
       <section id="projects">
         <div class="container mt-16 py-8 text-center max-w-5xl mx-auto">
-          <h1 class="text-3xl bold">Featured Projects:</h1>
+          <h1 class="text-3xl bold">Featured Projects</h1>
           <div class="w-1/4 mx-auto border-b-4 border-b-black mt-2 mb-6"></div>
 
           <div class="border-tl-2 p-16 border-br-2 relative max-w-4xl mx-auto">
@@ -680,8 +698,13 @@ const changeProject = (value) => {
           </div>
         </div>
       </section>
-      <div id="project-view"></div>
-      <section id="contact"></section>
+
+      <section id="contact">
+        <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
+            Contact Me
+          </h1>
+          <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
+      </section>
     </div>
     <footer id="footer" class="bg-black text-white mt-10">
       <!--Footer Container-->
@@ -742,85 +765,134 @@ const changeProject = (value) => {
     >
       <div
         @click.stop
-        class="bg-white w-3/5 p-4 rounded-lg shadow-lg opacity-100"
+        class="bg-white relative w-3/5 p-4 rounded-lg shadow-lg opacity-100"
       >
+        <div
+          class="absolute flex items-center justify-center h-8 w-8 hover:bg-red-500 right-0 top-0"
+        >
+          <button
+            @click="toggleProjectDetails"
+            class="hover:outline-none text-2xl w-full h-full"
+          >
+            X
+          </button>
+        </div>
         <!-- Modal content goes here -->
-        <div class="flex flex-col space-y-4 items-center justify-center text-center ">
-         
-            <div class="text-2xl font-semibold">{{ currentProject.name }}</div>
-            <div
-              class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"
-            ></div>
-            <p class="text-2xl font-semibold">
-              Role: Frontend Developer Lead, Fullstack Programmer, Designer
-            </p>
-            <p class="max-w leading-9 text-xl">
-              A project made using Vue and Tailwind CSS to manage the army data
-              of a roleplaying game. Comes with a node.js/express backend to
-              handle the management of the JSON data.
-            </p>
-            <p class=" leading-9 text-lg tracking-wider px-10">
-              In this project, I honed my fullstack development skills in a desktop environment with Electron, Javascript and Node.js. My recent accomplishment involved a complete overhaul of the frontend, using Vue.js and Tailwind CSS to enhance responsiveness and modernize the user interface. This project also provided me with a profound understanding of agile teamwork, collaborating seamlessly with other developers in a bi-weekly meeting format.
-            </p>
-            
-            <h1 class="mt-4 text-2xl leading-8 font-semibold mb-2 tracking-wide">Tech Stack</h1>
-            <div class="flex flex-row space-x-4 ">
-              <div
-                v-for="tech in generateTechUrl(currentProject.technologies)"
-                :key="tech"
-                class="group bg-opacity-20 border-2 backdrop-blur-md px-3 py-6 rounded-full shadow-lg h-24 w-28"
+        <div
+          class="relative flex flex-col space-y-4 items-center justify-center text-center"
+        >
+          <div class="text-2xl font-semibold">{{ currentProject.name }}</div>
+          <div
+            class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"
+          ></div>
+
+          <p class="text-2xl font-semibold">
+            {{ currentProject.role }}
+          </p>
+          <p class="max-w leading-9 text-xl">
+            {{ currentProject.description }}
+          </p>
+          <p class="leading-9 text-lg tracking-wider px-10">
+            {{ currentProject.remarks }}
+          </p>
+          <div class="flex flex-row justify-between space-x-10 w-full mx-auto">
+            <div class="w-3/4 px-10">
+              <h1
+                class="mt-4 text-2xl leading-8 font-semibold mb-2 tracking-wide"
               >
-                <img :src="tech" class="w-full h-full group-hover:scale-125" />
-                {{}}
+                Tech Stack
+              </h1>
+              <div class="flex flex-row space-x-6 justify-center">
+                <div
+                  v-for="tech in generateTechUrl(currentProject.technologies)"
+                  :key="tech"
+                  class="group bg-opacity-20 border-2 backdrop-blur-md px-3 py-6 rounded-full shadow-lg h-24 w-24"
+                >
+                  <img
+                    :src="tech"
+                    class="w-full h-full group-hover:scale-125"
+                  />
+                  {{}}
+                </div>
               </div>
             </div>
-         
-       
-      
+            <div class="w-1/2">
+              <h1
+                class="mt-4 text-2xl leading-8 font-semibold mb-2 tracking-wide"
+              >
+                Project Links
+              </h1>
+              <div class="flex flex-row space-x-4 justify-center">
+                <div
+                  class="group bg-opacity-20 border-2 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
+                >
+                  <img
+                    src="./assets/icons/github-icon.png"
+                    class="w-full h-full group-hover:scale-125"
+                  />
+                  <h1 class="mt-2 text-lg">Github</h1>
+                  {{}}
+                </div>
+                <div
+                  v-if="currentProject.hosted"
+                  class="p-2 group bg-opacity-20 border-2 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
+                >
+                  <img
+                    src="./assets/icons/hosting-icon.png"
+                    class="w-full h-full group-hover:scale-125 rounded-full"
+                  />
+                  <h1 class="mt-4 text-lg">{{ currentProject.hosting }}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="w-full h-fit mt-5 px-12 relative">
           <div
-              @click="changeProjectImg(-1)"
-              class="absolute left-0 top-1/2 -translate-y-1/2"
+            @click="changeProjectImg(-1)"
+            class="absolute left-0 top-1/2 -translate-y-1/2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="h-20 w-20 text-blue-400"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                class="h-20 w-20 text-blue-400"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </div>
-            <div
-              @click="changeProjectImg(1)"
-              class="absolute right-0 top-1/2 -translate-y-1/2"
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </div>
+          <div
+            @click="changeProjectImg(1)"
+            class="absolute right-0 top-1/2 -translate-y-1/2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="h-20 w-20 text-blue-400"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                class="h-20 w-20 text-blue-400"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </div>
-          <h1 class="text-center text-2xl mb-2 font-bold tracking-wide">Project Images</h1>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </div>
+
+          <h1 class="text-center text-2xl mb-2 font-bold tracking-wide px-0">
+            Project Images
+          </h1>
           <img
-            class="w-[850px] mx-auto object-contain h-[400px]"
+            class="w-[800px] mx-auto object-contain h-[360px]"
             :src="generateProjectUrl(currentProject.imagesLink[projectNum])"
           />
         </div>
