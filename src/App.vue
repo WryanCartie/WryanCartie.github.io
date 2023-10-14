@@ -222,14 +222,14 @@ const changeProject = (value) => {
               <h3 class="text-lg font-semibold mt-4 my-2">
                 Notable Achievements:
               </h3>
-              <ul class="flex flex-col space-y-1 list-disc ml-1">
+              <ul class="flex flex-col space-y-1 md:list-disc ml-1">
                 <li class="md:max-w-lg text-lg text leading-8">
                   Developed a responsive frontend for Tunghai University's
                   Tunghai_TAPG chemistry team as part of their iGEM 2019
                   competition project.
                 </li>
                 <li class="list-none">
-                  <ul class="list-disc mx-5">
+                  <ul class=" md:list-disc md:mx-5 md:tracking-normal tracking-wider">
                     <li>
                       Achieved this through six months of self-study in HTML,
                       CSS, and JavaScript.
@@ -247,8 +247,8 @@ const changeProject = (value) => {
                   Developed an ALE web application using HTML/CSS, JavaScript,
                   and PHP as part of a thesis project to collect and visualize
                   Wi-Fi data usage at Tunghai University.
-                  <ul class="list-disc mx-5">
-                    <li class="list-disc text-normal text-base leading-normal">
+                  <ul class="md:list-disc tracking-wide md:tracking-normal md:mx-5">
+                    <li class="md:list-disc text-normal text-base leading-normal">
                       Additionally, implement Kafka in the project to leverage
                       it's real-time data stream processing to provide real-time
                       data analytics to the app.
@@ -587,7 +587,7 @@ const changeProject = (value) => {
               class="bg-gray-100 left max-w-lg relative pt-20 rounded-lg shadow-md shadow-black"
             >
               <div
-                class="font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
+                class="font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2  -top-8 flex items-center justify-center"
               >
                 2
               </div>
@@ -631,7 +631,7 @@ const changeProject = (value) => {
           ></div>
           <!--Vertical Line-->
           <div
-            class="absolute w-2 h-full left-1/2 -ml-1 bg-cyan md:hidden"
+            class="absolute w-2 h-1/2 -z-10 left-1/2  top-1/2 -ml-1 bg-black md:hidden"
           ></div>
         </div>
       </section>
@@ -851,7 +851,7 @@ const changeProject = (value) => {
               >
                 Tech Stack
               </h1>
-              <div class="grid grid-cols-4 gap-4 md:flex flex-row md:space-x-6 justify-center">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-6 justify-center">
                 <div
                   v-for="tech in generateTechUrl(currentProject.technologies)"
                   :key="tech"
@@ -872,7 +872,7 @@ const changeProject = (value) => {
                 Project Links
               </h1>
               <div class="flex flex-row space-x-4 justify-center">
-                <div
+                <a :href="currentProject.githubLink"
                   class="group bg-opacity-20 border-2 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
                 >
                   <img
@@ -881,7 +881,7 @@ const changeProject = (value) => {
                   />
                   <h1 class="mt-2 text-lg">Github</h1>
                   {{}}
-                </div>
+              </a>
                 <a :href="currentProject.hostedLink"
                   v-if="currentProject.hosted"
                   class="p-2 group bg-opacity-20 border-2 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
