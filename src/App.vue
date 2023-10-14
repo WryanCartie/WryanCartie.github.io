@@ -38,7 +38,7 @@ const projects = reactive([
   {
     name: "Favourite Places App",
     introduction: "A MERN Web app to share and upload your favourite places.",
-    technologies: ["vue", "tailwind", "javascript"],
+    technologies: ["react","js",'mongodb','node','express'],
     introductionImageLink: new URL(
       "./assets/images/favourite_place-1.png",
       import.meta.url
@@ -80,6 +80,8 @@ const generateTechUrl = (techs) => {
   return techUrl;
 };
 
+
+
 const generateProjectUrl = (img) => {
   let imgUrl = new URL(`./assets/images/${img}.png`, import.meta.url).href;
   return imgUrl;
@@ -88,6 +90,14 @@ const generateProjectUrl = (img) => {
     return new URL(`./assets/images/${img}.png`, import.meta.url).href
   }) */
 };
+
+const sendEmail = () =>{
+
+}
+
+const formEmailData = reactive({
+  
+})
 
 const currentProject = computed(() => {
   return projects[targetNum.value];
@@ -198,13 +208,13 @@ const changeProject = (value) => {
               </h1>
               <div class="my-1 border-b-2 border-blue-500"></div>
 
-              <p class="max-w-lg text-lg my-3">
+              <p class="md:max-w-lg text-lg my-3">
                 <span class="font-semibold">Notable Cousework: </span>
                 Algorithms, Data Structures, Database, AI Python Programming,
                 Web Programming, C++, PHP Backend Programming, Machine Learning
                 Python, Java Programming.
               </p>
-              <p class="max-w-lg text-lg my-3">
+              <p class="md:max-w-lg text-lg my-3">
                 <span class="font-semibold">Thesis: </span>Integration of Apache
                 Kafka to Visualize WiFi positioning in 3D Map(整合Apache
                 Kafka於3D地圖之視覺化WiFi定位) )
@@ -213,7 +223,7 @@ const changeProject = (value) => {
                 Notable Achievements:
               </h3>
               <ul class="flex flex-col space-y-1 list-disc ml-1">
-                <li class="max-w-lg text-lg text leading-8">
+                <li class="md:max-w-lg text-lg text leading-8">
                   Developed a responsive frontend for Tunghai University's
                   Tunghai_TAPG chemistry team as part of their iGEM 2019
                   competition project.
@@ -289,13 +299,15 @@ const changeProject = (value) => {
               <div
                 class="border border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400"
               ></div>
-              <div class="flex flex-row space-x-5 my-2 justify-center">
+              <div class=" grid grid-cols-3  sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center">
+                
+               
                 <div
                   class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
-                    src="./assets/logo/html-icon.png"
-                    class="w-full h-full"
+                    src="./assets/logo/js-logo.png"
+                    class="w-full h-full object-cover"
                   />
                 </div>
                 <div
@@ -310,14 +322,6 @@ const changeProject = (value) => {
                   class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
-                    src="./assets/logo/js-logo.png"
-                    class="w-full h-full object-cover"
-                  />
-                </div>
-                <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
-                >
-                  <img
                     src="./assets/logo/typescript-logo.png"
                     class="w-full h-full"
                   />
@@ -326,6 +330,14 @@ const changeProject = (value) => {
                   class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
                 >
                   <img src="./assets/logo/vue-logo.png" class="w-full h-full" />
+                </div>
+                <div
+                  class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24"
+                >
+                  <img
+                    src="./assets/logo/css-logo.png"
+                    class="w-full h-full hover:animate-pulse"
+                  />
                 </div>
                 <div
                   class="bg-opacity-20 border-2 backdrop-blur-md p-0 rounded-full shadow-lg h-24 w-24"
@@ -350,7 +362,7 @@ const changeProject = (value) => {
               <div
                 class="border-b-4 mx-auto w-1/2 mb-6 my-2 border-b-blue-400"
               ></div>
-              <div class="md:flex flex-row space-x-5 my-2 justify-center">
+              <div class="grid grid-cols-3  sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center">
                 <div
                   class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-4 rounded-full shadow-lg h-24 w-24"
                 >
@@ -383,14 +395,7 @@ const changeProject = (value) => {
                     class="w-full h-full rounded-lg"
                   />
                 </div>
-                <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md px-2 py-4 rounded-full shadow-lg h-24 w-24"
-                >
-                  <img
-                    src="./assets/logo/sqlite-logo.png"
-                    class="w-full h-full rounded-full"
-                  />
-                </div>
+              
                 <div
                   class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
                 >
@@ -400,7 +405,7 @@ const changeProject = (value) => {
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md py-2 px-2 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-1 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/mongodb-logo.jpg"
@@ -415,7 +420,7 @@ const changeProject = (value) => {
               <div
                 class="border border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400"
               ></div>
-              <div class="flex flex-row space-x-5 my-2 justify-center">
+              <div class="grid grid-cols-3  sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center">
                 <div
                   class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
                 >
@@ -437,7 +442,7 @@ const changeProject = (value) => {
                 >
                   <img
                     src="./assets/logo/jest-logo.png"
-                    class="bg-whitew-full h-full object-cover"
+                    class="bg-white w-full h-full object-cover"
                   />
                 </div>
                 <div
@@ -459,7 +464,7 @@ const changeProject = (value) => {
               </div>
             </div>
             <div class="mx-auto w-3/4">
-              <h1 class="text-3xl">Languanges</h1>
+              <h1 class="text-3xl">Languages</h1>
               <div
                 class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 mx-auto"
               ></div>
@@ -470,7 +475,7 @@ const changeProject = (value) => {
                   <div
                     class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                   >
-                    <h1 class="text-3xl text-center">中語</h1>
+                    <h1 class="text-2xl sm:text-3xl text-center">中語</h1>
                   </div>
                   <div class="flex flex-col space-y-3 justify-center w-full">
                     <h2 class="text-xl text-left">
@@ -487,7 +492,7 @@ const changeProject = (value) => {
                   <div
                     class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                   >
-                    <h1 class="text-3xl text-center">英語</h1>
+                    <h1 class="text-2xl sm:text-3xl  text-center">英語</h1>
                   </div>
                   <div class="flex flex-col space-y-3 justify-center w-full">
                     <h2 class="text-xl text-left">
@@ -506,7 +511,7 @@ const changeProject = (value) => {
                   <div
                     class="group bg-opacity-20 border-2 backdrop-blur-md py-6 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                   >
-                    <h1 class="text-3xl text-center">印尼語</h1>
+                    <h1 class="text-2xl sm:text-3xl text-center">印尼語</h1>
                   </div>
                   <div class="flex flex-col space-y-3 justify-center w-full">
                     <h2 class="text-xl text-left">Indonesian Level: Native</h2>
@@ -532,10 +537,10 @@ const changeProject = (value) => {
           </h1>
           <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
           <div
-            class="flex flex-col md:flex-row justify-between space-y-10 md:space-y-0 space-x-24"
+            class="flex flex-col md:flex-row justify-between space-y-20 md:space-y-0 md:space-x-24"
           >
             <div
-              class="bg-gray-100 left max-w-lg relative md:pt-20 rounded-lg shadow-md shadow-black"
+              class="bg-gray-100 left max-w-lg relative pt-20 rounded-lg shadow-md shadow-black"
             >
               <div
                 class="font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
@@ -579,7 +584,7 @@ const changeProject = (value) => {
               </div>
             </div>
             <div
-              class="bg-gray-100 left max-w-lg relative md:pt-20 rounded-lg shadow-md shadow-black"
+              class="bg-gray-100 left max-w-lg relative pt-20 rounded-lg shadow-md shadow-black"
             >
               <div
                 class="font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
@@ -705,10 +710,49 @@ const changeProject = (value) => {
       </section>
 
       <section id="contact">
+        <div class="container max-w-5xl mt-10 mx-auto flex flex-col space-y-8 items-center">
         <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
             Contact Me
           </h1>
           <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
+          
+            <h2 class="max-w-xl text-xl ">Feel free to contact me by: </h2>
+            <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 mt-4 md:space-x-8 justify-center items-center">
+            <div class="flex bg-gray-50 flex-row items-center space-x-2 border-2 p-4">
+              <img
+                src="./assets/icons/email-icon.png"
+                class="bg-black h-12 w-12 rounded-full"
+              />
+              <h1 class="item text-xl">wryancartie@gmail.com</h1>
+            </div>
+            <h1 class="text-xl">and</h1>
+            <div class="bg-gray-50 flex flex-row items-center space-x-2 border-2 p-4">
+              <img
+                src="./assets/icons/phone-icon.png"
+                class="bg-black h-12 w-12 rounded-full"
+              />
+              <h1 class="item text-xl">(886) 908-046-941</h1>
+            </div>
+            
+          </div>
+          <h2 class="max-w-xl text-xl ">or by filling this form below: </h2>
+        
+          <form @submit.prevent="sendEmail" class="p-8 px-10 w-1/2 mx-auto p-2 border border-2 mx-auto flex flex-col space-y-4 ">
+            <h1 class="text-2xl font-semibold"> Contact Form</h1>
+              <div
+                class="border border-b-4 w-1/3 mb-6 my-2 border-b-blue-400 "
+              ></div>
+            <label class="">Name:</label>
+            <input class="h-8 w-4/5 border border-black px-2"/>
+            <label>Email:</label>
+            <input class="h-8 w-4/5  border border-black px-2"/>
+            <label>Subject</label>
+            <input class="h-8 w-4/5 border border-black px-2"/>
+            <label>Message</label>
+            <textarea class="w-full   h-56 text-lg p-1 px-2 border-black border"/>
+            <button class=" w-1/2 mx-auto  border-blue-400 bg-blue-400 text-white p-3 px-4 rounded-full text-lg hover:bg-white hover:text-blue-400">Submit Form</button>
+          </form>
+        </div>
       </section>
     </div>
     <footer id="footer" class="bg-black text-white mt-10">
@@ -766,11 +810,11 @@ const changeProject = (value) => {
     <div
       @click="toggleProjectDetails"
       v-if="showProjectModal"
-      class="fixed inset-0 flex items-center justify-center z-50 opacity-100 bg-black m-2"
+      class="fixed inset-0 py-16 flex items-center justify-center z-50 opacity-100 bg-black m-2"
     >
       <div
         @click.stop
-        class="bg-white relative w-3/5 p-4 rounded-lg shadow-lg opacity-100"
+        class="bg-white overflow-scroll md:overflow-hidden max-h-screen  relative w-4/5 xl:w-3/5 p-4 rounded-lg shadow-lg opacity-100"
       >
         <div
           class="absolute flex items-center justify-center h-8 w-8 hover:bg-red-500 right-0 top-0"
@@ -784,30 +828,30 @@ const changeProject = (value) => {
         </div>
         <!-- Modal content goes here -->
         <div
-          class="relative flex flex-col space-y-4 items-center justify-center text-center"
+          class="relative flex flex-col space-y-2 md:space-y-4 items-center justify-center text-center"
         >
           <div class="text-2xl font-semibold">{{ currentProject.name }}</div>
           <div
             class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"
           ></div>
 
-          <p class="text-2xl font-semibold">
+          <p class="text-lg md:text-xl xl:text-2xl font-semibold">
             {{ currentProject.role }}
           </p>
-          <p class="max-w leading-9 text-xl">
+          <p class="leading-6 md:leading-9 md:text-lg tracking-wider xl:text-xl">
             {{ currentProject.description }}
           </p>
-          <p class="leading-9 text-lg tracking-wider px-10">
+          <p class="leading-6 md:leading-9 xl:text-lg md:tracking-wide px-10">
             {{ currentProject.remarks }}
           </p>
-          <div class="flex flex-row justify-between space-x-10 w-full mx-auto">
-            <div class="w-3/4 px-10">
+          <div class="flex md:flex-row flex-col items-center md:justify-between space-x-10 w-full mx-auto">
+            <div class="w-full md:w-3/4 px-10">
               <h1
                 class="mt-4 text-2xl leading-8 font-semibold mb-2 tracking-wide"
               >
                 Tech Stack
               </h1>
-              <div class="flex flex-row space-x-6 justify-center">
+              <div class="grid grid-cols-4 gap-4 md:flex flex-row md:space-x-6 justify-center">
                 <div
                   v-for="tech in generateTechUrl(currentProject.technologies)"
                   :key="tech"
@@ -821,9 +865,9 @@ const changeProject = (value) => {
                 </div>
               </div>
             </div>
-            <div class="w-1/2">
+            <div class="w-3/4 mx-auto md:w-1/2 mb-4 md:mb-0">
               <h1
-                class="mt-4 text-2xl leading-8 font-semibold mb-2 tracking-wide"
+                class=" md:mb-0 mt-4 text-2xl leading-8 font-semibold mb-2 tracking-wide"
               >
                 Project Links
               </h1>
@@ -838,7 +882,7 @@ const changeProject = (value) => {
                   <h1 class="mt-2 text-lg">Github</h1>
                   {{}}
                 </div>
-                <a href="{{hostedLink}}"
+                <a :href="currentProject.hostedLink"
                   v-if="currentProject.hosted"
                   class="p-2 group bg-opacity-20 border-2 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
                 >
@@ -893,11 +937,11 @@ const changeProject = (value) => {
             </svg>
           </div>
 
-          <h1 class="text-center text-2xl mb-2 font-bold tracking-wide px-0">
+          <h1 class="text-center mt-12 md:mb-2 text-2xl font-bold tracking-wide px-0">
             Project Images
           </h1>
           <img
-            class="w-[800px] mx-auto object-contain h-[360px]"
+            class="w-[800px] mx-auto object-contain h-[340px]"
             :src="generateProjectUrl(currentProject.imagesLink[projectNum])"
           />
         </div>
