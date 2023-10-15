@@ -91,13 +91,27 @@ const generateProjectUrl = (img) => {
   }) */
 };
 
-const sendEmail = () =>{
-
-}
+const sendEmail = () => {
+      // Make an HTTP POST request to the backend with formData
+      axios
+        .post('/send-email', formEmailData)
+        .then((response) => {
+          // Handle success, e.g., show a success message
+          console.log('Email sent successfully', response.data);
+        })
+        .catch((error) => {
+          // Handle errors, e.g., show an error message
+          console.error('Error sending email', error);
+        });
+    };
 
 const formEmailData = reactive({
-  
-})
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    });
+
 
 const currentProject = computed(() => {
   return projects[targetNum.value];
@@ -740,17 +754,17 @@ const changeProject = (value) => {
           <form @submit.prevent="sendEmail" class="p-8 px-10 w-1/2 mx-auto p-2 border border-2 mx-auto flex flex-col space-y-4 ">
             <h1 class="text-2xl font-semibold"> Contact Form</h1>
               <div
-                class="border border-b-4 w-1/3 mb-6 my-2 border-b-blue-400 "
+                class="border border-b-4 w-full md:w-1/2 mb-6 my-2 border-b-blue-400 "
               ></div>
             <label class="">Name:</label>
-            <input class="h-8 w-4/5 border border-black px-2"/>
+            <input type="text" v-model="formEmailData.name" class="h-8 w-full border border-black px-2"/>
             <label>Email:</label>
-            <input class="h-8 w-4/5  border border-black px-2"/>
+            <input type="email" v-model="formEmailData.email" class="h-8 w-full  border border-black px-2"/>
             <label>Subject</label>
-            <input class="h-8 w-4/5 border border-black px-2"/>
+            <input type="text" v-model="formEmailData.subject" class="h-8 w-full border border-black px-2"/>
             <label>Message</label>
-            <textarea class="w-full   h-56 text-lg p-1 px-2 border-black border"/>
-            <button class=" w-1/2 mx-auto  border-blue-400 bg-blue-400 text-white p-3 px-4 rounded-full text-lg hover:bg-white hover:text-blue-400">Submit Form</button>
+            <textarea v-model="formEmailData.message" class="w-full   h-56 text-lg p-1 px-2 border-black border"/>
+            <button class=" w-full md:w-1/2  md:mx-0 mx-auto  border-blue-400 bg-blue-400 text-white p-3 px-4 rounded-full text-lg hover:bg-white hover:text-blue-400">Submit Form</button>
           </form>
         </div>
       </section>
