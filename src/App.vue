@@ -92,10 +92,11 @@ const generateProjectUrl = (img) => {
   }) */
 };
 
-const sendEmail = () => {
+const sendEmail = async  () => {
+
+  
       // Make an HTTP POST request to the backend with formData
-      axios
-        .post('https://portofolio-display.onrender.com/send-email', formEmailData)
+      await axios.post('https://portofolio-backend-5646e-default-rtdb.asia-southeast1.firebasedatabase.app/emails.json', JSON.stringify(formEmailData))
         .then((response) => {
           // Handle success, e.g., show a success message
           console.log('Email sent successfully', response.data);
@@ -322,7 +323,7 @@ const changeProject = (value) => {
                 >
                   <img
                     src="./assets/logo/js-logo.png"
-                    class="w-full h-full object-cover"
+                    class="w-full h-full object-cover hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
@@ -330,44 +331,44 @@ const changeProject = (value) => {
                 >
                   <img
                     src="./assets/logo/css-logo.png"
-                    class="w-full h-full hover:animate-pulse"
+                    class="w-full h-full hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/typescript-logo.png"
-                    class="w-full h-full"
+                    class="w-full h-full hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24"
                 >
-                  <img src="./assets/logo/vue-logo.png" class="w-full h-full" />
+                  <img src="./assets/logo/vue-logo.png" class="w-full h-full hover:scale-110 cursor-pointer" />
                 </div>
                 <div
                   class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/css-logo.png"
-                    class="w-full h-full hover:animate-pulse"
+                    class="w-full h-full hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md p-0 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md p-1 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/react-logo.jpg"
-                    class="w-full h-full rounded-full"
+                    class="w-full h-full hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md p-2 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md py-2 px-1 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/next-logo.png"
-                    class="w-full h-full object-cover rounded-full"
+                    class="w-full h-full hover:scale-110 cursor-pointer"
                   />
                 </div>
               </div>
@@ -383,15 +384,15 @@ const changeProject = (value) => {
                 >
                   <img
                     src="./assets/logo/node-logo.png"
-                    class="w-full h-full scale:50 md:scale-100"
+                    class="w-full h-full scale:50 md:scale-100 hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-2 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/express-logo.png"
-                    class="w-full h-full rounded-full"
+                    class="w-full h-full rounded-full hover:scale-110 cursor-pointer" 
                   />
                 </div>
                 <div
@@ -399,7 +400,7 @@ const changeProject = (value) => {
                 >
                   <img
                     src="./assets/logo/php-logo.png"
-                    class="w-full rounded-full h-full object-fit"
+                    class="w-full rounded-full h-full object-fit hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
@@ -407,24 +408,24 @@ const changeProject = (value) => {
                 >
                   <img
                     src="./assets/logo/laravel-logo.png"
-                    class="w-full h-full rounded-lg"
+                    class="w-full h-full rounded-lg hover:scale-110 cursor-pointer"
                   />
                 </div>
               
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md px-4 py-5 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/mysql-logo.png"
-                    class="w-full h-full"
+                    class="w-full h-full hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-1 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/mongodb-logo.jpg"
-                    class="w-full h-full object-fit rounded-full"
+                    class="w-full h-full object-fit rounded-full hover:scale-110 cursor-pointer"
                   />
                 </div>
               </div>
@@ -441,15 +442,15 @@ const changeProject = (value) => {
                 >
                   <img
                     src="./assets/logo/vscode-logo.png"
-                    class="w-full h-full"
+                    class="w-full h-full hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md py-1 px-1 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/git-logo.png"
-                    class="w-full h-full rounded-full"
+                    class="w-full h-full rounded-full hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
@@ -457,15 +458,15 @@ const changeProject = (value) => {
                 >
                   <img
                     src="./assets/logo/jest-logo.png"
-                    class="bg-white w-full h-full object-cover"
+                    class="bg-white w-full h-full object-cover hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
-                  class="bg-opacity-20 border-2 backdrop-blur-md p-5 px-3 rounded-full shadow-lg h-24 w-24"
+                  class="bg-opacity-20 border-2 backdrop-blur-md p-6 px-3 rounded-full shadow-lg h-24 w-24"
                 >
                   <img
                     src="./assets/logo/kafka-logo.jpg"
-                    class="w-full rounded-full h-full"
+                    class="w-full rounded-full h-full hover:scale-110 cursor-pointer"
                   />
                 </div>
                 <div
@@ -473,13 +474,13 @@ const changeProject = (value) => {
                 >
                   <img
                     src="./assets/logo/xampp-logo.png"
-                    class="w-full h-full"
+                    class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
                   />
                 </div>
               </div>
             </div>
             <div class="mx-auto w-3/4">
-              <h1 class="text-3xl">Languages</h1>
+              <h1 class="text-3xl ">Languages</h1>
               <div
                 class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 mx-auto"
               ></div>
@@ -490,7 +491,7 @@ const changeProject = (value) => {
                   <div
                     class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                   >
-                    <h1 class="text-2xl sm:text-3xl text-center">中語</h1>
+                    <h1 class="text-2xl sm:text-3xl text-center hover:scale-110 cursor-pointer">中語</h1>
                   </div>
                   <div class="flex flex-col space-y-3 justify-center w-full">
                     <h2 class="text-xl text-left">
@@ -507,7 +508,7 @@ const changeProject = (value) => {
                   <div
                     class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                   >
-                    <h1 class="text-2xl sm:text-3xl  text-center">英語</h1>
+                    <h1 class="text-2xl sm:text-3xl  text-center hover:scale-110 cursor-pointer">英語</h1>
                   </div>
                   <div class="flex flex-col space-y-3 justify-center w-full">
                     <h2 class="text-xl text-left">
@@ -526,7 +527,7 @@ const changeProject = (value) => {
                   <div
                     class="group bg-opacity-20 border-2 backdrop-blur-md py-6 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                   >
-                    <h1 class="text-2xl sm:text-3xl text-center">印尼語</h1>
+                    <h1 class="text-2xl sm:text-3xl text-center hover:scale-110 cursor-pointer">印尼語</h1>
                   </div>
                   <div class="flex flex-col space-y-3 justify-center w-full">
                     <h2 class="text-xl text-left">Indonesian Level: Native</h2>
@@ -574,26 +575,22 @@ const changeProject = (value) => {
                 <p class="text-xl">Xitun District, Taichung City, Taiwan</p>
                 <ul class="list-disc">
                   <li class="leading-8 text-sm max-w-lg">
-                    I played a pivotal role in developing an e-commerce
-                    point-of-sale application for small stores, aimed at
+                    Developed an e-commerce point-of-sale application for small stores, aimed at
                     streamlining purchasing, sales, inventory management, and
                     ordering processes. This solution addressed the need for
                     efficient store operations and improved customer
                     experiences.
                   </li>
                   <li class="leading-8 text-sm">
-                    To bolster security and access control, I implemented a
+                    Implemented a
                     robust frontend authentication system using tokens sourced
                     from the backend (BE). This three-tiered authentication
-                    system catered to Admins, Store Owners, and Customers,
-                    ensuring that data remained secure and accessible only to
-                    authorized users.
+                    system are admins, store-owners ,and clients. This three-level authenthication system allow for a seamless integration between customer, store-owner and admin usage.  
                   </li>
                   <li class="leading-8 text-sm">
-                    On the backend, I leveraged PHP/Laravel to create a RESTful
-                    API that seamlessly handled frontend (FE) requests. This
-                    allowed users to perform critical operations, including item
-                    creation, updates, and deletions, with ease and efficiency.
+                    Created a PHP/Laravel RESTful
+                    API to seamlessly handle frontend (FE) requests. This
+                    allowed users to perform store operations, including making purchases, sales, adding items, etc. Key achievement include creationg of custom serial number system based on client requirements, creating addition to the backend handler/services and the MySQL database.
                   </li>
                 </ul>
               </div>
@@ -627,15 +624,15 @@ const changeProject = (value) => {
                     better decision making
                   </li>
                   <li>
-                    Utilize Test-Driven Development(TDD) methodology to create
+                    Utilize Test-Driven Development(TDD) methodology using Jest framework to create
                     and implement unit tests with Jest in order to improve the
-                    reliability of the application.
+                    reliability of the application. For example, created unit test for the data that come from the company's API to make sure that the client data comes in the correct format and manageable size.
                   </li>
                   <li>
                     Developed reusable UI components using ant-design-vue that
                     are critical to the data-visualization of the app such as
                     tables, charts, and graphs to simplify the UI creation
-                    proccess.
+                    proccess. These reusable components are then combined and reused to create a full envinronment that gives the user a clear idea of the demographics and trends of the company's users.
                   </li>
                 </ul>
               </div>
@@ -704,11 +701,11 @@ const changeProject = (value) => {
             <!--Project View-->
 
             <div class="flex flex-col space-y-4">
-              <h1 class="text-2xl font-semibold">{{ currentProject.name }}</h1>
+              <h1 class="text-2xl font-semibold select-none">{{ currentProject.name }}</h1>
               <div
                 class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 mx-auto"
               ></div>
-              <img :src="currentProject.introductionImageLink" class="px-4" />
+              <img :src="currentProject.introductionImageLink" class="px-4 select-none" />
               <p class="text-lg leading-8 max-w-sm mx-auto">
                 {{ currentProject.introduction }}
               </p>
@@ -725,7 +722,7 @@ const changeProject = (value) => {
       </section>
 
       <section id="contact">
-        <div class="container max-w-5xl mt-10 mx-auto flex flex-col space-y-8 items-center">
+        <div class="container max-w-5xl my-10 mb-20 mx-auto flex flex-col space-y-8 items-center">
         <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
             Contact Me
           </h1>
@@ -733,7 +730,7 @@ const changeProject = (value) => {
           
             <h2 class="max-w-xl text-xl ">Feel free to contact me by: </h2>
             <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 mt-4 md:space-x-8 justify-center items-center">
-            <div class="flex bg-gray-50 flex-row items-center space-x-2 border-2 p-4">
+            <div class="hover:scale-110 cursor-pointer flex bg-gray-50 flex-row items-center space-x-2 border-2 p-4">
               <img
                 src="./assets/icons/email-icon.png"
                 class="bg-black h-12 w-12 rounded-full"
@@ -741,7 +738,7 @@ const changeProject = (value) => {
               <h1 class="item text-xl">wryancartie@gmail.com</h1>
             </div>
             <h1 class="text-xl">and</h1>
-            <div class="bg-gray-50 flex flex-row items-center space-x-2 border-2 p-4">
+            <div class="hover:scale-110 cursor-pointer bg-gray-50 flex flex-row items-center space-x-2 border-2 p-4">
               <img
                 src="./assets/icons/phone-icon.png"
                 class="bg-black h-12 w-12 rounded-full"
@@ -845,7 +842,7 @@ const changeProject = (value) => {
         <div
           class="relative flex flex-col space-y-2 md:space-y-4 items-center justify-center text-center"
         >
-          <div class="text-2xl font-semibold">{{ currentProject.name }}</div>
+          <div class="text-2xl font-semibold select-none ">{{ currentProject.name }}</div>
           <div
             class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"
           ></div>
@@ -866,7 +863,7 @@ const changeProject = (value) => {
               >
                 Tech Stack
               </h1>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-6 justify-center">
+              <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-6 justify-center">
                 <div
                   v-for="tech in generateTechUrl(currentProject.technologies)"
                   :key="tech"
@@ -874,13 +871,13 @@ const changeProject = (value) => {
                 >
                   <img
                     :src="tech"
-                    class="w-full h-full group-hover:scale-125"
+                    class="w-full h-full group-hover:scale-125 select-none"
                   />
                   {{}}
                 </div>
               </div>
             </div>
-            <div class="w-3/4 mx-auto md:w-1/2 mb-4 md:mb-0">
+            <div class="w-full mx-auto md:w-3/4 mb-4 md:mb-0">
               <h1
                 class=" md:mb-0 mt-4 text-2xl leading-8 font-semibold mb-2 tracking-wide"
               >
@@ -952,11 +949,11 @@ const changeProject = (value) => {
             </svg>
           </div>
 
-          <h1 class="text-center mt-12 md:mb-2 text-2xl font-bold tracking-wide px-0">
+          <h1 class="text-center mt-12 md:mb-2 text-2xl font-bold tracking-wide px-0 select-none">
             Project Images
           </h1>
           <img
-            class="w-[800px] mx-auto object-contain h-[340px]"
+            class="w-[800px] mx-auto object-contain h-[340px] select-none"
             :src="generateProjectUrl(currentProject.imagesLink[projectNum])"
           />
         </div>
