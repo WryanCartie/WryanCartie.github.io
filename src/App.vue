@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive, computed } from "vue";
+import axios from 'axios'
 
 const projects = reactive([
   {
@@ -94,7 +95,7 @@ const generateProjectUrl = (img) => {
 const sendEmail = () => {
       // Make an HTTP POST request to the backend with formData
       axios
-        .post('/send-email', formEmailData)
+        .post('https://portofolio-display.onrender.com/send-email', formEmailData)
         .then((response) => {
           // Handle success, e.g., show a success message
           console.log('Email sent successfully', response.data);
