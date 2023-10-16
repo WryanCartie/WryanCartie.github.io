@@ -64,6 +64,10 @@ const projects = reactive([
 const targetNum = ref(0);
 const projectNum = ref(0);
 
+
+
+
+
 const changeProjectImg = (val) => {
   projectNum.value += val;
   if (projectNum.value > 3) {
@@ -120,9 +124,14 @@ const currentProject = computed(() => {
 
 const showProjectModal = ref(false);
 
+const showModalContent = ref(false);
+
 const toggleProjectDetails = () => {
   showProjectModal.value = !showProjectModal.value;
   projectNum.value = 0;
+  setTimeout(()=>{
+    showModalContent.value = !showModalContent.value
+  },10)
 };
 
 const changeProject = (value) => {
@@ -138,7 +147,10 @@ const changeProject = (value) => {
 <template>
  
   <div class="min-w-screen">
-    <div id="jumbotron" class="px-12 py-6 min-w-screen square xyz-in" xyz="fade small">
+    <Transition name="fade-jumbotron" appear>
+    <div  id="jumbotron" class="px-12 py-6 min-w-screen square xyz-in" xyz="fade small">
+      <Transition name="insert-intro" appear>
+        <div>
       <nav
         class="xyz-nested container w-full sticky flex flex-row justify-between max-w-6xl mx-auto"
       >
@@ -159,8 +171,10 @@ const changeProject = (value) => {
           <a href="#contact">Contact Me</a>
         </div>
       </nav>
+   
       <section id="introduction">
-        <div class="container mx-auto mt-20 max-w-6xl p-10">
+        <div class="container mx-auto mt-20 max-w-6xl p-10 relative">
+        
           <div
             class="flex flex-col-reverse md:flex-row space-y-10 mb-10 md:space-y-0 text-white md:space-x-10 items-center"
           >
@@ -170,7 +184,7 @@ const changeProject = (value) => {
               </h1>
               <div class="mt-2 border-blue-600 border-b-2"></div>
               <p class="mt-2 max-w-lg leading-10 tracking-widest text-xl ">
-                I am a software engineer with a focus on building responsive and user-friendly web applications using cutting-edge technologies. I am passionate about delivering web application that meet your unique goals and objectives, no matter how difficult or specific your requirements are.
+                I am a <span class="text-blue-200 font-bold">Software Engineer </span> with a focus on building <span class="text-blue-200 font-bold">responsive and user-friendly </span> web applications using cutting-edge technologies. I am passionate about delivering web application that meet your unique goals and objectives, <span class="font-bold text-blue-200">no matter how difficult or specific your requirements are </span>.
               </p>
               
               <a
@@ -180,15 +194,59 @@ const changeProject = (value) => {
                 Learn more about me
               </a>
             </div>
-            <div class="md:flex-1 md:my-0">
-              <img src="./assets/web-icon.png" />
+            <div class="md:flex-1 md:my-0 flex items-center justify-center">
+              <img src="./assets/images/real.jpg" class="rounded-full h-96 w-96 bgp" />
             </div>
           </div>
+         
         </div>
       </section>
     </div>
+      </Transition>
+    </div>
+    </Transition>
+    <Transition name="fade-content" appear>
+    <div>
     <section id="about-me">
-      <div class="mx-auto mt-20 container max-w-6xl"></div>
+      <div class="mx-auto mt-20 container max-w-6xl">
+        <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
+            About me
+          </h1>
+          <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
+          <div class="flex flex-col space-y-4 md:flex-row md:justify-between md:space-y-0 md:space-x-8">
+            <div>
+
+            </div>
+            <div>
+              <p class="mt-2 max-w-xl leading-9 trackiong-wide lg:text-xl">
+                I'm a web developer based in Taichung, Taiwan, with 1.5 years of
+                hands-on experience in creating responsive and user-friendly web
+                applications. My passion for web development has led me to
+                become proficient in a range of technologies, making me a
+                potential asset to anyone looking for a passionate/creative
+                developer.
+              </p>
+              <p class="mt-2 max-w-xl leading-9 tracking-wide lg:text-xl">
+                My expertise spans the full spectrum of web development
+                technologies. On the frontend, I excel in crafting captivating
+                user interfaces using HTML, CSS, JavaScript, TypeScript, and
+                popular frameworks like Vue, React, and Next.js. On the backend,
+                I have a strong background in building robust REST API services
+                with Node.js/Express and PHP/Laravel. I'm equally comfortable
+                working with both SQL and NoSQL databases, having experience
+                with MySQL and MongoDB.
+              </p>
+              <p class="mt-2 max-w-xl tracking-wide leading-9 lg:text-xl">
+                My mission is to turn your web development challenges into
+                innovative solutions. If you're seeking a self-driven developer
+                who can bring a unique blend of technical skills and creativity
+                to your project, don't hesitate to get in touch. Let's discuss
+                how I can help you achieve your goals in the world of web
+                development.
+                </p>
+            </div>
+          </div>
+      </div>
     </section>
     <div class="px-12 w-screen">
       <section id="education">
@@ -269,6 +327,7 @@ const changeProject = (value) => {
               </ul>
             </div>
             <!--Photo Grid-->
+            
             <div
               class="grid grid-cols-2 w-full h-full grid-row-1 flex-1 gap-4 py-4"
             >
@@ -565,7 +624,7 @@ const changeProject = (value) => {
             class="flex flex-col md:flex-row justify-between space-y-20 md:space-y-0 md:space-x-24"
           >
             <div
-              class="bg-gray-100 left max-w-lg relative pt-20 rounded-lg shadow-md shadow-black"
+              class="bg-gray-100 left md:max-w-lg relative pt-20 rounded-lg shadow-md shadow-black"
             >
               <div
                 class="font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
@@ -610,7 +669,7 @@ const changeProject = (value) => {
               </div>
             </div>
             <div
-              class="bg-gray-100 left max-w-lg relative pt-20 rounded-lg shadow-md shadow-black"
+              class="bg-gray-100 left md:max-w-lg relative pt-20 rounded-lg shadow-md shadow-black"
             >
               <div
                 class="font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
@@ -874,14 +933,18 @@ const changeProject = (value) => {
         </div>
       </div>
     </footer>
+  </div>
+    </Transition>
+      <Transition name="fade-overlay">
     <div
       @click="toggleProjectDetails"
       v-if="showProjectModal"
       class="fixed inset-0 py-16 flex items-center justify-center z-50 opacity-100 bg-black m-2"
     >
-      <div
+     <Transition name="fade-modal" >
+      <div v-if="showModalContent"
         @click.stop
-        class="bg-white overflow-scroll md:overflow-hidden max-h-screen relative w-4/5 xl:w-3/5 p-4 rounded-lg shadow-lg opacity-100"
+        class="bg-white overflow-scroll md:overflow-hidden max-h-screen relative w-4/5 xl:w-3/5 p-4 rounded-lg shadow-lg "
       >
         <div
           class="absolute flex items-center justify-center h-8 w-8 hover:bg-red-500 right-0 top-0"
@@ -894,6 +957,7 @@ const changeProject = (value) => {
           </button>
         </div>
         <!-- Modal content goes here -->
+   
         <div
           class="relative flex flex-col space-y-2 md:space-y-4 items-center justify-center text-center"
         >
@@ -972,7 +1036,9 @@ const changeProject = (value) => {
               </div>
             </div>
           </div>
+          
         </div>
+      
 
         <div class="w-full h-fit mt-5 px-12 relative">
           <div
@@ -1020,16 +1086,89 @@ const changeProject = (value) => {
             Project Images
           </h1>
           <img
-            class="w-[800px] mx-auto object-contain h-[340px] select-none"
+            class="md:w-[800px] p-4 md:mx-auto object-contain  md:h-[340px] select-none"
             :src="generateProjectUrl(currentProject.imagesLink[projectNum])"
           />
         </div>
+        
       </div>
+
+    </Transition>
     </div>
+  </Transition>
   </div>
 </template>
 
 <style scoped>
+
+.insert-intro-enter-from{
+ transform: translateX(100px);
+
+}
+
+.insert-intro-enter-to{
+  transform:translateX(0px);
+ 
+}
+
+.insert-intro-enter-active{
+  transition: transform 3s ease-in-out;
+}
+
+.fade-overlay-enter-from,.fade-overlay-leave-to{
+  opacity:0;
+}
+.fade-overlay-enter-to,.fade-overlay-leave-from{
+  opacity:1;
+}
+.fade-overlay-enter-active{
+  transition: opacity 0.2s ease-in;
+}
+
+.fade-overlay-leave-active{
+  transition: opacity 0.4s ease-out;
+}
+
+.fade-modal-enter-from,
+.fade-modal-leave-to{
+  opacity:0;
+}
+.fade-modal-enter-to,
+.fade-modal-leave-from{
+  opacity:1;
+}
+.fade-modal-leave-active{
+  transition: opacity 0.2s ease-out;
+}
+.fade-modal-enter-active{
+  transition: opacity 0.4s ease-in;
+}
+
+.fade-jumbotron-enter-from{
+  opacity:0;
+  
+};
+
+
+.fade-jumbotron-enter-to{
+  opacity: 1;
+}
+
+.fade-jumbotron-enter-active{
+  transition: opacity 1s ease;
+}
+
+.fade-content-enter-from{
+  opacity:0;
+}
+
+.fade-content-enter-to{
+  opacity:1;
+}
+
+.fade-content-enter-active{
+  transition: opacity 3s ease;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
