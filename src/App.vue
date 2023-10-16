@@ -215,8 +215,8 @@ const changeProject = (value) => {
                     class="md:flex-1 md:my-0 flex items-center justify-center"
                   >
                     <img
-                      src="./assets/images/real.jpg"
-                      class="rounded-lg border border-96 border-white h-100 w-80"
+                      src="./assets/images/glow-2.png"
+                      class=" h-100 w-80"
                     />
                   </div>
                 </div>
@@ -244,7 +244,7 @@ const changeProject = (value) => {
               />
 
               <div>
-                <p class="mt-2 max-w-xl leading-9 trackiong-wide lg:text-xl">
+                <p class="mt-2 md:max-w-xl leading-9 trackiong-wide lg:text-xl">
                   I'm a web developer based in Taichung, Taiwan, with 1.5 years
                   of hands-on experience in creating responsive and
                   user-friendly web applications. My passion for web development
@@ -252,7 +252,7 @@ const changeProject = (value) => {
                   making me a potential asset to anyone looking for a
                   passionate/creative developer.
                 </p>
-                <p class="mt-2 max-w-xl leading-9 tracking-wide lg:text-xl">
+                <p class="mt-2 md:max-w-xl leading-9 tracking-wide lg:text-xl">
                   My expertise spans the full spectrum of web development
                   technologies. On the frontend, I excel in crafting captivating
                   user interfaces using HTML, CSS, JavaScript, TypeScript, and
@@ -262,7 +262,7 @@ const changeProject = (value) => {
                   comfortable working with both SQL and NoSQL databases, having
                   experience with MySQL and MongoDB.
                 </p>
-                <p class="mt-2 max-w-xl tracking-wide leading-9 lg:text-xl">
+                <p class="mt-2 md:max-w-xl tracking-wide leading-9 lg:text-xl">
                   As part as my commitment to become a better developer, I keep
                   honing my skills and learning new technologies. Most recently,
                   I expanded my skillset into Typescript, a js framework that
@@ -273,7 +273,7 @@ const changeProject = (value) => {
                   expanded my expertise in node.js, seeking to master GraphQL
                   and broaden my backend skills.
                 </p>
-                <p class="mt-2 max-w-xl tracking-wide leading-9 lg:text-xl">
+                <p class="mt-2 md:max-w-xl tracking-wide leading-9 lg:text-xl">
                   My mission is to turn your web development challenges into
                   innovative solutions. If you're seeking a self-driven
                   developer who can bring a unique blend of technical skills and
@@ -777,9 +777,9 @@ const changeProject = (value) => {
               <div
                 class="hidden absolute top-1/2 left-2 h-3 w-10/12 bg-blue-500 -z-10 md:block"
               ></div>
-              <!--Vertical Line-->
+          
               <div
-                class="absolute w-2 h-1/2 -z-10 left-1/2 top-1/2 -ml-1 bg-black md:hidden"
+                class="absolute w-2 h-1/2 -z-10 left-1/2 top-1/2 -ml-1 bg-blue-200 md:hidden"
               ></div>
             </div>
           </section>
@@ -799,7 +799,7 @@ const changeProject = (value) => {
                 <div
                   class="-z-10 absolute bottom-0 right-0 border-b-2 border-r-2 border-dashed border-blue-400 h-full w-1/2"
                 ></div>
-                <div
+                <button
                   @click="changeProject(-1)"
                   class="absolute left-0 top-1/2 -translate-y-1/2"
                 >
@@ -817,10 +817,10 @@ const changeProject = (value) => {
                       d="M15 19l-7-7 7-7"
                     />
                   </svg>
-                </div>
-                <div
+                </button>
+                <button
                   @click="changeProject(1)"
-                  class="absolute right-0 top-1/2 -translate-y-1/2"
+                  class="absolute right-0 top-1/2 -translate-y-1/2 focus:outline-none"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -836,7 +836,7 @@ const changeProject = (value) => {
                       d="M9 5l7 7-7 7"
                     />
                   </svg>
-                </div>
+                </button>
 
                 <!--Project View-->
 
@@ -1108,9 +1108,9 @@ const changeProject = (value) => {
             </div>
 
             <div class="w-full h-fit mt-5 px-12 relative">
-              <div
+              <button
                 @click="changeProjectImg(-1)"
-                class="absolute left-0 top-1/2 -translate-y-1/2"
+                class="absolute left-0 top-1/2 -translate-y-1/2 "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -1126,10 +1126,10 @@ const changeProject = (value) => {
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
-              </div>
-              <div
+              </button>
+              <button
                 @click="changeProjectImg(1)"
-                class="absolute right-0 top-1/2 -translate-y-1/2"
+                class="absolute right-0 top-1/2 -translate-y-1/2 "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -1145,7 +1145,7 @@ const changeProject = (value) => {
                     d="M9 5l7 7-7 7"
                   />
                 </svg>
-              </div>
+              </button>
 
               <h1
                 class="text-center mt-12 md:mb-2 text-2xl font-bold tracking-wide px-0 select-none"
@@ -1190,7 +1190,7 @@ const changeProject = (value) => {
 }
 
 .fade-overlay-leave-active {
-  transition: opacity 0.2s ease-out;
+  transition: opacity 0.4s ease-out;
 }
 
 .fade-modal-enter-from,
@@ -1205,7 +1205,7 @@ const changeProject = (value) => {
   transition: opacity 0.1s ease-out;
 }
 .fade-modal-enter-active {
-  transition: opacity 0.2s ease-in;
+  transition: opacity 0.4s ease-in;
 }
 
 .fade-jumbotron-enter-from {
