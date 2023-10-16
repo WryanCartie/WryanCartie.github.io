@@ -184,7 +184,7 @@ const changeProject = (value) => {
               </h1>
               <div class="mt-2 border-blue-600 border-b-2"></div>
               <p class="mt-2 max-w-lg leading-10 tracking-widest text-xl ">
-                I am a <span class="text-blue-200 font-bold">Software Engineer </span> with a focus on building <span class="text-blue-200 font-bold">responsive and user-friendly </span> web applications using cutting-edge technologies. I am passionate about delivering web application that meet your unique goals and objectives, <span class="font-bold text-blue-200">no matter how difficult or specific your requirements are </span>.
+                I am a <span class="text-blue-200 font-bold">Software Engineer </span> with a focus on building <span class="text-blue-200 font-bold">responsive and user-friendly </span> web applications using cutting-edge technologies. I am passionate about delivering web application that meet your unique goals and objectives, <span class="font-bold text-blue-200">no matter how difficult or complex your requirements are </span>.
               </p>
               
               <a
@@ -195,7 +195,7 @@ const changeProject = (value) => {
               </a>
             </div>
             <div class="md:flex-1 md:my-0 flex items-center justify-center">
-              <img src="./assets/images/real.jpg" class="rounded-full h-96 w-96 bgp" />
+              <img src="./assets/images/real.jpg" class="rounded-full h-100 w-80 " />
             </div>
           </div>
          
@@ -214,9 +214,9 @@ const changeProject = (value) => {
           </h1>
           <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
           <div class="flex flex-col space-y-4 md:flex-row md:justify-between md:space-y-0 md:space-x-8">
-            <div>
-
-            </div>
+            
+              <img src="./assets/images/about-me.png" class=" md:w-full md:object-contain "/>
+          
             <div>
               <p class="mt-2 max-w-xl leading-9 trackiong-wide lg:text-xl">
                 I'm a web developer based in Taichung, Taiwan, with 1.5 years of
@@ -237,12 +237,14 @@ const changeProject = (value) => {
                 with MySQL and MongoDB.
               </p>
               <p class="mt-2 max-w-xl tracking-wide leading-9 lg:text-xl">
+                As part as my commitment to become a better developer, I keep honing my skills and learning new technologies. Most recently, I expanded my skillset into Typescript, a js framework that have been getting popular in recent years. On the frontend side, I also expanded my skillset into learning server-side rendering and SEO concepts by mastering Next.js, a server-side rendering framework for React. On the other hand, I've also expanded my expertise in node.js, seeking to master GraphQL and broaden my backend skills. 
+                </p>
+              <p class="mt-2 max-w-xl tracking-wide leading-9 lg:text-xl">
                 My mission is to turn your web development challenges into
                 innovative solutions. If you're seeking a self-driven developer
                 who can bring a unique blend of technical skills and creativity
                 to your project, don't hesitate to get in touch. Let's discuss
-                how I can help you achieve your goals in the world of web
-                development.
+                how I can help you achieve your goals and contribute to your team.
                 </p>
             </div>
           </div>
@@ -1122,11 +1124,11 @@ const changeProject = (value) => {
   opacity:1;
 }
 .fade-overlay-enter-active{
-  transition: opacity 0.2s ease-in;
+  transition: opacity 0.1s ease-in;
 }
 
 .fade-overlay-leave-active{
-  transition: opacity 0.4s ease-out;
+  transition: opacity 0.2s ease-out;
 }
 
 .fade-modal-enter-from,
@@ -1138,10 +1140,10 @@ const changeProject = (value) => {
   opacity:1;
 }
 .fade-modal-leave-active{
-  transition: opacity 0.2s ease-out;
+  transition: opacity 0.1s ease-out;
 }
 .fade-modal-enter-active{
-  transition: opacity 0.4s ease-in;
+  transition: opacity 0.2s ease-in;
 }
 
 .fade-jumbotron-enter-from{
