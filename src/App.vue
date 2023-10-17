@@ -64,6 +64,11 @@ const projects = reactive([
 const targetNum = ref(0);
 const projectNum = ref(0);
 
+const isMenuOpen = ref(false)
+const toggleMenu = ()=>{
+  isMenuOpen.value = !isMenuOpen.value;
+}
+
 const changeProjectImg = (val) => {
   projectNum.value += val;
   if (projectNum.value > 3) {
@@ -92,14 +97,14 @@ const generateProjectUrl = (img) => {
 const isDark = ref(false)
 onMounted(()=>{
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-if (localStorage.theme === 'light' || (!('theme' in localStorage) && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+if (localStorage.theme === 'dark' || (!('theme' in localStorage)  )) {
+   document.documentElement.classList.add('dark');
+  localStorage.theme = 'dark'
+  isDark.value = true;
+} else {
   document.documentElement.classList.remove('dark');
   localStorage.theme = 'light';
   isDark.value = false
-} else {
-  document.documentElement.classList.add('dark');
-  localStorage.theme = 'dark'
-  isDark.value = true;
 }
 
 })
@@ -173,7 +178,7 @@ const changeProject = (value) => {
 </script>
 
 <template>
-  <div class="min-w-screen ">
+  <div class="min-w-screen  dark:bg-black ">
     <Transition name="fade-jumbotron" appear>
       <div
         id="jumbotron"
@@ -185,13 +190,14 @@ const changeProject = (value) => {
             <nav
               class="relative r w-full md:sticky flex flex-row justify-between max-w-6xl mx-auto"
             >
-              <div class="md:w-1/3 w-1/2 mx-auto">
-                <h2 class="text-white text-2xl text-center border py-1 bg-blac">
+              <div class="md:w-1/3 w-3/4 ">
+                <h2 class="mx-auto text-white text-2xl text-center border py-1 bg-blac">
                   Wryan Cartie Halim
                 </h2>
               </div>
               <div
-                class="hidden md:flex flex-row container max-w-5xl text-white justify-center space-x-5 xl:text-xl"
+                class="hidden md:flex flex-row container max-w-5xl 
+                text-white justify-center space-x-5 xl:text-xl"
               >
                 <a href="#introduction">Home</a>
                 <a href="#about-me">About Me</a>
@@ -201,10 +207,26 @@ const changeProject = (value) => {
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact Me</a>
               </div>
-              <button @click="toggleDarkMode" class="absolute right-0 top-0 h-8 w-8 dark:bg-white rounded-full p-1 border-2 border-black bg-black dark:border-white">
+              <button @click="toggleDarkMode" class=" md:absolute right-0 top-1/2 md:top-0 md:translate-y-0 translate-y-1 h-8 w-8 dark:bg-white rounded-full p-1 border-2 border-blue-200 dark:border-white">
                 <img v-if="isDark" src="./assets/icons/dark-icon.png"/>
                 <img v-else src="./assets/icons/light-icon.png"/>
               </button>
+              <button @click="toggleMenu" id="mobile-menu-btn" class="z-40 top-2  block md:hidden focus:outline-none hamburger">
+                <span class="hamburger-top bg-blue-300 dark:bg-blue-500"  :class="{'open': isMenuOpen}"></span>
+                <span class="hamburger-middle bg-blue-300 dark:bg-blue-500" :class="{'open': isMenuOpen}"></span>
+                <span class="hamburger-bottom bg-blue-300 dark:bg-blue-500" :class="{'open': isMenuOpen}"></span>
+              </button>
+              <div v-if="isMenuOpen" id="moile-menu" class="fixed 
+              inset-0 z-30 flex flex-col items-center 
+              self-end w-full h-full min-h-screen px-6 py-1 pt-24 pb-4 tracking-widest text-blue-600 dark:text-blue-300  uppercase divide-y divide-gray-800 dark:divide-white  opacity-90 bg-gray-300 dark:bg-gray-700 ">
+                <a @click="toggleMenu" href="#home" class="full py-3 text-center">Home</a>
+                <a @click="toggleMenu" href="#about-me" class="full py-3 text-center">About Me</a>
+                <a @click="toggleMenu" href="#education" class="full py-3 text-center">Education</a>
+                <a @click="toggleMenu" href="#skills" class="full py-3 text-center">Skills</a>
+                <a @click="toggleMenu" href="#experience" class="full py-3 text-center">Experience</a>
+                <a @click="toggleMenu" href="#projects" class="full py-3 text-center">Projects</a>
+                <a href="#contact" class="full py-3 text-center">Contact me</a>
+              </div>
             </nav>
 
             <section id="introduction">
@@ -391,7 +413,7 @@ const changeProject = (value) => {
                         </li>
                       </ul>
                     </li>
-                    <li class="max-w-lg text-lg leading-8">
+                    <li class="max-w-lg mx-auto text-lg leading-8">
                       Volunteered to create promotionals for events as part of a
                       volunteer for the university's international office and
                       local Indonesian student Association.
@@ -430,7 +452,7 @@ const changeProject = (value) => {
               <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
                 Skills
               </h1>
-              <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
+              <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12 dark:border-b-white"></div>
               <div
                 class="flex flex-col max-w-5xl mx-auto space-y-16 text-center"
               >
@@ -444,7 +466,7 @@ const changeProject = (value) => {
                     class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
-                      class="bg-opacity-20 border-1 border-whiteimage.png backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-[rgb(103,59,183)]"
+                      class="bg-opacity-20 border-1 border-whiteimage.png backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-[#004080]"
                     >
                       <img
                         src="./assets/logo/html-icon-dark.jpg"
@@ -460,10 +482,10 @@ const changeProject = (value) => {
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-[#004080]"
                     >
                       <img
-                        src="./assets/logo/typescript-logo.png"
+                        src="./assets/logo/typescript-logo-dark.jpg"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
                     </div>
@@ -945,24 +967,24 @@ const changeProject = (value) => {
                 <input
                   type="text"
                   v-model="formEmailData.name"
-                  class="h-8 w-full border border-black px-2"
+                  class="h-8 w-full border border-black px-2 bg-gray-100 dark:bg-gray-700"
                 />
                 <label>Email</label>
                 <input
                   type="email"
                   v-model="formEmailData.email"
-                  class="h-8 w-full border border-black px-2"
+                  class="h-8 w-full border border-black px-2 bg-gray-100 dark:bg-gray-700"
                 />
                 <label>Subject</label>
                 <input
                   type="text"
                   v-model="formEmailData.subject"
-                  class="h-8 w-full border border-black px-2"
+                  class="h-8 w-full border border-black px-2 bg-gray-100 dark:bg-gray-700"
                 />
                 <label>Message</label>
                 <textarea
                   v-model="formEmailData.message"
-                  class="w-full h-56 text-lg p-1 px-2 border-black border"
+                  class="w-full h-56 text-lg p-1 px-2 border-black border bg-gray-100 dark:bg-gray-700"
                 />
                 <button
                   class="w-full md:w-1/2 md:mx-0 mx-auto border-blue-400 bg-blue-400 text-white p-3 px-4 rounded-full text-lg hover:bg-white hover:text-blue-400 dark:bg-blue-700 dark:border-blue-700 dark:hover:text-blue-700 dark:hover:bg-white"
@@ -1040,7 +1062,7 @@ const changeProject = (value) => {
       <div
         @click="toggleProjectDetails"
         v-if="showProjectModal"
-        class="fixed inset-0 py-16 dark:bg-gray-800 flex items-center justify-center z-50 opacity-100 bg-black m-2"
+        class="fixed inset-0 py-16 dark:bg-gray-800 flex items-center justify-center z-50 opacity-100 bg-black m-2 text-black"
       >
         <Transition name="fade-modal">
           <div
@@ -1049,7 +1071,7 @@ const changeProject = (value) => {
             class="bg-white dark:bg-gray-600 dark:text-white overflow-y-scroll xl:overflow-hidden opacity-100 max-h-screen relative w-4/5 xl:w-3/4 p-4 rounded-lg shadow-lg"
           >
             <div
-              class="absolute flex items-center justify-center top-0 h-8 w-8 hover:bg-red-500 right-0 translate-y-2 dark:border-black "
+              class="absolute flex items-center justify-center top-0 h-8 w-8 hover:bg-red-500 right-0  dark:border-black "
             >
               <button
                 @click="toggleProjectDetails"
@@ -1152,7 +1174,7 @@ const changeProject = (value) => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  class="h-20 w-20 text-blue-400"
+                  class="h-20 w-20 text-blue-400 dark:text-blue-700"
                 >
                   <path
                     stroke-linecap="round"
@@ -1171,7 +1193,7 @@ const changeProject = (value) => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  class="h-20 w-20 text-blue-400"
+                  class="h-20 w-20 text-blue-400 dark:text-blue-700"
                 >
                   <path
                     stroke-linecap="round"
