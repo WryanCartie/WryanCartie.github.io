@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: white;
   background-color: #242424;
 
   font-synthesis: none;
@@ -14,20 +14,19 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-}
-a:hover {
-  color: #535bf2;
-}
+
 
 a {
   font-weight: 500;
   color: #646cff;
 }
-a:hover {
+a:hover{
+  border-bottom: #9bbaf3 2px solid;
+  color: #9bbaf3;
+}
+.dark a:hover {
   border-bottom: blue 2px solid;
+  color: #535bf2;
 }
 
 body {
@@ -36,6 +35,11 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background:white;
+}
+.dark body{
+  background:black;
+ 
 }
 
 h1 {
@@ -95,4 +99,10 @@ button:focus-visible {
 
 #jumbotron {
   background-image: url("./assets/backgrounds/introduction-background.jpg");
+  
 }
+
+  .dark #jumbotron{
+    background-image: url("./assets/backgrounds/introduction-background-dark.jpg")
+  }
+  

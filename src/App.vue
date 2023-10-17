@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, computed } from "vue";
+import { ref, reactive, computed, onMounted } from "vue";
 import axios from "axios";
 
 const projects = reactive([
@@ -89,6 +89,33 @@ const generateProjectUrl = (img) => {
     return new URL(`./assets/images/${img}.png`, import.meta.url).href
   }) */
 };
+const isDark = ref(false)
+onMounted(()=>{
+// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+if (localStorage.theme === 'light' || (!('theme' in localStorage) && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.documentElement.classList.remove('dark');
+  localStorage.theme = 'light';
+  isDark.value = false
+} else {
+  document.documentElement.classList.add('dark');
+  localStorage.theme = 'dark'
+  isDark.value = true;
+}
+
+})
+
+const toggleDarkMode = ()=>{
+  if (localStorage.theme === 'dark') {
+        localStorage.theme = 'light';
+        isDark.value = false;
+        document.documentElement.classList.remove('dark');
+        
+      } else {
+        localStorage.theme = 'dark';
+        isDark.value = true;
+        document.documentElement.classList.add('dark');
+      }
+}
 
 const sendEmail = async () => {
   const formData = JSON.stringify(formEmailData)
@@ -146,7 +173,7 @@ const changeProject = (value) => {
 </script>
 
 <template>
-  <div class="min-w-screen">
+  <div class="min-w-screen ">
     <Transition name="fade-jumbotron" appear>
       <div
         id="jumbotron"
@@ -156,7 +183,7 @@ const changeProject = (value) => {
         <Transition name="insert-intro" appear>
           <div>
             <nav
-              class="xyz-nested container w-full sticky flex flex-row justify-between max-w-6xl mx-auto"
+              class="relative r w-full md:sticky flex flex-row justify-between max-w-6xl mx-auto"
             >
               <div class="md:w-1/3 w-1/2 mx-auto">
                 <h2 class="text-white text-2xl text-center border py-1 bg-blac">
@@ -164,7 +191,7 @@ const changeProject = (value) => {
                 </h2>
               </div>
               <div
-                class="hidden md:flex flex-row container max-w-6xl text-white justify-end space-x-5 text-xl"
+                class="hidden md:flex flex-row container max-w-5xl text-white justify-center space-x-5 xl:text-xl"
               >
                 <a href="#introduction">Home</a>
                 <a href="#about-me">About Me</a>
@@ -174,6 +201,10 @@ const changeProject = (value) => {
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact Me</a>
               </div>
+              <button @click="toggleDarkMode" class="absolute right-0 top-0 h-8 w-8 dark:bg-white rounded-full p-1 border-2 border-black bg-black dark:border-white">
+                <img v-if="isDark" src="./assets/icons/dark-icon.png"/>
+                <img v-else src="./assets/icons/light-icon.png"/>
+              </button>
             </nav>
 
             <section id="introduction">
@@ -185,28 +216,28 @@ const changeProject = (value) => {
                     <h1 class="text-2xl font-semibold tracking-wider">
                       Hello, My name is Wryan Cartie Halim (陳瑞言)
                     </h1>
-                    <div class="mt-2 border-blue-600 border-b-2"></div>
+                    <div class="mt-2 border-blue-400 dark:border-blue-600 border-b-2"></div>
                     <p class="mt-2 max-w-lg leading-10 tracking-widest text-xl">
                       I am a
-                      <span class="text-blue-200 font-bold"
+                      <span class="text-blue-200 dark:text-blue-500 font-bold"
                         >Software Engineer
                       </span>
                       with a focus on building
-                      <span class="text-blue-200 font-bold"
+                      <span class="text-blue-200 dark:text-blue-500 font-bold"
                         >responsive and user-friendly
                       </span>
                       web applications using cutting-edge technologies. I am
                       passionate about delivering web application that meet your
                       unique goals and objectives,
-                      <span class="font-bold text-blue-200"
+                      <span class="font-bold text-blue-200 dark:text-blue-500"
                         >no matter how difficult or complex your requirements
-                        are </span
-                      >.
+                        are.</span
+                      >
                     </p>
 
                     <a
-                      href="#education"
-                      class="text-center bg-blue-500 border-2 border-blue-500 text-white w-1/2 mx-auto rounded-full hover:outline-none py-2 hover:bg-white hover:text-blue-500"
+                      href="#about-me"
+                      class="text-center dark:bg-blue-700 bg-blue-300 border-2 dark:border-blue-700 border-blue-300 text-white w-1/2 mx-auto rounded-full hover:outline-none py-2 dark:hover:bg-white hover:bg-white dark:hover:text-blue-700 hover:text-blue-300"
                     >
                       Learn more about me
                     </a>
@@ -227,24 +258,24 @@ const changeProject = (value) => {
       </div>
     </Transition>
     <Transition name="fade-content" appear>
-      <div>
+      <div id="content" class="text-black dark:text-white">
         <section id="about-me">
           <div class="mx-auto mt-20 container max-w-6xl">
             <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
               About me
             </h1>
-            <div class="w-1/4  mx-auto border-b-4 border-b-black mb-12"></div>
+            <div class="w-1/4  mx-auto border-b-4 border-b-black mb-12 dark:border-b-white"></div>
             <div
               class="flex flex-col space-y-4 md:flex-row md:justify-between md:space-y-0 md:space-x-8"
             >
             
               <img
                 src="./assets/images/about-me.png"
-                class="md:w-1/2 w-full md:object-contain p-2"
+                class="md:w-1/2 w-3/4 md:mx-0 mx-auto md:object-contain p-2"
               />
 
-              <div>
-                <p class="mt-2 md:max-w-xl leading-9 trackiong-wide lg:text-xl">
+              <div class="flex flex-col space-y-3">
+                <p class="mt-2 mx-auto max-w-lg md:max-w-xl leading-9 trackiong-wide lg:text-xl">
                   I'm a web developer based in Taichung, Taiwan, with 1.5 years
                   of hands-on experience in creating responsive and
                   user-friendly web applications. My passion for web development
@@ -252,7 +283,7 @@ const changeProject = (value) => {
                   making me a potential asset to anyone looking for a
                   passionate/creative developer.
                 </p>
-                <p class="mt-2 md:max-w-xl leading-9 tracking-wide lg:text-xl">
+                <p class="mt-2 mx-auto max-w-lg md:max-w-xl leading-9 tracking-wide lg:text-xl">
                   My expertise spans the full spectrum of web development
                   technologies. On the frontend, I excel in crafting captivating
                   user interfaces using HTML, CSS, JavaScript, TypeScript, and
@@ -262,7 +293,7 @@ const changeProject = (value) => {
                   comfortable working with both SQL and NoSQL databases, having
                   experience with MySQL and MongoDB.
                 </p>
-                <p class="mt-2 md:max-w-xl tracking-wide leading-9 lg:text-xl">
+                <p class="mt-2 mx-auto max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl">
                   As part as my commitment to become a better developer, I keep
                   honing my skills and learning new technologies. Most recently,
                   I expanded my skillset into Typescript, a js framework that
@@ -273,7 +304,7 @@ const changeProject = (value) => {
                   expanded my expertise in node.js, seeking to master GraphQL
                   and broaden my backend skills.
                 </p>
-                <p class="mt-2 md:max-w-xl tracking-wide leading-9 lg:text-xl">
+                <p class="mt-2 mx-auto max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl">
                   My mission is to turn your web development challenges into
                   innovative solutions. If you're seeking a self-driven
                   developer who can bring a unique blend of technical skills and
@@ -291,9 +322,9 @@ const changeProject = (value) => {
               <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
                 Education
               </h1>
-              <div class="w-1/4 mx-auto border-b-4 border-b-black mb-8"></div>
+              <div class="w-1/4 mx-auto border-b-4 border-b-black dark:border-b-white mb-8"></div>
               <div
-                class="flex flex-col md:flex-row justify-between md:space-x-16"
+                class="flex flex-col md:flex-row justify-between md:space-x-16 space-y-8 md:space-y-0"
               >
                 <!--Education Summary-->
                 <div class="max-w-2xl flex-1">
@@ -303,15 +334,15 @@ const changeProject = (value) => {
                       >| Graduation Date: June 2021</span
                     >
                   </h1>
-                  <div class="my-1 border-b-2 border-blue-500"></div>
+                  <div class="my-1 border-b-2 border-blue-500 dark:border-blue-700"></div>
 
-                  <p class="md:max-w-lg text-lg my-3">
+                  <p class="max-w-lg text-lg my-3 mx-auto">
                     <span class="font-semibold">Notable Cousework: </span>
                     Algorithms, Data Structures, Database, AI Python
                     Programming, Web Programming, C++, PHP Backend Programming,
                     Machine Learning Python, Java Programming.
                   </p>
-                  <p class="md:max-w-lg text-lg my-3">
+                  <p class="max-w-lg mx-auto text-lg my-3">
                     <span class="font-semibold">Thesis: </span>Integration of
                     Apache Kafka to Visualize WiFi positioning in 3D
                     Map(整合Apache Kafka於3D地圖之視覺化WiFi定位) )
@@ -319,15 +350,15 @@ const changeProject = (value) => {
                   <h3 class="text-lg font-semibold mt-4 my-2">
                     Notable Achievements:
                   </h3>
-                  <ul class="flex flex-col space-y-1 md:list-disc ml-1">
-                    <li class="md:max-w-lg text-lg text leading-8">
+                  <ul class="flex flex-col space-y-4 md:list-disc ml-1">
+                    <li class="mx-auto max-w-lg text-lg text leading-8">
                       Developed a responsive frontend for Tunghai University's
                       Tunghai_TAPG chemistry team as part of their iGEM 2019
                       competition project.
                     </li>
-                    <li class="list-none">
+                    <li class="list-none max-w-sm mx-auto">
                       <ul
-                        class="md:list-disc md:mx-5 md:tracking-normal tracking-wider"
+                        class="flex flex-col space-y-1 md:list-disc md:mx-5 md:tracking-normal tracking-wider"
                       >
                         <li>
                           Achieved this through six months of self-study in
@@ -344,15 +375,15 @@ const changeProject = (value) => {
                         </li>
                       </ul>
                     </li>
-                    <li class="max-w-lg text-lg leading-8">
+                    <li class="max-w-lg text-lg leading-8 mx-auto">
                       Developed an ALE web application using HTML/CSS,
                       JavaScript, and PHP as part of a thesis project to collect
                       and visualize Wi-Fi data usage at Tunghai University.
                       <ul
-                        class="md:list-disc tracking-wide md:tracking-normal md:mx-5"
+                        class=" flex flex-col p-1 md:list-disc tracking-wide  md:tracking-normal md:mx-5"
                       >
                         <li
-                          class="md:list-disc text-normal text-base leading-normal"
+                          class="md:list-disc max-w-sm mx-auto text-normal text-base leading-normal"
                         >
                           Additionally, implement Kafka in the project to
                           leverage it's real-time data stream processing to
@@ -407,21 +438,21 @@ const changeProject = (value) => {
                 <div class="mx-auto w-full">
                   <h1 class="text-3xl">Frontend Development</h1>
                   <div
-                    class="border border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400"
+                    class=" border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div
                     class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-1 border-whiteimage.png backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-[rgb(103,59,183)]"
                     >
                       <img
-                        src="./assets/logo/js-logo.png"
+                        src="./assets/logo/html-icon-dark.jpg"
                         class="w-full h-full object-cover hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/css-logo.png"
@@ -429,7 +460,7 @@ const changeProject = (value) => {
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/typescript-logo.png"
@@ -437,7 +468,7 @@ const changeProject = (value) => {
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/vue-logo.png"
@@ -445,27 +476,27 @@ const changeProject = (value) => {
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md px-3 py-6 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
-                        src="./assets/logo/css-logo.png"
-                        class="w-full h-full hover:scale-110 cursor-pointer"
+                        src="./assets/logo/tailwind-logo.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer "
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-1 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-1 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/react-logo.jpg"
-                        class="w-full h-full hover:scale-110 cursor-pointer"
+                        class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-2 px-1 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-2 px-1 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/next-logo.png"
-                        class="w-full h-full hover:scale-110 cursor-pointer"
+                        class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
                       />
                     </div>
                   </div>
@@ -473,13 +504,13 @@ const changeProject = (value) => {
                 <div class="mx-auto w-full">
                   <h1 class="text-3xl">Backend Development and Database</h1>
                   <div
-                    class="border-b-4 mx-auto w-1/2 mb-6 my-2 border-b-blue-400"
+                    class="border-b-4 mx-auto w-1/2 mb-6 my-2 border-b-blue-400 dark:border-blue-700" 
                   ></div>
                   <div
                     class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-4 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-4 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/node-logo.png"
@@ -487,7 +518,7 @@ const changeProject = (value) => {
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/express-logo.png"
@@ -495,7 +526,7 @@ const changeProject = (value) => {
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-3 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-3 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/php-logo.png"
@@ -503,7 +534,7 @@ const changeProject = (value) => {
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/laravel-logo.png"
@@ -512,7 +543,7 @@ const changeProject = (value) => {
                     </div>
 
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md px-4 py-5 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md px-4 py-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/mysql-logo.png"
@@ -520,7 +551,7 @@ const changeProject = (value) => {
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
                       <img
                         src="./assets/logo/mongodb-logo.jpg"
@@ -674,15 +705,15 @@ const changeProject = (value) => {
               <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
                 Experience
               </h1>
-              <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
+              <div class="w-1/4 mx-auto border-b-4 border-b-black dark:border-b-white mb-12"></div>
               <div
-                class="flex flex-col md:flex-row justify-between space-y-20 md:space-y-0 md:space-x-24"
+                class="flex flex-col md:flex-row justify-between space-y-20 md:space-y-0 md:space-x-24 d"
               >
                 <div
-                  class="bg-gray-100 left md:max-w-lg relative pt-20 rounded-lg shadow-md shadow-black"
+                  class="bg-gray-100 z-10 dark:bg-gray-700 left md:max-w-lg relative pt-20 rounded-lg shadow-md dark:shadow-sm dark:shadow-white shadow-black"
                 >
                   <div
-                    class="font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
+                    class="font-bold text-7xl text-cyan-200 dark:text-cyan-500 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 dark:bg-blue-700 left-1/2 -top-8 flex items-center justify-center"
                   >
                     1
                   </div>
@@ -690,7 +721,7 @@ const changeProject = (value) => {
                     July 2021 - February 2022
                   </h1>
                   <div
-                    class="border border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400"
+                    class="border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div class="p-6 px-8 text-left flex flex-col space-y-2">
                     <h1 class="text-2xl">Hosting Inside LTD</h1>
@@ -725,10 +756,10 @@ const changeProject = (value) => {
                   </div>
                 </div>
                 <div
-                  class="bg-gray-100 left md:max-w-lg relative pt-20 rounded-lg shadow-md shadow-black"
+                  class="z-10 bg-gray-100 dark:bg-gray-700 left md:max-w-lg relative pt-20 rounded-lg shadow-md shadow-black dark:shadow-white dark:shadow-sm"
                 >
                   <div
-                    class="font-bold text-7xl text-cyan-200 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 left-1/2 -top-8 flex items-center justify-center"
+                    class="font-bold text-7xl text-cyan-200 dark:text-cyan-500 absolute -translate-x-1/2 h-24 w-24 p-4 rounded-full bg-blue-400 dark:bg-blue-700 left-1/2 -top-8 flex items-center justify-center"
                   >
                     2
                   </div>
@@ -736,7 +767,7 @@ const changeProject = (value) => {
                     February 2022 - Present
                   </h1>
                   <div
-                    class="border border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400"
+                    class=" border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400 border-b-blue-700"
                   ></div>
                   <div class="p-6 px-8 text-left flex flex-col space-y-2">
                     <h1 class="text-2xl">Bluente</h1>
@@ -773,31 +804,32 @@ const changeProject = (value) => {
                     </ul>
                   </div>
                 </div>
-              </div>
-              <div
-                class="hidden absolute top-1/2 left-2 h-3 w-10/12 bg-blue-500 -z-10 md:block"
+                <div
+                class="hidden absolute top-1/2 left-0 h-3 w-1/2 z-0 bg-blue-500 dark:bg-blue-700 -translate-y-2  md:block"
               ></div>
           
               <div
-                class="absolute w-2 h-1/2 -z-10 left-1/2 top-1/2 -ml-1 bg-blue-200 md:hidden"
+                class="absolute w-3 h-1/2  left-1/2 top-0 -ml-1 z-0 bg-blue-200 md:hidden dark:bg-blue-400"
               ></div>
+              </div>
+             
             </div>
           </section>
           <section id="projects">
             <div class="container mt-16 py-8 text-center max-w-5xl mx-auto">
               <h1 class="text-3xl bold">Featured Projects</h1>
               <div
-                class="w-1/4 mx-auto border-b-4 border-b-black mt-2 mb-6"
+                class="w-1/2 md:w-1/4 mx-auto border-b-4 border-b-black dark:border-b-white mt-2 mb-6"
               ></div>
 
               <div
-                class="border-tl-2 p-16 border-br-2 relative max-w-4xl mx-auto"
+                class="border-tl-2 px-16 py-10 border-br-2 relative max-w-4xl mx-auto"
               >
                 <div
-                  class="-z-10 absolute top-0 left-0 border-t-2 border-l-2 border-blue-400 border-dashed h-full w-1/2"
+                  class="-ml-2 absolute top-0 left-0 border-t-2 border-l-2 border-blue-400 dark:border-blue-700 border-dashed h-full w-1/2"
                 ></div>
                 <div
-                  class="-z-10 absolute bottom-0 right-0 border-b-2 border-r-2 border-dashed border-blue-400 h-full w-1/2"
+                  class=" absolute bottom-0 right-0 border-b-2 border-r-2 border-dashed border-blue-400 dark:border-blue-700 ml-2 h-full w-1/2"
                 ></div>
                 <button
                   @click="changeProject(-1)"
@@ -808,7 +840,7 @@ const changeProject = (value) => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    class="h-20 w-20 text-blue-400"
+                    class="h-20 w-20 text-blue-400 dark:text-blue-700"
                   >
                     <path
                       stroke-linecap="round"
@@ -827,7 +859,7 @@ const changeProject = (value) => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    class="h-20 w-20 text-blue-400"
+                    class="h-20 w-20 text-blue-400 dark:text-blue-700"
                   >
                     <path
                       stroke-linecap="round"
@@ -845,11 +877,11 @@ const changeProject = (value) => {
                     {{ currentProject.name }}
                   </h1>
                   <div
-                    class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 mx-auto"
+                    class="border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 dark:border-b-blue-700 mx-auto"
                   ></div>
                   <img
                     :src="currentProject.introductionImageLink"
-                    class="px-4 select-none"
+                    class="px-6 select-none"
                   />
                   <p class="text-lg leading-8 max-w-sm mx-auto">
                     {{ currentProject.introduction }}
@@ -857,7 +889,7 @@ const changeProject = (value) => {
 
                   <button
                     @click="toggleProjectDetails"
-                    class="p-4 rounded-full bg-blue-400 w-1/2 mx-auto text-white border-blue-400 hover:bg-white hover:text-blue-400"
+                    class="z-20 p-4 rounded-full bg-blue-400 w-1/2 mx-auto text-white border-blue-400 dark:hover:bg-white  hover:bg-white hover:text-blue-400 dark:bg-blue-700 dark:hover:text-blue-700 dark:border-blue-700"
                   >
                     View Project Details
                   </button>
@@ -868,19 +900,19 @@ const changeProject = (value) => {
 
           <section id="contact">
             <div
-              class="container max-w-5xl my-10 mb-20 mx-auto flex flex-col space-y-8 items-center"
+              class="container max-w-5xl my-10 mb-20 mx-auto flex flex-col space-y-6 items-center"
             >
               <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
                 Contact Me
               </h1>
-              <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12"></div>
+              <div class="w-1/4 mx-auto border-b-4 border-b-black dark:border-b-white mb-12"></div>
 
               <h2 class="max-w-xl text-xl">Feel free to contact me by:</h2>
               <div
                 class="flex flex-col space-y-4 md:flex-row md:space-y-0 mt-4 md:space-x-8 justify-center items-center"
               >
                 <div
-                  class="hover:scale-110 cursor-pointer flex bg-gray-50 flex-row items-center space-x-2 border-2 p-4"
+                  class="hover:scale-110 cursor-pointer flex bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex-row items-center space-x-2 border-2 p-4"
                 >
                   <img
                     src="./assets/icons/email-icon.png"
@@ -890,7 +922,7 @@ const changeProject = (value) => {
                 </div>
                 <h1 class="text-xl">and</h1>
                 <div
-                  class="hover:scale-110 cursor-pointer bg-gray-50 flex flex-row items-center space-x-2 border-2 p-4"
+                  class="hover:scale-110 cursor-pointer bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex flex-row items-center space-x-2 border-2 p-4"
                 >
                   <img
                     src="./assets/icons/phone-icon.png"
@@ -903,11 +935,11 @@ const changeProject = (value) => {
 
               <form
                 @submit.prevent="sendEmail"
-                class="p-8 px-10 w-full md:w-1/2 border-2 mx-auto flex flex-col space-y-4"
+                class="p-8 px-10 w-full md:w-1/2 border-2 dark:bg dark:border-gray-700 mx-auto flex flex-col space-y-4"
               >
                 <h1 class="text-2xl font-semibold">Contact Form</h1>
                 <div
-                  class="border border-b-4 w-full md:w-1/2 mb-6 my-2 border-b-blue-400"
+                  class=" border-b-4 w-full md:w-1/2 mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                 ></div>
                 <label class="">Name</label>
                 <input
@@ -933,7 +965,7 @@ const changeProject = (value) => {
                   class="w-full h-56 text-lg p-1 px-2 border-black border"
                 />
                 <button
-                  class="w-full md:w-1/2 md:mx-0 mx-auto border-blue-400 bg-blue-400 text-white p-3 px-4 rounded-full text-lg hover:bg-white hover:text-blue-400"
+                  class="w-full md:w-1/2 md:mx-0 mx-auto border-blue-400 bg-blue-400 text-white p-3 px-4 rounded-full text-lg hover:bg-white hover:text-blue-400 dark:bg-blue-700 dark:border-blue-700 dark:hover:text-blue-700 dark:hover:bg-white"
                 >
                   Submit Form
                 </button>
@@ -941,9 +973,9 @@ const changeProject = (value) => {
             </div>
           </section>
         </div>
-        <footer id="footer" class="bg-black text-white mt-10">
+        <footer id="footer" class="bg-black text-white mt-10 dark:bg-gray-700">
           <!--Footer Container-->
-          <div class="bg-black max-w-6xl mx-auto py-12 p-6">
+          <div class=" max-w-6xl mx-auto py-12 p-6 ">
             <!--Menu bar-->
             <div
               class="flex flex-col space-y-8 md:flex-row justify-between items-center md:space-y-0"
@@ -994,7 +1026,12 @@ const changeProject = (value) => {
                   />
                 </a>
               </div>
+             
+
             </div>
+            <div class="flex flex-col w-fit mx-auto md:mx-0 md:w-1/2 lg:w-fit mt-4">
+                <a href="https://www.flaticon.com/free-icons/light" title="light icons">Light icons created by Freepik - Flaticon</a>
+              </div>
           </div>
         </footer>
       </div>
@@ -1003,20 +1040,20 @@ const changeProject = (value) => {
       <div
         @click="toggleProjectDetails"
         v-if="showProjectModal"
-        class="fixed inset-0 py-16 flex items-center justify-center z-50 opacity-100 bg-black m-2"
+        class="fixed inset-0 py-16 dark:bg-gray-800 flex items-center justify-center z-50 opacity-100 bg-black m-2"
       >
         <Transition name="fade-modal">
           <div
             v-if="showModalContent"
             @click.stop
-            class="bg-white overflow-scroll md:overflow-hidden max-h-screen relative w-4/5 xl:w-3/5 p-4 rounded-lg shadow-lg"
+            class="bg-white dark:bg-gray-600 dark:text-white overflow-y-scroll xl:overflow-hidden opacity-100 max-h-screen relative w-4/5 xl:w-3/4 p-4 rounded-lg shadow-lg"
           >
             <div
-              class="absolute flex items-center justify-center h-8 w-8 hover:bg-red-500 right-0 top-0"
+              class="absolute flex items-center justify-center top-0 h-8 w-8 hover:bg-red-500 right-0 translate-y-2 dark:border-black "
             >
               <button
                 @click="toggleProjectDetails"
-                class="hover:outline-none text-2xl w-full h-full"
+                class="hover:outline-none text-2xl w-full h-full self-center"
               >
                 X
               </button>
@@ -1024,25 +1061,25 @@ const changeProject = (value) => {
             <!-- Modal content goes here -->
 
             <div
-              class="relative flex flex-col space-y-2 md:space-y-4 items-center justify-center text-center"
+              class="relative flex flex-col space-y-2  items-center justify-center text-center"
             >
               <div class="text-2xl font-semibold select-none">
                 {{ currentProject.name }}
               </div>
               <div
-                class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400"
+                class=" border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
               ></div>
 
-              <p class="text-lg md:text-xl xl:text-2xl font-semibold">
+              <p class="text-md lg:text-lg xl:text-xl font-semibold">
                 {{ currentProject.role }}
               </p>
               <p
-                class="leading-6 md:leading-9 md:text-lg tracking-wider xl:text-xl"
+                class="leading-6 md:leading-9 md:text-md tracking-wider xl:text-lg"
               >
                 {{ currentProject.description }}
               </p>
               <p
-                class="leading-6 md:leading-9 xl:text-lg md:tracking-wide px-10"
+                class="leading-6 md:leading-7 xl:text-md md:tracking-wide xl:tracking-tight px-10"
               >
                 {{ currentProject.remarks }}
               </p>
@@ -1051,7 +1088,7 @@ const changeProject = (value) => {
               >
                 <div class="w-full md:w-3/4 px-10">
                   <h1
-                    class="mt-4 text-2xl leading-8 font-semibold mb-2 tracking-wide"
+                    class=" text-2xl leading-8 font-semibold mb-2 tracking-wide"
                   >
                     Tech Stack
                   </h1>
@@ -1063,7 +1100,7 @@ const changeProject = (value) => {
                         currentProject.technologies,
                       )"
                       :key="tech"
-                      class="group bg-opacity-20 border-2 backdrop-blur-md px-3 py-6 rounded-full shadow-lg h-24 w-24"
+                      class="group bg-opacity-20 border-2 backdrop-blur-md px-2 py-4 rounded-full shadow-lg h-16 w-16"
                     >
                       <img
                         :src="tech"
@@ -1075,39 +1112,37 @@ const changeProject = (value) => {
                 </div>
                 <div class="w-full mx-auto md:w-3/4 mb-4 md:mb-0">
                   <h1
-                    class="md:mb-0 mt-4 text-2xl leading-8 font-semibold mb-2 tracking-wide"
+                    class="md:mb-0  text-2xl leading-8 font-semibold mb-2 tracking-wide"
                   >
                     Project Links
                   </h1>
                   <div class="flex flex-row space-x-4 justify-center">
                     <a
                       :href="currentProject.githubLink"
-                      class="group bg-opacity-20 border-2 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
+                      class="group bg-opacity-20 border-2 mt-1 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
                     >
                       <img
                         src="./assets/icons/github-icon.png"
-                        class="w-full h-full group-hover:scale-125"
+                        class="w-full h-full group-hover:scale-125 rounded-full"
                       />
-                      <h1 class="mt-2 text-lg">Github</h1>
+                  
                       {{}}
                     </a>
                     <a
                       :href="currentProject.hostedLink"
                       v-if="currentProject.hosted"
-                      class="p-2 group bg-opacity-20 border-2 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
+                      class="p-2 group bg-opacity-20 border-2 mt-1 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
                     >
                       <img
                         src="./assets/icons/hosting-icon.png"
-                        class="w-full h-full group-hover:scale-125 rounded-full"
+                        class="w-full h-full group-hover:scale-110 rounded-full"
                       />
-                      <h1 class="mt-4 text-lg">{{ currentProject.hosting }}</h1>
+                     
                     </a>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="w-full h-fit mt-5 px-12 relative">
+              <div class="w-full  my-0 px-12 relative">
               <button
                 @click="changeProjectImg(-1)"
                 class="absolute left-0 top-1/2 -translate-y-1/2 "
@@ -1148,15 +1183,18 @@ const changeProject = (value) => {
               </button>
 
               <h1
-                class="text-center mt-12 md:mb-2 text-2xl font-bold tracking-wide px-0 select-none"
+                class="text-center mt-1 md:mb-2 text-2xl font-bold tracking-wide px-0 select-none"
               >
                 Project Images
               </h1>
               <img
-                class="md:w-[800px] p-4 md:mx-auto object-contain md:h-[340px] select-none"
+                class="md:w-[640px] p-4 py-0 pt-1 md:mx-auto object-contain md:h-[260px] select-none"
                 :src="generateProjectUrl(currentProject.imagesLink[projectNum])"
               />
             </div>
+            </div>
+
+           
           </div>
         </Transition>
       </div>
@@ -1166,7 +1204,7 @@ const changeProject = (value) => {
 
 <style scoped>
 .insert-intro-enter-from {
-  transform: translateX(100px);
+  transform: translateX(300px);
 }
 
 .insert-intro-enter-to {
