@@ -270,7 +270,7 @@ const changeProject = (value) => {
 
                     <a
                       href="#about-me"
-                      class="text-center dark:bg-blue-700 bg-blue-300 border-2 dark:border-blue-700 border-blue-300 text-white w-1/2 mx-auto rounded-full hover:outline-none py-2 dark:hover:bg-white hover:bg-white dark:hover:text-blue-700 hover:text-blue-300"
+                      class="text-center dark:bg-blue-700 bg-blue-300 border-2 dark:border-blue-700 border-blue-300 text-white sm:w-1/2 mx-auto w-full rounded-full hover:outline-none py-2 dark:hover:bg-white hover:bg-white dark:hover:text-blue-700 hover:text-blue-300"
                     >
                       Learn more about me
                     </a>
@@ -294,10 +294,10 @@ const changeProject = (value) => {
       <div id="content" class="text-black dark:text-white">
         <section id="about-me">
           <div class="mx-auto mt-20 container max-w-6xl">
-            <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
+            <h1 class="section-title">
               About me
             </h1>
-            <div class="w-1/4  mx-auto border-b-4 border-b-black mb-12 dark:border-b-white"></div>
+            <div class="section-line"></div>
             <div
               class="flex flex-col space-y-4 md:flex-row md:justify-between md:space-y-0 md:space-x-8"
             >
@@ -308,7 +308,7 @@ const changeProject = (value) => {
               />
 
               <div class="flex flex-col space-y-3">
-                <p class="mt-2 mx-auto max-w-lg md:max-w-xl leading-9 trackiong-wide lg:text-xl">
+                <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl leading-9 trackiong-wide lg:text-xl">
                   I'm a web developer based in Taichung, Taiwan, with 1.5 years
                   of hands-on experience in creating responsive and
                   user-friendly web applications. My passion for web development
@@ -316,7 +316,7 @@ const changeProject = (value) => {
                   making me a potential asset to anyone looking for a
                   passionate/creative developer.
                 </p>
-                <p class="mt-2 mx-auto max-w-lg md:max-w-xl leading-9 tracking-wide lg:text-xl">
+                <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl leading-9 tracking-wide lg:text-xl">
                   My expertise spans the full spectrum of web development
                   technologies. On the frontend, I excel in crafting captivating
                   user interfaces using HTML, CSS, JavaScript, TypeScript, and
@@ -326,7 +326,7 @@ const changeProject = (value) => {
                   comfortable working with both SQL and NoSQL databases, having
                   experience with MySQL and MongoDB.
                 </p>
-                <p class="mt-2 mx-auto max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl">
+                <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl">
                   As part as my commitment to become a better developer, I keep
                   honing my skills and learning new technologies. Most recently,
                   I expanded my skillset into Typescript, a js framework that
@@ -337,7 +337,7 @@ const changeProject = (value) => {
                   expanded my expertise in node.js, seeking to master GraphQL
                   and broaden my backend skills.
                 </p>
-                <p class="mt-2 mx-auto max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl">
+                <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl">
                   My mission is to turn your web development challenges into
                   innovative solutions. If you're seeking a self-driven
                   developer who can bring a unique blend of technical skills and
@@ -352,10 +352,10 @@ const changeProject = (value) => {
         <div class="px-12 w-screen">
           <section id="education">
             <div class="mx-auto mt-20 container max-w-6xl">
-              <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
+              <h1 class="section-title">
                 Education
               </h1>
-              <div class="w-1/4 mx-auto border-b-4 border-b-black dark:border-b-white mb-8"></div>
+              <div class="section-line"></div>
               <div
                 class="flex flex-col md:flex-row justify-between md:space-x-16 space-y-8 md:space-y-0"
               >
@@ -389,9 +389,9 @@ const changeProject = (value) => {
                       Tunghai_TAPG chemistry team as part of their iGEM 2019
                       competition project.
                     </li>
-                    <li class="list-none max-w-sm mx-auto">
+                    
                       <ul
-                        class="flex flex-col space-y-1 md:list-disc md:mx-5 md:tracking-normal tracking-wider"
+                        class="flex flex-col space-y-1 md:list-disc max-w-sm mx-auto md:tracking-normal tracking-wider"
                       >
                         <li>
                           Achieved this through six months of self-study in
@@ -407,13 +407,12 @@ const changeProject = (value) => {
                           a silver medal in the competition.
                         </li>
                       </ul>
-                    </li>
                     <li class="max-w-lg text-lg leading-8 mx-auto">
                       Developed an ALE web application using HTML/CSS,
                       JavaScript, and PHP as part of a thesis project to collect
                       and visualize Wi-Fi data usage at Tunghai University.
                       <ul
-                        class=" flex flex-col p-1 md:list-disc tracking-wide  md:tracking-normal md:mx-5"
+                        class=" flex flex-col space-y-1 md:list-disc mx-auto max-w-sm md:tracking-normal tracking-wider"
                       >
                         <li
                           class="md:list-disc max-w-sm mx-auto text-normal text-base leading-normal"
@@ -460,10 +459,10 @@ const changeProject = (value) => {
           </section>
           <section id="skills">
             <div class="container mt-10 p-10 max-w-6xl mx-auto">
-              <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
+              <h1 class="section-title">
                 Skills
               </h1>
-              <div class="w-1/4 mx-auto border-b-4 border-b-black mb-12 dark:border-b-white"></div>
+              <div class="section-line"></div>
               <div
                 class="flex flex-col max-w-5xl mx-auto space-y-16 text-center"
               >
@@ -816,10 +815,10 @@ const changeProject = (value) => {
           </section>
           <section id="experience">
             <div class="container relative mt-10 max-w-6xl mx-auto">
-              <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
+              <h1 class="section-title">
                 Experience
               </h1>
-              <div class="w-1/4 mx-auto border-b-4 border-b-black dark:border-b-white mb-12"></div>
+              <div class="section-line"></div>
               <div
                 class="flex flex-col md:flex-row justify-between space-y-20 md:space-y-0 md:space-x-24 d"
               >
@@ -931,9 +930,9 @@ const changeProject = (value) => {
           </section>
           <section id="projects">
             <div class="container mt-16 py-8 text-center max-w-5xl mx-auto">
-              <h1 class="text-3xl bold">Featured Projects</h1>
+              <h1 class="section-title">Featured Projects</h1>
               <div
-                class="w-1/2 md:w-1/4 mx-auto border-b-4 border-b-black dark:border-b-white mt-2 mb-6"
+                class="  sm:w-1/3 w-1/2  mx-auto border-b-4 border-b-black mb-12 dark:border-b-white my-4"
               ></div>
 
               <div
@@ -1014,12 +1013,12 @@ const changeProject = (value) => {
 
           <section id="contact">
             <div
-              class="container max-w-5xl my-10 mb-20 mx-auto flex flex-col space-y-6 items-center"
+              class="container max-w-5xl my-10 mb-20 mx-auto flex flex-col space-y-7 items-center"
             >
-              <h1 class="text-center text-4xl mt-5 mb-2 font-semibold">
+              <h1 class="section-title">
                 Contact Me
               </h1>
-              <div class="w-1/4 mx-auto border-b-4 border-b-black dark:border-b-white mb-12"></div>
+              <div class="section-line"></div>
 
               <h2 class="max-w-xl text-xl">Feel free to contact me by:</h2>
               <div
