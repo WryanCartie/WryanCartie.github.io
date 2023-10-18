@@ -619,62 +619,47 @@ const changeProject = (value) => {
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img v-if="!isDark"
+                      <img 
                         src="./assets/logo/vscode-logo.png"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
-                      <img v-else
-                        src="./assets/logo/vscode-logo-dark.png"
-                        class="w-full h-full hover:scale-110 cursor-pointer"
-                      />
+                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img v-if="!isDark"
+                      <img 
                         src="./assets/logo/git-logo.png"
                         class="w-full h-full rounded-full hover:scale-110 cursor-pointer"
                       />
-                      <img v-else
-                        src="./assets/logo/git-logo-dark.png"
-                        class="w-full h-full rounded-full hover:scale-110 cursor-pointer"
-                      />
+                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img v-if="!isDark"
+                      <img 
                         src="./assets/logo/jest-logo.png"
                         class="bg-white w-full h-full object-cover hover:scale-110 cursor-pointer"
                       />
-                      <img v-else
-                        src="./assets/logo/jest-logo-dark.png"
-                        class="bg-white w-full h-full object-cover hover:scale-110 cursor-pointer"
-                      />
+                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-6 px-3 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img v-if="!isDark"
+                      <img 
                         src="./assets/logo/kafka-logo.png"
                         class="w-full rounded-full h-full hover:scale-110 cursor-pointer"
                       />
-                      <img v-else
-                        src="./assets/logo/kafka-logo-dark.png"
-                        class="w-full rounded-full h-full hover:scale-110 cursor-pointer"
-                      />
+                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img v-if="!isDark"
+                      <img 
                         src="./assets/logo/xampp-logo.png"
                         class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
                       />
-                      <img v-else
-                        src="./assets/logo/xampp-logo-dark.png"
-                        class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
-                      />
+                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-1 rounded-full shadow-lg h-24 w-24 dark:bg-white"
