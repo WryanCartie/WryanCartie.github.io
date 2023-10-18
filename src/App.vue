@@ -473,7 +473,7 @@ const changeProject = (value) => {
                     class=" border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div
-                    class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center"
+                    class="grid grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
                       class="bg-opacity-20 border-2  backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
@@ -567,7 +567,7 @@ const changeProject = (value) => {
                     class="border-b-4 mx-auto w-1/2 mb-6 my-2 border-b-blue-400 dark:border-blue-700" 
                   ></div>
                   <div
-                    class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center"
+                    class="grid grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-4 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
@@ -651,7 +651,7 @@ const changeProject = (value) => {
                     class="border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div
-                    class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center"
+                    class="grid grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
@@ -724,7 +724,7 @@ const changeProject = (value) => {
                     
                   </div>
                 </div>
-                <div class="mx-auto w-3/4">
+                <div class="mx-auto w-full sm:w-3/4">
                   <h1 class="text-3xl">Languages</h1>
                   <div
                     class="border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 dark:border-b-blue-700 mx-auto"
@@ -732,7 +732,7 @@ const changeProject = (value) => {
                   <div
                     class="flex flex-col space-y-10 my-2 items-center justify-center w-full"
                   >
-                    <div class="flex flex-row space-x-8 w-3/4 mx-auto">
+                    <div class="flex flex-row space-x-8 w-full sm:w-3/4 mx-auto">
                       <div
                         class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                       >
@@ -757,7 +757,7 @@ const changeProject = (value) => {
                         </div>
                       </div>
                     </div>
-                    <div class="flex flex-row space-x-8 w-3/4 mx-auto">
+                    <div class="flex flex-row space-x-8 w-full sm:w-3/4 mx-auto">
                       <div
                         class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                       >
@@ -782,7 +782,7 @@ const changeProject = (value) => {
                         </div>
                       </div>
                     </div>
-                    <div class="flex flex-row space-x-8 w-3/4 mx-auto">
+                    <div class="flex flex-row space-x-8 w-full sm:w-3/4 mx-auto">
                       <div
                         class="group bg-opacity-20 border-2 backdrop-blur-md py-6 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                       >
@@ -1002,7 +1002,7 @@ const changeProject = (value) => {
 
                   <button
                     @click="toggleProjectDetails"
-                    class="z-20 p-4 rounded-full bg-blue-400 w-1/2 mx-auto text-white border-blue-400 dark:hover:bg-white  hover:bg-white hover:text-blue-400 dark:bg-blue-700 dark:hover:text-blue-700 dark:border-blue-700"
+                    class="z-20 p-4 rounded-full bg-blue-400 w-full md:w-1/2 mx-auto text-white border-blue-400 dark:hover:bg-white  hover:bg-white hover:text-blue-400 dark:bg-blue-700 dark:hover:text-blue-700 dark:border-blue-700"
                   >
                     View Project Details
                   </button>
@@ -1025,7 +1025,7 @@ const changeProject = (value) => {
                 class="flex flex-col space-y-4 md:flex-row md:space-y-0 mt-4 md:space-x-8 justify-center items-center"
               >
                 <div
-                  class="hover:scale-110 cursor-pointer flex bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex-row items-center space-x-2 border-2 p-4"
+                  class="hover:scale-110  cursor-pointer flex bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex-row items-center space-x-2 border-2 p-4 rounded-lg"
                 >
                   <img
                     src="./assets/icons/email-icon.png"
@@ -1033,9 +1033,9 @@ const changeProject = (value) => {
                   />
                   <h1 class="item text-xl">wryancartie@gmail.com</h1>
                 </div>
-                <h1 class="text-xl">and</h1>
+                <h1 class="text-xl ">and</h1>
                 <div
-                  class="hover:scale-110 cursor-pointer bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex flex-row items-center space-x-2 border-2 p-4"
+                  class="hover:scale-110 cursor-pointer bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex flex-row items-center space-x-2 border-2 p-4 rounded-lg md:w-fit sm:w-full"
                 >
                   <img
                     src="./assets/icons/phone-icon.png"
@@ -1267,7 +1267,7 @@ const changeProject = (value) => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  class="h-20 w-20 text-blue-400 dark:text-blue-700"
+                  class="w-10 h-10 md:h-20 md:w-20 text-blue-400 dark:text-blue-700"
                 >
                   <path
                     stroke-linecap="round"
@@ -1286,7 +1286,7 @@ const changeProject = (value) => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  class="h-20 w-20 text-blue-400 dark:text-blue-700"
+                  class="w-10 h-10 md:h-20 md:w-20 text-blue-400 dark:text-blue-700"
                 >
                   <path
                     stroke-linecap="round"
@@ -1298,7 +1298,7 @@ const changeProject = (value) => {
               </button>
 
               <h1
-                class="text-center mt-1 md:mb-2 text-2xl font-bold tracking-wide px-0 select-none"
+                class="md:block hidden text-center mt-1 md:mb-2 text-2xl font-bold tracking-wide px-0 select-none"
               >
                 Project Images
               </h1>
