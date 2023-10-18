@@ -16,7 +16,7 @@ const projects = reactive([
     hostedLink: "https://clancraft-army-manager-frontend.onrender.com",
     githubLink: "https://github.com/7GCraft/Clancraft-Army-Manager",
     role: "Role: Project Manager, Lead Developer (Vue/Node.js), Designer",
-    hosting: "Firebase (Outdated)",
+    hosting: "firebase",
     remarks:
       "This project allows me to improve my skills in building functional front-ends using Vue and Tailwind CSS from scratch to build a user-friendly app for a specific purpose. Additionally, this project  hone my skills in Node/Express.js and how to handle JSON data from the FE to the BE and vice versa. Lastly, the custom, changing requirements of the project improve my ability to develop new features in order to adapt to changing circumstances of the project. ",
     imagesLink: ["cam-1", "cam-2", "cam-3", "cam-4"],
@@ -50,7 +50,7 @@ const projects = reactive([
       "This app taught me how to work in a fullstack envinronment, from the React FE to the Node backend, in order to create a hollistic app that connects seamlessly between the FE and the BE. The project also allow to implement key features in React, such as state-management and client-side routing. Lastly, it taught me how to work with Non-SQL database, especially with MongoDB and how to do CRUD operations to it using Node/Express.js.",
     role: "Sole Fullstack Developer (MERN), Designer",
     hosted: true,
-    hosting: "Render",
+    hosting: "render",
     hostedLink: "https://favourite-places-app-mern.onrender.com/",
     githubLink: "https://github.com/WryanCartie/MERN-Fullstack-Application",
     imagesLink: [
@@ -79,8 +79,18 @@ const changeProjectImg = (val) => {
   }
 };
 
+const generateHostingUrl = (hosting) => {
+   
+    return new URL(`./assets/logo/${hosting}-logo.png`, import.meta.url).href;
+
+};
+
+
+
+
 const generateTechUrl = (techs) => {
   let techUrl = techs.map((tech) => {
+   
     return new URL(`./assets/logo/${tech}-logo.png`, import.meta.url).href;
   });
   return techUrl;
@@ -90,6 +100,7 @@ const generateProjectUrl = (img) => {
   let imgUrl = new URL(`./assets/images/${img}.png`, import.meta.url).href;
   return imgUrl;
   /*
+  
   let imgUrl = imgs.map(img=>{
     return new URL(`./assets/images/${img}.png`, import.meta.url).href
   }) */
@@ -466,58 +477,86 @@ const changeProject = (value) => {
                     class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
-                      class="bg-opacity-20 border-1 border-whiteimage.png backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-[#004080]"
+                      class="bg-opacity-20 border-2  backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
-                        src="./assets/logo/html-icon-dark.jpg"
+                      <img v-if="!isDark" src="./assets/logo/js-logo.png"
+                      class="w-full h-full object-cover hover:scale-110 cursor-pointer"/>
+                      <img v-else
+                        src="./assets/logo/js-logo-dark.png"
+                        
                         class="w-full h-full object-cover hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue border-2"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/css-logo.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer "
+                      />
+                      <img v-else
+                        src="./assets/logo/css-logo-dark.png"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-[#004080]"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
-                        src="./assets/logo/typescript-logo-dark.jpg"
+                      <img v-if="!isDark"
+                        src="./assets/logo/typescript-logo.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer"
+                      />
+                      <img v-else
+                        src="./assets/logo/typescript-logo-dark.png"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/vue-logo.png"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
+                      <img v-else
+                        src="./assets/logo/vue-logo-dark.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer"
+                      />
+                      
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md px-3 py-6 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md px-4 py-7 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/tailwind-logo.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer "
+                      />
+                      <img v-else
+                        src="./assets/logo/tailwind-logo-dark.png"
                         class="w-full h-full hover:scale-110 cursor-pointer "
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-1 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
-                        src="./assets/logo/react-logo.jpg"
-                        class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
+                      <img v-if="!isDark"
+                        src="./assets/logo/react-logo.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer "
+                      />
+                      <img v-else
+                        src="./assets/logo/react-logo-dark.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer "
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-2 px-1 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-2 px-1 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/next-logo.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
+                      />
+                      <img v-else
+                        src="./assets/logo/next-logo-dark.png"
                         class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
                       />
                     </div>
@@ -532,51 +571,75 @@ const changeProject = (value) => {
                     class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-4 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-4 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/node-logo.png"
+                        class="w-full h-full scale:50 md:scale-100 hover:scale-110 cursor-pointer"
+                      />
+                      <img v-else
+                        src="./assets/logo/node-logo-dark.png"
                         class="w-full h-full scale:50 md:scale-100 hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/express-logo.png"
                         class="w-full h-full rounded-full hover:scale-110 cursor-pointer"
                       />
+                      <img v-else
+                        src="./assets/logo/express-logo-dark.png"
+                        class="w-full h-full rounded-lg hover:scale-110 cursor-pointer bg-white"
+                      />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-3 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-3 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/php-logo.png"
+                        class="w-full rounded-full h-full object-fit hover:scale-110 cursor-pointer"
+                      />
+                      <img v-else
+                        src="./assets/logo/php-logo-dark.png"
                         class="w-full rounded-full h-full object-fit hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/laravel-logo.png"
+                        class="w-full h-full rounded-lg hover:scale-110 cursor-pointer"
+                      />
+                      <img v-else
+                        src="./assets/logo/laravel-logo-dark.png"
                         class="w-full h-full rounded-lg hover:scale-110 cursor-pointer"
                       />
                     </div>
 
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md px-4 py-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md px-4 py-5 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/mysql-logo.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer"
+                      />
+                      <img v-else
+                        src="./assets/logo/mysql-logo-dark.png"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
-                        src="./assets/logo/mongodb-logo.jpg"
+                      <img v-if="!isDark"
+                        src="./assets/logo/mongodb-logo.png"
+                        class="w-full h-full object-fit rounded-full hover:scale-110 cursor-pointer"
+                      />
+                      <img v-else
+                        src="./assets/logo/mongodb-logo-dark.png"
                         class="w-full h-full object-fit rounded-full hover:scale-110 cursor-pointer"
                       />
                     </div>
@@ -586,57 +649,86 @@ const changeProject = (value) => {
                 <div class="mx-auto w-full">
                   <h1 class="text-3xl">Testing and Tools</h1>
                   <div
-                    class="border border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400"
+                    class="border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div
                     class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/vscode-logo.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer"
+                      />
+                      <img v-else
+                        src="./assets/logo/vscode-logo-dark.png"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/git-logo.png"
+                        class="w-full h-full rounded-full hover:scale-110 cursor-pointer"
+                      />
+                      <img v-else
+                        src="./assets/logo/git-logo-dark.png"
                         class="w-full h-full rounded-full hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/jest-logo.png"
+                        class="bg-white w-full h-full object-cover hover:scale-110 cursor-pointer"
+                      />
+                      <img v-else
+                        src="./assets/logo/jest-logo-dark.png"
                         class="bg-white w-full h-full object-cover hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-6 px-3 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-6 px-3 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
-                        src="./assets/logo/kafka-logo.jpg"
+                      <img v-if="!isDark"
+                        src="./assets/logo/kafka-logo.png"
+                        class="w-full rounded-full h-full hover:scale-110 cursor-pointer"
+                      />
+                      <img v-else
+                        src="./assets/logo/kafka-logo-dark.png"
                         class="w-full rounded-full h-full hover:scale-110 cursor-pointer"
                       />
                     </div>
                     <div
-                      class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
                     >
-                      <img
+                      <img v-if="!isDark"
                         src="./assets/logo/xampp-logo.png"
                         class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
                       />
+                      <img v-else
+                        src="./assets/logo/xampp-logo-dark.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
+                      />
                     </div>
+                    <div
+                      class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-1 rounded-full shadow-lg h-24 w-24 dark:bg-darkBlue"
+                    >
+                      <img
+                        src="./assets/logo/firebase-logo.png"
+                        class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
+                      />
+                    </div>
+                    
                   </div>
                 </div>
                 <div class="mx-auto w-3/4">
                   <h1 class="text-3xl">Languages</h1>
                   <div
-                    class="border border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 mx-auto"
+                    class="border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 dark:border-b-blue-700 mx-auto"
                   ></div>
                   <div
                     class="flex flex-col space-y-10 my-2 items-center justify-center w-full"
@@ -661,7 +753,7 @@ const changeProject = (value) => {
                           class="w-full mx-auto self-end bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
                         >
                           <div
-                            class="bg-orange-500 h-2.5 w-1/2 rounded-full"
+                            class="bg-orange-500 dark:bg-orange-600 h-2.5 w-1/2 rounded-full"
                           ></div>
                         </div>
                       </div>
@@ -686,7 +778,7 @@ const changeProject = (value) => {
                           class="w-full mx-auto self-end bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
                         >
                           <div
-                            class="bg-orange-500 h-2.5 w-full rounded-full"
+                            class="bg-orange-500 dark:bg-orange-600 h-2.5 w-full rounded-full"
                           ></div>
                         </div>
                       </div>
@@ -711,7 +803,7 @@ const changeProject = (value) => {
                           class="w-full mx-auto self-end bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
                         >
                           <div
-                            class="bg-orange-500 h-2.5 w-full rounded-full"
+                            class="bg-orange-500 dark:bg-orange- h-2.5 w-full rounded-full"
                           ></div>
                         </div>
                       </div>
@@ -1122,7 +1214,7 @@ const changeProject = (value) => {
                         currentProject.technologies,
                       )"
                       :key="tech"
-                      class="group bg-opacity-20 border-2 backdrop-blur-md px-2 py-4 rounded-full shadow-lg h-16 w-16"
+                      class=" cursor-pointer group dark:bg-white bg-opacity-20 border-2 backdrop-blur-md px-2 py-4 rounded-full shadow-lg h-16 w-16"
                     >
                       <img
                         :src="tech"
@@ -1141,7 +1233,7 @@ const changeProject = (value) => {
                   <div class="flex flex-row space-x-4 justify-center">
                     <a
                       :href="currentProject.githubLink"
-                      class="group bg-opacity-20 border-2 mt-1 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
+                      class="group bg-opacity-20 border-2 mt-1 backdrop-blur-md p-2 dark:bg-white rounded-full shadow-lg h-20 w-20"
                     >
                       <img
                         src="./assets/icons/github-icon.png"
@@ -1153,12 +1245,14 @@ const changeProject = (value) => {
                     <a
                       :href="currentProject.hostedLink"
                       v-if="currentProject.hosted"
-                      class="p-2 group bg-opacity-20 border-2 mt-1 backdrop-blur-md rounded-full shadow-lg h-20 w-20"
+                      class=" group bg-opacity-20 border-2 mt-1 backdrop-blur-md rounded-full shadow-lg p-1 h-20 w-20 dark:bg-white"
                     >
-                      <img
-                        src="./assets/icons/hosting-icon.png"
-                        class="w-full h-full group-hover:scale-110 rounded-full"
+                      <img 
+                        :src="generateHostingUrl(currentProject.hosting)"
+                        class="w-full h-full group-hover:scale-110  object-contain rounded-full"
                       />
+                   
+
                      
                     </a>
                   </div>
