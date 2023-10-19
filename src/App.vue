@@ -260,14 +260,15 @@ const changeProject = (value) => {
                         >responsive and user-friendly
                       </span>
                       web applications using cutting-edge technologies. I am
-                      passionate about delivering web application that meet your
+                      passionate about delivering tailored web application that meet your
                       unique goals and objectives,
                       <span class="font-bold text-blue-200 dark:text-blue-500"
                         >no matter how difficult or complex your requirements
-                        are.</span
+                        are.</span 
                       >
+                      Learn more about me to see my work in action.
                     </p>
-
+                
                     <a
                       href="#about-me"
                       class="text-center dark:bg-blue-700 bg-blue-300 border-2 dark:border-blue-700 border-blue-300 text-white sm:w-1/2 mx-auto w-full rounded-full hover:outline-none py-2 dark:hover:bg-white hover:bg-white dark:hover:text-blue-700 hover:text-blue-300"
@@ -309,41 +310,16 @@ const changeProject = (value) => {
 
               <div class="flex flex-col space-y-3">
                 <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl leading-9 trackiong-wide lg:text-xl">
-                  I'm a web developer based in Taichung, Taiwan, with 1.5 years
-                  of hands-on experience in creating responsive and
-                  user-friendly web applications. My passion for web development
-                  has led me to become proficient in a range of technologies,
-                  making me a potential asset to anyone looking for a
-                  passionate/creative developer.
+                  I'm a recent computer science graduate with 1 year of internship experience and 2 years of development experience. I'm based in Taichung, Taiwan, specializing in both frontend and backend web development. My passion for web development has driven me to become proficient in a wide range of technologies. I'm a dedicated and creative developer, ready to bring my expertise to your projects.
                 </p>
                 <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl leading-9 tracking-wide lg:text-xl">
-                  My expertise spans the full spectrum of web development
-                  technologies. On the frontend, I excel in crafting captivating
-                  user interfaces using HTML, CSS, JavaScript, TypeScript, and
-                  popular frameworks like Vue, React, and Next.js. On the
-                  backend, I have a strong background in building robust REST
-                  API services with Node.js/Express and PHP/Laravel. I'm equally
-                  comfortable working with both SQL and NoSQL databases, having
-                  experience with MySQL and MongoDB.
+                 On the frontend, I excel at building responsive user interfaces using HTML/CSS/JavaScript, TypeScript, and popular frameworks like Vue, React, and Next.js. Meanwhile, my backend expertise lies in building robust REST API services with Node.js/Express and PHP/Laravel. I'm well-versed in managing data interactions and have experience working with both SQL and NoSQL databases, including MySQL and MongoDB. Lastly, I am also well-versed in other programming languange such as Python and Java. 
                 </p>
                 <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl">
-                  As part as my commitment to become a better developer, I keep
-                  honing my skills and learning new technologies. Most recently,
-                  I expanded my skillset into Typescript, a js framework that
-                  have been getting popular in recent years. On the frontend
-                  side, I also expanded my skillset into learning server-side
-                  rendering and SEO concepts by mastering Next.js, a server-side
-                  rendering framework for React. On the other hand, I've also
-                  expanded my expertise in node.js, seeking to master GraphQL
-                  and broaden my backend skills.
+                I continuously refine my skills and explore new technologies. Recently, I ventured into TypeScript, a popular JS framework that adds typing. Additionally, I explored server-side rendering and SEO principles. To this end, I mastered Next.js, a powerful framework for server-side rendering with React. On the backend, I've been expanding my expertise in Node.js, focusing on mastering GraphQL to enhance my backend capabilities.
                 </p>
                 <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl">
-                  My mission is to turn your web development challenges into
-                  innovative solutions. If you're seeking a self-driven
-                  developer who can bring a unique blend of technical skills and
-                  creativity to your project, don't hesitate to get in touch.
-                  Let's discuss how I can help you achieve your goals and
-                  contribute to your team.
+                  My mission is to turn your web development challenges into innovative solutions. If you're seeking a self-driven developer who can bring a unique blend of technical skills and creativity to your project, don't hesitate to get in touch. Let's discuss how I can help you achieve your goals and contribute to your team, especially if you have opportunities in Taiwan. I'm excited to explore new opportunities and make a meaningful contribution for you.
                 </p>
               </div>
             </div>
@@ -364,7 +340,7 @@ const changeProject = (value) => {
                   <h1 class="text-2xl font-semibold">
                     Bachelor of Computer Science (B.S in Computer Science)
                     <span class="font-normal"
-                      >| Graduation Date: June 2021</span
+                      >| Graduation Date: June 2023</span
                     >
                   </h1>
                   <div class="my-1 border-b-2 border-blue-500 dark:border-blue-700"></div>
@@ -782,7 +758,7 @@ const changeProject = (value) => {
                   ></div>
                   <div class="p-6 px-8 text-left flex flex-col space-y-2">
                     <h1 class="text-2xl">Hosting Inside LTD</h1>
-                    <h1 class="text-xl">Fullstack Web Developer</h1>
+                    <h1 class="text-xl">Fullstack Web Developer (Internship)</h1>
                     <p class="text-xl">Xitun District, Taichung City, Taiwan</p>
                     <ul class="list-disc">
                       <li class="leading-8 text-sm max-w-lg">
@@ -821,14 +797,14 @@ const changeProject = (value) => {
                     2
                   </div>
                   <h1 class="text-center font-semibold text-2xl">
-                    February 2022 - Present
+                    February 2022 - August 2022
                   </h1>
                   <div
-                    class=" border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400 border-b-blue-700"
+                    class=" border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div class="p-6 px-8 text-left flex flex-col space-y-2">
                     <h1 class="text-2xl">Bluente</h1>
-                    <h1 class="text-xl">Frontend Web Developer</h1>
+                    <h1 class="text-xl">Frontend Web Developer (Internship)</h1>
                     <h3 class="text-xl">Remote</h3>
                     <ul class="list-disc leading-8 text-sm">
                       <li>
