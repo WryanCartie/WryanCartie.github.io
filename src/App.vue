@@ -236,7 +236,7 @@ const changeProject = (value) => {
                 <a @click="toggleMenu" href="#skills" class="full py-3 text-center">Skills</a>
                 <a @click="toggleMenu" href="#experience" class="full py-3 text-center">Experience</a>
                 <a @click="toggleMenu" href="#projects" class="full py-3 text-center">Projects</a>
-                <a href="#contact" class="full py-3 text-center">Contact me</a>
+                <a @click="toggleMenu" href="#contact" class="full py-3 text-center">Contact me</a>
               </div>
             </nav>
 
@@ -878,10 +878,12 @@ const changeProject = (value) => {
               <div
                 class="  sm:w-1/3 w-1/2  mx-auto border-b-4 border-b-black mb-12 dark:border-b-white my-4"
               ></div>
-
+              
               <div
-                class="border-tl-2 px-16 py-10 border-br-2 relative max-w-4xl mx-auto"
+                class="border-tl-2 px-4 md:px-16 py-10 border-br-2 relative max-w-4xl mx-auto"
               >
+              
+              
                 <div
                   class="-ml-2 absolute top-0 left-0 border-t-2 border-l-2 border-blue-400 dark:border-blue-700 border-dashed h-full w-1/2"
                 ></div>
@@ -890,7 +892,7 @@ const changeProject = (value) => {
                 ></div>
                 <button
                   @click="changeProject(-1)"
-                  class="absolute left-0 top-1/2 -translate-y-1/2"
+                  class="absolute -left-12 md:left-0 top-1/2 -translate-y-1/2"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -909,7 +911,7 @@ const changeProject = (value) => {
                 </button>
                 <button
                   @click="changeProject(1)"
-                  class="absolute right-0 top-1/2 -translate-y-1/2 focus:outline-none"
+                  class="absolute -right-12 md:right-0 top-1/2 -translate-y-1/2 focus:outline-none"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -928,8 +930,13 @@ const changeProject = (value) => {
                 </button>
 
                 <!--Project View-->
-
+                
                 <div class="flex flex-col space-y-4">
+                  <img
+                    :src="currentProject.introductionImageLink"
+                    class=" select-none md:hidden w-full h-[120px]"
+                  />
+                  
                   <h1 class="text-2xl font-semibold select-none">
                     {{ currentProject.name }}
                   </h1>
@@ -938,11 +945,11 @@ const changeProject = (value) => {
                   ></div>
                   <img
                     :src="currentProject.introductionImageLink"
-                    class="px-6 select-none"
+                    class="px-6 select-none md:block hidden"
                   />
                   <p class="text-lg leading-8 max-w-sm mx-auto">
                     {{ currentProject.introduction }}
-                  </p>
+                  </p>  
 
                   <button
                     @click="toggleProjectDetails"
