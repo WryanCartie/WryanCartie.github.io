@@ -473,7 +473,7 @@ const changeProject = (value) => {
                     class=" border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div
-                    class="grid grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
+                    class="grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
                       class="bg-opacity-20 border-2  backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
@@ -545,17 +545,13 @@ const changeProject = (value) => {
                     class="border-b-4 mx-auto w-1/2 mb-6 my-2 border-b-blue-400 dark:border-blue-700" 
                   ></div>
                   <div
-                    class="grid grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
+                    class="grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-4 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img v-if="!isDark"
+                      <img 
                         src="./assets/logo/node-logo.png"
-                        class="w-full h-full scale:50 md:scale-100 hover:scale-110 cursor-pointer"
-                      />
-                      <img v-else
-                        src="./assets/logo/node-logo-dark.png"
                         class="w-full h-full scale:50 md:scale-100 hover:scale-110 cursor-pointer"
                       />
                     </div>
@@ -614,7 +610,7 @@ const changeProject = (value) => {
                     class="border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div
-                    class="grid grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
+                    class="grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-white"
@@ -973,17 +969,17 @@ const changeProject = (value) => {
                 class="flex flex-col space-y-4 md:flex-row md:space-y-0 mt-4 md:space-x-8 justify-center items-center"
               >
                 <div
-                  class="hover:scale-110  cursor-pointer flex bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex-row items-center space-x-2 border-2 p-4 rounded-lg"
+                  class="hover:scale-110  cursor-pointer flex sm:w-fit bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex-row items-center space-x-2 border-2 py-4 px-1 sm:p-4 rounded-lg w-full "
                 >
                   <img
                     src="./assets/icons/email-icon.png"
-                    class="bg-black h-12 w-12 rounded-full"
+                    class="bg-black md:h-12 md:w-12 w-10 h-10 rounded-full"
                   />
-                  <h1 class="item text-xl">wryancartie@gmail.com</h1>
+                  <h1 class="item text-lg sm:text-xl">wryancartie@gmail.com</h1>
                 </div>
                 <h1 class="text-xl ">and</h1>
                 <div
-                  class="hover:scale-110 cursor-pointer bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex flex-row items-center space-x-2 border-2 p-4 rounded-lg md:w-fit sm:w-full"
+                  class="hover:scale-110 cursor-pointer bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex flex-row items-center space-x-2 border-2 p-4 rounded-lg md:w-fit xs:w-full"
                 >
                   <img
                     src="./assets/icons/phone-icon.png"
@@ -1154,7 +1150,7 @@ const changeProject = (value) => {
                     Tech Stack
                   </h1>
                   <div
-                    class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:flex flex-row md:space-x-6 justify-center"
+                    class="grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 sm:gap-x-0 sm:gap-y-0 gap-x-10 gap-y-2 md:flex flex-row md:space-x-6 justify-center"
                   >
                     <div
                       v-for="tech in generateTechUrl(

@@ -3,10 +3,14 @@ export default {
   darkMode: 'class',
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
+   
     extend: {
       colors:{
         'darkBlue' :'#0059B3',
-      }
+      },
+      screens:{
+        'xxs': '450px'
+      },
     },
   },
   plugins: [],
