@@ -1167,7 +1167,7 @@ const changeProject = (value) => {
                     </div>
                   </div>
                 </div>
-                <div class="w-full mx-auto md:w-3/4 mb-4 md:mb-0">
+                <div class="w-full sm:mx-auto md:w-3/4 mb-4 md:mb-0">
                   <h1
                     class="md:mb-0  text-2xl leading-8 font-semibold mb-2 tracking-wide"
                   >
@@ -1247,7 +1247,7 @@ const changeProject = (value) => {
                 Project Images
               </h1>
               <img
-                class="md:w-[640px] p-4 py-0 pt-1 md:mx-auto object-contain md:h-[260px] select-none"
+                class="md:w-[640px] p-4 py-0 pt-1 md:mx-auto md:object-contain md:h-[260px] select-none sm:w-full sm:h-[200px] w-full h-[150px]"
                 :src="generateProjectUrl(currentProject.imagesLink[projectNum])"
               />
             </div>
