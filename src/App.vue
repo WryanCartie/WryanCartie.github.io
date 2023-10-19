@@ -64,10 +64,12 @@ const projects = reactive([
 const targetNum = ref(0);
 const projectNum = ref(0);
 
-const isMenuOpen = ref(false)
-const toggleMenu = ()=>{
+const isSuccess = ref(false);
+
+const isMenuOpen = ref(false);
+const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
-}
+};
 
 const changeProjectImg = (val) => {
   projectNum.value += val;
@@ -80,17 +82,11 @@ const changeProjectImg = (val) => {
 };
 
 const generateHostingUrl = (hosting) => {
-   
-    return new URL(`./assets/logo/${hosting}-logo.png`, import.meta.url).href;
-
+  return new URL(`./assets/logo/${hosting}-logo.png`, import.meta.url).href;
 };
-
-
-
 
 const generateTechUrl = (techs) => {
   let techUrl = techs.map((tech) => {
-   
     return new URL(`./assets/logo/${tech}-logo.png`, import.meta.url).href;
   });
   return techUrl;
@@ -105,36 +101,35 @@ const generateProjectUrl = (img) => {
     return new URL(`./assets/images/${img}.png`, import.meta.url).href
   }) */
 };
-const isDark = ref(false)
-onMounted(()=>{
-// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-if (localStorage.theme === 'dark' || (!('theme' in localStorage)  )) {
-   document.documentElement.classList.add('dark');
-  localStorage.theme = 'dark'
-  isDark.value = true;
-} else {
-  document.documentElement.classList.remove('dark');
-  localStorage.theme = 'light';
-  isDark.value = false
-}
+const isDark = ref(false);
+onMounted(() => {
+  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+  if (localStorage.theme === "dark" || !("theme" in localStorage)) {
+    document.documentElement.classList.add("dark");
+    localStorage.theme = "dark";
+    isDark.value = true;
+  } else {
+    document.documentElement.classList.remove("dark");
+    localStorage.theme = "light";
+    isDark.value = false;
+  }
+});
 
-})
-
-const toggleDarkMode = ()=>{
-  if (localStorage.theme === 'dark') {
-        localStorage.theme = 'light';
-        isDark.value = false;
-        document.documentElement.classList.remove('dark');
-        
-      } else {
-        localStorage.theme = 'dark';
-        isDark.value = true;
-        document.documentElement.classList.add('dark');
-      }
-}
+const toggleDarkMode = () => {
+  if (localStorage.theme === "dark") {
+    localStorage.theme = "light";
+    isDark.value = false;
+    document.documentElement.classList.remove("dark");
+  } else {
+    localStorage.theme = "dark";
+    isDark.value = true;
+    document.documentElement.classList.add("dark");
+  }
+};
 
 const sendEmail = async () => {
-  const formData = JSON.stringify(formEmailData)
+  const formData = JSON.stringify(formEmailData);
+
   formEmailData.name = "";
   formEmailData.email = "";
   formEmailData.subject = "";
@@ -148,6 +143,10 @@ const sendEmail = async () => {
     .then((response) => {
       // Handle success, e.g., show a success message
       console.log("Email sent successfully", response.data);
+      isSuccess.value = true;
+      setTimeout(() => {
+        isSuccess.value = false;
+      }, 3000);
     })
     .catch((error) => {
       // Handle errors, e.g., show an error message
@@ -189,7 +188,7 @@ const changeProject = (value) => {
 </script>
 
 <template>
-  <div class="min-w-screen  dark:bg-black ">
+  <div class="min-w-screen dark:bg-black">
     <Transition name="fade-jumbotron" appear>
       <div
         id="jumbotron"
@@ -201,14 +200,15 @@ const changeProject = (value) => {
             <nav
               class="relative r w-full md:sticky flex flex-row justify-between max-w-6xl mx-auto"
             >
-              <div class="md:w-1/3 w-3/4 ">
-                <h2 class="mx-auto text-white text-2xl text-center border py-1 bg-blac">
+              <div class="md:w-1/3 w-3/4">
+                <h2
+                  class="mx-auto text-white text-2xl text-center border py-1 bg-blac"
+                >
                   Wryan Cartie Halim
                 </h2>
               </div>
               <div
-                class="hidden md:flex flex-row container max-w-5xl 
-                text-white justify-center space-x-5 xl:text-xl"
+                class="hidden md:flex flex-row container max-w-5xl text-white justify-center space-x-5 xl:text-xl"
               >
                 <a href="#introduction">Home</a>
                 <a href="#about-me">About Me</a>
@@ -218,25 +218,78 @@ const changeProject = (value) => {
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact Me</a>
               </div>
-              <button @click="toggleDarkMode" class=" md:absolute right-0 top-1/2 md:top-0 md:translate-y-0 translate-y-1 h-8 w-8 dark:bg-white rounded-full p-1 border-2 border-blue-200 dark:border-white">
-                <img v-if="isDark" src="./assets/icons/dark-icon.png"/>
-                <img v-else src="./assets/icons/light-icon.png"/>
+              <button
+                @click="toggleDarkMode"
+                class="md:absolute right-0 top-1/2 md:top-0 md:translate-y-0 translate-y-1 h-8 w-8 dark:bg-white rounded-full p-1 border-2 border-blue-200 dark:border-white"
+              >
+                <img v-if="isDark" src="./assets/icons/dark-icon.png" />
+                <img v-else src="./assets/icons/light-icon.png" />
               </button>
-              <button @click="toggleMenu" id="mobile-menu-btn" class="z-40 top-2  block md:hidden focus:outline-none hamburger">
-                <span class="hamburger-top bg-blue-300 dark:bg-blue-500"  :class="{'open': isMenuOpen}"></span>
-                <span class="hamburger-middle bg-blue-300 dark:bg-blue-500" :class="{'open': isMenuOpen}"></span>
-                <span class="hamburger-bottom bg-blue-300 dark:bg-blue-500" :class="{'open': isMenuOpen}"></span>
+              <button
+                @click="toggleMenu"
+                id="mobile-menu-btn"
+                class="z-40 top-2 block md:hidden focus:outline-none hamburger"
+              >
+                <span
+                  class="hamburger-top bg-blue-300 dark:bg-blue-500"
+                  :class="{ open: isMenuOpen }"
+                ></span>
+                <span
+                  class="hamburger-middle bg-blue-300 dark:bg-blue-500"
+                  :class="{ open: isMenuOpen }"
+                ></span>
+                <span
+                  class="hamburger-bottom bg-blue-300 dark:bg-blue-500"
+                  :class="{ open: isMenuOpen }"
+                ></span>
               </button>
-              <div v-if="isMenuOpen" id="moile-menu" class="fixed 
-              inset-0 z-30 flex flex-col items-center 
-              self-end w-full h-full min-h-screen px-6 py-1 pt-24 pb-4 tracking-widest text-blue-600 dark:text-blue-300  uppercase divide-y divide-gray-800 dark:divide-white  opacity-90 bg-gray-300 dark:bg-gray-700 ">
-                <a @click="toggleMenu" href="#home" class="full py-3 text-center">Home</a>
-                <a @click="toggleMenu" href="#about-me" class="full py-3 text-center">About Me</a>
-                <a @click="toggleMenu" href="#education" class="full py-3 text-center">Education</a>
-                <a @click="toggleMenu" href="#skills" class="full py-3 text-center">Skills</a>
-                <a @click="toggleMenu" href="#experience" class="full py-3 text-center">Experience</a>
-                <a @click="toggleMenu" href="#projects" class="full py-3 text-center">Projects</a>
-                <a @click="toggleMenu" href="#contact" class="full py-3 text-center">Contact me</a>
+              <div
+                v-if="isMenuOpen"
+                id="moile-menu"
+                class="fixed inset-0 z-30 flex flex-col items-center self-end w-full h-full min-h-screen px-6 py-1 pt-24 pb-4 tracking-widest text-blue-600 dark:text-blue-300 uppercase divide-y divide-gray-800 dark:divide-white opacity-90 bg-gray-300 dark:bg-gray-700"
+              >
+                <a
+                  @click="toggleMenu"
+                  href="#home"
+                  class="full py-3 text-center"
+                  >Home</a
+                >
+                <a
+                  @click="toggleMenu"
+                  href="#about-me"
+                  class="full py-3 text-center"
+                  >About Me</a
+                >
+                <a
+                  @click="toggleMenu"
+                  href="#education"
+                  class="full py-3 text-center"
+                  >Education</a
+                >
+                <a
+                  @click="toggleMenu"
+                  href="#skills"
+                  class="full py-3 text-center"
+                  >Skills</a
+                >
+                <a
+                  @click="toggleMenu"
+                  href="#experience"
+                  class="full py-3 text-center"
+                  >Experience</a
+                >
+                <a
+                  @click="toggleMenu"
+                  href="#projects"
+                  class="full py-3 text-center"
+                  >Projects</a
+                >
+                <a
+                  @click="toggleMenu"
+                  href="#contact"
+                  class="full py-3 text-center"
+                  >Contact me</a
+                >
               </div>
             </nav>
 
@@ -249,7 +302,9 @@ const changeProject = (value) => {
                     <h1 class="text-2xl font-semibold tracking-wider">
                       Hello, My name is Wryan Cartie Halim (陳瑞言)
                     </h1>
-                    <div class="mt-2 border-blue-400 dark:border-blue-600 border-b-2"></div>
+                    <div
+                      class="mt-2 border-blue-400 dark:border-blue-600 border-b-2"
+                    ></div>
                     <p class="mt-2 max-w-lg leading-10 tracking-widest text-xl">
                       I am a
                       <span class="text-blue-200 dark:text-blue-500 font-bold"
@@ -260,15 +315,15 @@ const changeProject = (value) => {
                         >responsive and user-friendly
                       </span>
                       web applications using cutting-edge technologies. I am
-                      passionate about delivering tailored web application that meet your
-                      unique goals and objectives,
+                      passionate about delivering tailored web application that
+                      meet your unique goals and objectives,
                       <span class="font-bold text-blue-200 dark:text-blue-500"
                         >no matter how difficult or complex your requirements
-                        are.</span 
+                        are.</span
                       >
                       Learn more about me to see my work in action.
                     </p>
-                
+
                     <a
                       href="#about-me"
                       class="text-center dark:bg-blue-700 bg-blue-300 border-2 dark:border-blue-700 border-blue-300 text-white sm:w-1/2 mx-auto w-full rounded-full hover:outline-none py-2 dark:hover:bg-white hover:bg-white dark:hover:text-blue-700 hover:text-blue-300"
@@ -279,10 +334,7 @@ const changeProject = (value) => {
                   <div
                     class="md:flex-1 md:my-0 flex items-center justify-center"
                   >
-                    <img
-                      src="./assets/images/glow-2.png"
-                      class=" h-100 w-80"
-                    />
+                    <img src="./assets/images/glow-2.png" class="h-100 w-80" />
                   </div>
                 </div>
               </div>
@@ -295,31 +347,64 @@ const changeProject = (value) => {
       <div id="content" class="text-black dark:text-white">
         <section id="about-me">
           <div class="mx-auto mt-20 container max-w-6xl">
-            <h1 class="section-title">
-              About me
-            </h1>
+            <h1 class="section-title">About me</h1>
             <div class="section-line"></div>
             <div
               class="flex flex-col space-y-4 md:flex-row md:justify-between md:space-y-0 md:space-x-8"
             >
-            
               <img
                 src="./assets/images/about-me.png"
                 class="md:w-1/2 w-3/4 md:mx-0 mx-auto md:object-contain p-2"
               />
 
               <div class="flex flex-col space-y-3">
-                <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl leading-9 trackiong-wide lg:text-xl">
-                  I'm a recent computer science graduate with 1 year of internship experience and 2 years of development experience. I'm based in Taichung, Taiwan, specializing in both frontend and backend web development. My passion for web development has driven me to become proficient in a wide range of technologies. I'm a dedicated and creative developer, ready to bring my expertise to your projects.
+                <p
+                  class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl leading-9 trackiong-wide lg:text-xl"
+                >
+                  I'm a recent computer science graduate with 1 year of
+                  internship experience and 2 years of development experience.
+                  I'm based in Taichung, Taiwan, specializing in both frontend
+                  and backend web development. My passion for web development
+                  has driven me to become proficient in a wide range of
+                  technologies. I'm a dedicated and creative developer, ready to
+                  bring my expertise to your projects.
                 </p>
-                <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl leading-9 tracking-wide lg:text-xl">
-                 On the frontend, I excel at building responsive user interfaces using HTML/CSS/JavaScript, TypeScript, and popular frameworks like Vue, React, and Next.js. Meanwhile, my backend expertise lies in building robust REST API services with Node.js/Express and PHP/Laravel. I'm well-versed in managing data interactions and have experience working with both SQL and NoSQL databases, including MySQL and MongoDB. Lastly, I am also well-versed in other programming languange such as Python and Java. 
+                <p
+                  class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl leading-9 tracking-wide lg:text-xl"
+                >
+                  On the frontend, I excel at building responsive user
+                  interfaces using HTML/CSS/JavaScript, TypeScript, and popular
+                  frameworks like Vue, React, and Next.js. Meanwhile, my backend
+                  expertise lies in building robust REST API services with
+                  Node.js/Express and PHP/Laravel. I'm well-versed in managing
+                  data interactions and have experience working with both SQL
+                  and NoSQL databases, including MySQL and MongoDB. Lastly, I am
+                  also well-versed in other programming languange such as Python
+                  and Java.
                 </p>
-                <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl">
-                I continuously refine my skills and explore new technologies. Recently, I ventured into TypeScript, a popular JS framework that adds typing. Additionally, I explored server-side rendering and SEO principles. To this end, I mastered Next.js, a powerful framework for server-side rendering with React. On the backend, I've been expanding my expertise in Node.js, focusing on mastering GraphQL to enhance my backend capabilities.
+                <p
+                  class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl"
+                >
+                  I continuously refine my skills and explore new technologies.
+                  Recently, I ventured into TypeScript, a popular JS framework
+                  that adds typing. Additionally, I explored server-side
+                  rendering and SEO principles. To this end, I mastered Next.js,
+                  a powerful framework for server-side rendering with React. On
+                  the backend, I've been expanding my expertise in Node.js,
+                  focusing on mastering GraphQL to enhance my backend
+                  capabilities.
                 </p>
-                <p class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl">
-                  My mission is to turn your web development challenges into innovative solutions. If you're seeking a self-driven developer who can bring a unique blend of technical skills and creativity to your project, don't hesitate to get in touch. Let's discuss how I can help you achieve your goals and contribute to your team, especially if you have opportunities in Taiwan. I'm excited to explore new opportunities and make a meaningful contribution for you.
+                <p
+                  class="mt-2 mx-auto max-w-sm sm:max-w-lg md:max-w-xl tracking-wide leading-9 lg:text-xl"
+                >
+                  My mission is to turn your web development challenges into
+                  innovative solutions. If you're seeking a self-driven
+                  developer who can bring a unique blend of technical skills and
+                  creativity to your project, don't hesitate to get in touch.
+                  Let's discuss how I can help you achieve your goals and
+                  contribute to your team, especially if you have opportunities
+                  in Taiwan. I'm excited to explore new opportunities and make a
+                  meaningful contribution for you.
                 </p>
               </div>
             </div>
@@ -328,9 +413,7 @@ const changeProject = (value) => {
         <div class="px-12 w-screen">
           <section id="education">
             <div class="mx-auto mt-20 container max-w-6xl">
-              <h1 class="section-title">
-                Education
-              </h1>
+              <h1 class="section-title">Education</h1>
               <div class="section-line"></div>
               <div
                 class="flex flex-col md:flex-row justify-between md:space-x-16 space-y-8 md:space-y-0"
@@ -343,7 +426,9 @@ const changeProject = (value) => {
                       >| Graduation Date: June 2023</span
                     >
                   </h1>
-                  <div class="my-1 border-b-2 border-blue-500 dark:border-blue-700"></div>
+                  <div
+                    class="my-1 border-b-2 border-blue-500 dark:border-blue-700"
+                  ></div>
 
                   <p class="max-w-lg text-lg my-3 mx-auto">
                     <span class="font-semibold">Notable Cousework: </span>
@@ -365,30 +450,30 @@ const changeProject = (value) => {
                       Tunghai_TAPG chemistry team as part of their iGEM 2019
                       competition project.
                     </li>
-                    
-                      <ul
-                        class="flex flex-col space-y-1 md:list-disc max-w-sm mx-auto md:tracking-normal tracking-wider"
-                      >
-                        <li>
-                          Achieved this through six months of self-study in
-                          HTML, CSS, and JavaScript.
-                        </li>
-                        <li>
-                          Contributed to the team's success by providing a clear
-                          platform to display and visualize their research in an
-                          effective manner for the competition.
-                        </li>
-                        <li>
-                          The project's success contributed in the team earning
-                          a silver medal in the competition.
-                        </li>
-                      </ul>
+
+                    <ul
+                      class="flex flex-col space-y-1 md:list-disc max-w-sm mx-auto md:tracking-normal tracking-wider"
+                    >
+                      <li>
+                        Achieved this through six months of self-study in HTML,
+                        CSS, and JavaScript.
+                      </li>
+                      <li>
+                        Contributed to the team's success by providing a clear
+                        platform to display and visualize their research in an
+                        effective manner for the competition.
+                      </li>
+                      <li>
+                        The project's success contributed in the team earning a
+                        silver medal in the competition.
+                      </li>
+                    </ul>
                     <li class="max-w-lg text-lg leading-8 mx-auto">
                       Developed an ALE web application using HTML/CSS,
                       JavaScript, and PHP as part of a thesis project to collect
                       and visualize Wi-Fi data usage at Tunghai University.
                       <ul
-                        class=" flex flex-col space-y-1 md:list-disc mx-auto max-w-sm md:tracking-normal tracking-wider"
+                        class="flex flex-col space-y-1 md:list-disc mx-auto max-w-sm md:tracking-normal tracking-wider"
                       >
                         <li
                           class="md:list-disc max-w-sm mx-auto text-normal text-base leading-normal"
@@ -435,9 +520,7 @@ const changeProject = (value) => {
           </section>
           <section id="skills">
             <div class="container mt-10 p-10 max-w-6xl mx-auto">
-              <h1 class="section-title">
-                Skills
-              </h1>
+              <h1 class="section-title">Skills</h1>
               <div class="section-line"></div>
               <div
                 class="flex flex-col max-w-5xl mx-auto space-y-16 text-center"
@@ -446,87 +529,81 @@ const changeProject = (value) => {
                 <div class="mx-auto w-full">
                   <h1 class="text-3xl">Frontend Development</h1>
                   <div
-                    class=" border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
+                    class="border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div
-                    class="grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
+                    class="grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:gap-4 gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
-                      class="bg-opacity-20 border-2  backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
+                      class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img  src="./assets/logo/js-logo.png"
-                      class="w-full h-full object-cover hover:scale-110 cursor-pointer"/>
-                  
+                      <img
+                        src="./assets/logo/js-logo.png"
+                        class="w-full h-full object-cover hover:scale-110 cursor-pointer"
+                      />
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-white border-2"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/css-logo.png"
-                        class="w-full h-full hover:scale-110 cursor-pointer "
+                        class="w-full h-full hover:scale-110 cursor-pointer"
                       />
-                     
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/typescript-logo.png"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
-                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/vue-logo.png"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
-                   
-                      
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md px-4 py-7 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/tailwind-logo.png"
-                        class="w-full h-full hover:scale-110 cursor-pointer "
+                        class="w-full h-full hover:scale-110 cursor-pointer"
                       />
-                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/react-logo.png"
-                        class="w-full h-full hover:scale-110 cursor-pointer "
+                        class="w-full h-full hover:scale-110 cursor-pointer"
                       />
-                     
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-2 px-1 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/next-logo.png"
                         class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
                       />
-                     
                     </div>
                   </div>
                 </div>
                 <div class="mx-auto w-full">
                   <h1 class="text-3xl">Backend Development and Database</h1>
                   <div
-                    class="border-b-4 mx-auto w-1/2 mb-6 my-2 border-b-blue-400 dark:border-blue-700" 
+                    class="border-b-4 mx-auto w-1/2 mb-6 my-2 border-b-blue-400 dark:border-blue-700"
                   ></div>
                   <div
-                    class="grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
+                    class="grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:gap-4 gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-4 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/node-logo.png"
                         class="w-full h-full scale:50 md:scale-100 hover:scale-110 cursor-pointer"
                       />
@@ -538,44 +615,39 @@ const changeProject = (value) => {
                         src="./assets/logo/express-logo.png"
                         class="w-full h-full rounded-full hover:scale-110 cursor-pointer"
                       />
-                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-6 px-3 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/php-logo.png"
                         class="w-full rounded-full h-full object-fit hover:scale-110 cursor-pointer"
                       />
-                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-8 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/laravel-logo.png"
                         class="w-full h-full rounded-lg hover:scale-110 cursor-pointer"
                       />
-                     
                     </div>
 
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md px-4 py-5 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/mysql-logo.png"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
-                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/mongodb-logo.png"
                         class="w-full h-full object-fit rounded-full hover:scale-110 cursor-pointer"
                       />
-                      
                     </div>
                   </div>
                 </div>
@@ -586,52 +658,47 @@ const changeProject = (value) => {
                     class="border-b-4 w-1/2 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div
-                    class="grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:gap-4  gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
+                    class="grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:gap-4 gap-8 md:flex flex-row md:space-x-5 my-2 justify-center"
                   >
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/vscode-logo.png"
                         class="w-full h-full hover:scale-110 cursor-pointer"
                       />
-                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-2 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/git-logo.png"
                         class="w-full h-full rounded-full hover:scale-110 cursor-pointer"
                       />
-                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/jest-logo.png"
                         class="bg-white w-full h-full object-cover hover:scale-110 cursor-pointer"
                       />
-                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-6 px-3 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/kafka-logo.png"
                         class="w-full rounded-full h-full hover:scale-110 cursor-pointer"
                       />
-                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md p-3 rounded-full shadow-lg h-24 w-24 dark:bg-white"
                     >
-                      <img 
+                      <img
                         src="./assets/logo/xampp-logo.png"
                         class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
                       />
-                    
                     </div>
                     <div
                       class="bg-opacity-20 border-2 backdrop-blur-md py-3 px-1 rounded-full shadow-lg h-24 w-24 dark:bg-white"
@@ -641,7 +708,6 @@ const changeProject = (value) => {
                         class="w-full h-full hover:scale-110 cursor-pointer rounded-full"
                       />
                     </div>
-                    
                   </div>
                 </div>
                 <div class="mx-auto w-full sm:w-3/4">
@@ -652,7 +718,9 @@ const changeProject = (value) => {
                   <div
                     class="flex flex-col space-y-10 my-2 items-center justify-center w-full"
                   >
-                    <div class="flex flex-row space-x-8 w-full sm:w-3/4 mx-auto">
+                    <div
+                      class="flex flex-row space-x-8 w-full sm:w-3/4 mx-auto"
+                    >
                       <div
                         class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                       >
@@ -677,7 +745,9 @@ const changeProject = (value) => {
                         </div>
                       </div>
                     </div>
-                    <div class="flex flex-row space-x-8 w-full sm:w-3/4 mx-auto">
+                    <div
+                      class="flex flex-row space-x-8 w-full sm:w-3/4 mx-auto"
+                    >
                       <div
                         class="group bg-opacity-20 border-2 backdrop-blur-md p-4 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                       >
@@ -702,7 +772,9 @@ const changeProject = (value) => {
                         </div>
                       </div>
                     </div>
-                    <div class="flex flex-row space-x-8 w-full sm:w-3/4 mx-auto">
+                    <div
+                      class="flex flex-row space-x-8 w-full sm:w-3/4 mx-auto"
+                    >
                       <div
                         class="group bg-opacity-20 border-2 backdrop-blur-md py-6 rounded-full shadow-lg h-24 w-24 flex items-center justify-center"
                       >
@@ -735,9 +807,7 @@ const changeProject = (value) => {
           </section>
           <section id="experience">
             <div class="container relative mt-10 max-w-6xl mx-auto">
-              <h1 class="section-title">
-                Experience
-              </h1>
+              <h1 class="section-title">Experience</h1>
               <div class="section-line"></div>
               <div
                 class="flex flex-col md:flex-row justify-between space-y-20 md:space-y-0 md:space-x-24 d"
@@ -758,7 +828,9 @@ const changeProject = (value) => {
                   ></div>
                   <div class="p-6 px-8 text-left flex flex-col space-y-2">
                     <h1 class="text-2xl">Hosting Inside LTD</h1>
-                    <h1 class="text-xl">Fullstack Web Developer (Internship)</h1>
+                    <h1 class="text-xl">
+                      Fullstack Web Developer (Internship)
+                    </h1>
                     <p class="text-xl">Xitun District, Taichung City, Taiwan</p>
                     <ul class="list-disc">
                       <li class="leading-8 text-sm max-w-lg">
@@ -800,7 +872,7 @@ const changeProject = (value) => {
                     February 2022 - August 2022
                   </h1>
                   <div
-                    class=" border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
+                    class="border-b-4 w-2/3 mx-auto mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                   ></div>
                   <div class="p-6 px-8 text-left flex flex-col space-y-2">
                     <h1 class="text-2xl">Bluente</h1>
@@ -838,33 +910,30 @@ const changeProject = (value) => {
                   </div>
                 </div>
                 <div
-                class="hidden absolute top-1/2 left-0 h-3 w-1/2 z-0 bg-blue-500 dark:bg-blue-700 -translate-y-2  md:block"
-              ></div>
-          
-              <div
-                class="absolute w-3 h-1/2  left-1/2 top-0 -ml-1 z-0 bg-blue-200 md:hidden dark:bg-blue-400"
-              ></div>
+                  class="hidden absolute top-1/2 left-0 h-3 w-1/2 z-0 bg-blue-500 dark:bg-blue-700 -translate-y-2 md:block"
+                ></div>
+
+                <div
+                  class="absolute w-3 h-1/2 left-1/2 top-0 -ml-1 z-0 bg-blue-200 md:hidden dark:bg-blue-400"
+                ></div>
               </div>
-             
             </div>
           </section>
           <section id="projects">
             <div class="container mt-16 py-8 text-center max-w-5xl mx-auto">
               <h1 class="section-title">Featured Projects</h1>
               <div
-                class="  sm:w-1/3 w-1/2  mx-auto border-b-4 border-b-black mb-12 dark:border-b-white my-4"
+                class="sm:w-1/3 w-1/2 mx-auto border-b-4 border-b-black mb-12 dark:border-b-white my-4"
               ></div>
-              
+
               <div
                 class="border-tl-2 px-4 md:px-16 py-10 border-br-2 relative max-w-4xl mx-auto"
               >
-              
-              
                 <div
                   class="-ml-2 absolute top-0 left-0 border-t-2 border-l-2 border-blue-400 dark:border-blue-700 border-dashed h-full w-1/2"
                 ></div>
                 <div
-                  class=" absolute bottom-0 right-0 border-b-2 border-r-2 border-dashed border-blue-400 dark:border-blue-700 ml-2 h-full w-1/2"
+                  class="absolute bottom-0 right-0 border-b-2 border-r-2 border-dashed border-blue-400 dark:border-blue-700 ml-2 h-full w-1/2"
                 ></div>
                 <button
                   @click="changeProject(-1)"
@@ -906,13 +975,13 @@ const changeProject = (value) => {
                 </button>
 
                 <!--Project View-->
-                
+
                 <div class="flex flex-col space-y-4">
                   <img
                     :src="currentProject.introductionImageLink"
-                    class=" select-none md:hidden w-full h-[120px]"
+                    class="select-none md:hidden w-full h-[120px]"
                   />
-                  
+
                   <h1 class="text-2xl font-semibold select-none">
                     {{ currentProject.name }}
                   </h1>
@@ -925,11 +994,11 @@ const changeProject = (value) => {
                   />
                   <p class="text-lg leading-8 max-w-sm mx-auto">
                     {{ currentProject.introduction }}
-                  </p>  
+                  </p>
 
                   <button
                     @click="toggleProjectDetails"
-                    class="z-20 p-4 rounded-full bg-blue-400 w-full md:w-1/2 mx-auto text-white border-blue-400 dark:hover:bg-white  hover:bg-white hover:text-blue-400 dark:bg-blue-700 dark:hover:text-blue-700 dark:border-blue-700"
+                    class="z-20 p-4 rounded-full bg-blue-400 w-full md:w-1/2 mx-auto text-white border-blue-400 dark:hover:bg-white hover:bg-white hover:text-blue-400 dark:bg-blue-700 dark:hover:text-blue-700 dark:border-blue-700"
                   >
                     View Project Details
                   </button>
@@ -942,9 +1011,7 @@ const changeProject = (value) => {
             <div
               class="container max-w-5xl my-10 mb-20 mx-auto flex flex-col space-y-7 items-center"
             >
-              <h1 class="section-title">
-                Contact Me
-              </h1>
+              <h1 class="section-title">Contact Me</h1>
               <div class="section-line"></div>
 
               <h2 class="max-w-xl text-xl">Feel free to contact me by:</h2>
@@ -952,7 +1019,7 @@ const changeProject = (value) => {
                 class="flex flex-col space-y-4 md:flex-row md:space-y-0 mt-4 md:space-x-8 justify-center items-center"
               >
                 <div
-                  class="hover:scale-110  cursor-pointer flex sm:w-fit bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex-row items-center space-x-2 border-2 py-4 px-1 sm:p-4 rounded-lg w-full "
+                  class="hover:scale-110 cursor-pointer flex sm:w-fit bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex-row items-center space-x-2 border-2 py-4 px-1 sm:p-4 rounded-lg w-full"
                 >
                   <img
                     src="./assets/icons/email-icon.png"
@@ -960,7 +1027,7 @@ const changeProject = (value) => {
                   />
                   <h1 class="item text-lg sm:text-xl">wryancartie@gmail.com</h1>
                 </div>
-                <h1 class="text-xl ">and</h1>
+                <h1 class="text-xl">and</h1>
                 <div
                   class="hover:scale-110 cursor-pointer bg-gray-50 dark:bg-gray-700 dark:border-gray-700 flex flex-row items-center space-x-2 border-2 p-4 rounded-lg md:w-fit xs:w-full"
                 >
@@ -979,43 +1046,57 @@ const changeProject = (value) => {
               >
                 <h1 class="text-2xl font-semibold">Contact Form</h1>
                 <div
-                  class=" border-b-4 w-full md:w-1/2 mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
+                  class="border-b-4 w-full md:w-1/2 mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
                 ></div>
                 <label class="">Name</label>
                 <input
+                  required
                   type="text"
                   v-model="formEmailData.name"
                   class="h-8 w-full border border-black px-2 bg-gray-100 dark:bg-gray-700"
                 />
+
                 <label>Email</label>
                 <input
+                  required
                   type="email"
                   v-model="formEmailData.email"
                   class="h-8 w-full border border-black px-2 bg-gray-100 dark:bg-gray-700"
                 />
+
                 <label>Subject</label>
                 <input
+                  required
                   type="text"
                   v-model="formEmailData.subject"
                   class="h-8 w-full border border-black px-2 bg-gray-100 dark:bg-gray-700"
                 />
+
                 <label>Message</label>
                 <textarea
+                  required
                   v-model="formEmailData.message"
                   class="w-full h-56 text-lg p-1 px-2 border-black border bg-gray-100 dark:bg-gray-700"
                 />
+
                 <button
                   class="w-full md:w-1/2 md:mx-0 mx-auto border-blue-400 bg-blue-400 text-white p-3 px-4 rounded-full text-lg hover:bg-white hover:text-blue-400 dark:bg-blue-700 dark:border-blue-700 dark:hover:text-blue-700 dark:hover:bg-white"
                 >
                   Submit Form
                 </button>
+                <p
+                  v-if="isSuccess"
+                  class="font-bold animate-pulse text-2xl text-blue-700 dark:text-blue-300"
+                >
+                  Email sent sucessfully.
+                </p>
               </form>
             </div>
           </section>
         </div>
         <footer id="footer" class="bg-black text-white mt-10 dark:bg-gray-700">
           <!--Footer Container-->
-          <div class=" max-w-6xl mx-auto py-12 p-6 ">
+          <div class="max-w-6xl mx-auto py-12 p-6">
             <!--Menu bar-->
             <div
               class="flex flex-col space-y-8 md:flex-row justify-between items-center md:space-y-0"
@@ -1066,12 +1147,16 @@ const changeProject = (value) => {
                   />
                 </a>
               </div>
-             
-
             </div>
-            <div class="flex flex-col w-fit mx-auto md:mx-0 md:w-1/2 lg:w-fit mt-4">
-                <a href="https://www.flaticon.com/free-icons/light" title="light icons">Light icons created by Freepik - Flaticon</a>
-              </div>
+            <div
+              class="flex flex-col w-fit mx-auto md:mx-0 md:w-1/2 lg:w-fit mt-4"
+            >
+              <a
+                href="https://www.flaticon.com/free-icons/light"
+                title="light icons"
+                >Light icons created by Freepik - Flaticon</a
+              >
+            </div>
           </div>
         </footer>
       </div>
@@ -1089,7 +1174,7 @@ const changeProject = (value) => {
             class="bg-white dark:bg-gray-600 dark:text-white overflow-y-scroll xl:overflow-hidden opacity-100 max-h-screen relative w-4/5 xl:w-3/4 p-4 rounded-lg shadow-lg"
           >
             <div
-              class="absolute flex items-center justify-center top-0 h-8 w-8 hover:bg-red-500 right-0  dark:border-black "
+              class="absolute flex items-center justify-center top-0 h-8 w-8 hover:bg-red-500 right-0 dark:border-black"
             >
               <button
                 @click="toggleProjectDetails"
@@ -1101,13 +1186,13 @@ const changeProject = (value) => {
             <!-- Modal content goes here -->
 
             <div
-              class="relative flex flex-col space-y-2  items-center justify-center text-center"
+              class="relative flex flex-col space-y-2 items-center justify-center text-center"
             >
               <div class="text-2xl font-semibold select-none">
                 {{ currentProject.name }}
               </div>
               <div
-                class=" border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
+                class="border-b-4 w-1/2 mb-6 my-2 border-b-blue-400 dark:border-b-blue-700"
               ></div>
 
               <p class="text-md lg:text-lg xl:text-xl font-semibold">
@@ -1128,7 +1213,7 @@ const changeProject = (value) => {
               >
                 <div class="w-full md:w-3/4 px-10">
                   <h1
-                    class=" text-2xl leading-8 font-semibold mb-2 tracking-wide"
+                    class="text-2xl leading-8 font-semibold mb-2 tracking-wide"
                   >
                     Tech Stack
                   </h1>
@@ -1140,7 +1225,7 @@ const changeProject = (value) => {
                         currentProject.technologies,
                       )"
                       :key="tech"
-                      class=" cursor-pointer group dark:bg-white bg-opacity-20 border-2 backdrop-blur-md px-2 py-4 rounded-full shadow-lg h-16 w-16"
+                      class="cursor-pointer group dark:bg-white bg-opacity-20 border-2 backdrop-blur-md px-2 py-4 rounded-full shadow-lg h-16 w-16"
                     >
                       <img
                         :src="tech"
@@ -1152,7 +1237,7 @@ const changeProject = (value) => {
                 </div>
                 <div class="w-full sm:mx-auto md:w-3/4 mb-4 md:mb-0">
                   <h1
-                    class="md:mb-0  text-2xl leading-8 font-semibold mb-2 tracking-wide"
+                    class="md:mb-0 text-2xl leading-8 font-semibold mb-2 tracking-wide"
                   >
                     Project Links
                   </h1>
@@ -1165,78 +1250,75 @@ const changeProject = (value) => {
                         src="./assets/icons/github-icon.png"
                         class="w-full h-full group-hover:scale-125 rounded-full"
                       />
-                  
+
                       {{}}
                     </a>
                     <a
                       :href="currentProject.hostedLink"
                       v-if="currentProject.hosted"
-                      class=" group bg-opacity-20 border-2 mt-1 backdrop-blur-md rounded-full shadow-lg p-1 h-20 w-20 dark:bg-white"
+                      class="group bg-opacity-20 border-2 mt-1 backdrop-blur-md rounded-full shadow-lg p-1 h-20 w-20 dark:bg-white"
                     >
-                      <img 
+                      <img
                         :src="generateHostingUrl(currentProject.hosting)"
-                        class="w-full h-full group-hover:scale-110  object-contain rounded-full"
+                        class="w-full h-full group-hover:scale-110 object-contain rounded-full"
                       />
-                   
-
-                     
                     </a>
                   </div>
                 </div>
               </div>
-              <div class="w-full  my-0 px-12 relative">
-              <button
-                @click="changeProjectImg(-1)"
-                class="absolute left-0 top-1/2 -translate-y-1/2 "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  class="w-10 h-10 md:h-20 md:w-20 text-blue-400 dark:text-blue-700"
+              <div class="w-full my-0 px-12 relative">
+                <button
+                  @click="changeProjectImg(-1)"
+                  class="absolute left-0 top-1/2 -translate-y-1/2"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </button>
-              <button
-                @click="changeProjectImg(1)"
-                class="absolute right-0 top-1/2 -translate-y-1/2 "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  class="w-10 h-10 md:h-20 md:w-20 text-blue-400 dark:text-blue-700"
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-10 h-10 md:h-20 md:w-20 text-blue-400 dark:text-blue-700"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+                <button
+                  @click="changeProjectImg(1)"
+                  class="absolute right-0 top-1/2 -translate-y-1/2"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-10 h-10 md:h-20 md:w-20 text-blue-400 dark:text-blue-700"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
 
-              <h1
-                class="md:block hidden text-center mt-1 md:mb-2 text-2xl font-bold tracking-wide px-0 select-none"
-              >
-                Project Images
-              </h1>
-              <img
-                class="md:w-[640px] p-4 py-0 pt-1 md:mx-auto md:object-contain md:h-[260px] select-none sm:w-full sm:h-[200px] w-full h-[150px]"
-                :src="generateProjectUrl(currentProject.imagesLink[projectNum])"
-              />
+                <h1
+                  class="md:block hidden text-center mt-1 md:mb-2 text-2xl font-bold tracking-wide px-0 select-none"
+                >
+                  Project Images
+                </h1>
+                <img
+                  class="md:w-[640px] p-4 py-0 pt-1 md:mx-auto md:object-contain md:h-[260px] select-none sm:w-full sm:h-[200px] w-full h-[150px]"
+                  :src="
+                    generateProjectUrl(currentProject.imagesLink[projectNum])
+                  "
+                />
+              </div>
             </div>
-            </div>
-
-           
           </div>
         </Transition>
       </div>
